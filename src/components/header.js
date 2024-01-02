@@ -1,7 +1,13 @@
 import * as React from "react"
 import { Link } from "gatsby"
+import { useState } from "react"
 
 const Header = () => {
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+  const handleToggleMobileNav = () => {
+    setIsMobileNavOpen(!isMobileNavOpen);
+  };
+
   return (
     <header className="fixed bg-white inset-x-0 top-0 z-50 border-b border-gray-900/10">
       <nav className="mx-auto flex max-w-4xl items-center justify-between py-6 px-8 sm:px-1" aria-label="Global">
@@ -14,7 +20,9 @@ const Header = () => {
         </div>
         <div className="flex sm:hidden">
           <button type="button"
-                  className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
+                  className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+                  onClick={handleToggleMobileNav}
+          >
             <span className="sr-only">Open main menu</span>
             <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                  aria-hidden="true">
@@ -29,17 +37,17 @@ const Header = () => {
       </nav>
 
       {/*<div className="sm:hidden" role="dialog" aria-modal="true">*/}
-      <div className="hidden" role="dialog" aria-modal="true">
+      <div className={isMobileNavOpen ? 'block' : 'hidden'} role="dialog" aria-modal="true">
         <div className="fixed inset-0 z-50"></div>
         <div
-          className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+          className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-8 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
             <Link to="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
               {/*<img className="h-8 w-auto" src="#" alt="" />*/}
               <h1 className="font-black">WHITEPAEK</h1>
             </Link>
-            <button type="button" className="-m-2.5 rounded-md p-2.5 text-gray-700">
+            <button type="button" className="-m-2.5 rounded-md p-2.5 text-gray-700" onClick={handleToggleMobileNav}>
               <span className="sr-only">Close menu</span>
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                    aria-hidden="true">

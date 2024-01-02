@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 
 const Footer = () => {
   return (
-    <footer className="bg-white mx-auto p-6 border-t border-gray-900/10 sm:flex sm:items-center sm:justify-center">
+    <footer className="bg-white mx-auto p-6 border-t w-full border-gray-900/10 sm:flex sm:items-center sm:justify-center">
       <div className="flex justify-center space-x-6 sm:order-2">
         <Link to="https://github.com/WHITEPAEK" className="text-gray-400 hover:text-gray-500">
           <span className="sr-only">GitHub</span>

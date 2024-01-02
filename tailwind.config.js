@@ -10,6 +10,7 @@ module.exports = {
       serif: ['Merriweather', 'serif'],
     },
     extend: {},
+    typography: require('./typography'),
   },
   plugins: [
     require('@tailwindcss/typography'),
