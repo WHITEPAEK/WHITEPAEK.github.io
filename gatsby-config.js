@@ -12,9 +12,9 @@ module.exports = {
     title: `WHITEPAEK`,
     author: {
       name: `SEUNGJOO PAEK`,
-      summary: ``,
+      summary: `성균관대학교에서 컴퓨터 공학 석사 학위를 받은 소프트웨어 엔지니어 겸 사업가입니다.`,
     },
-    description: ``,
+    description: `시스템 설계와 구현 과정에서 경험한 내용을 공유합니다. 그리고 비즈니스와 일상에 대해 이야기를 풀어내는 공간입니다.`,
     siteUrl: `https://whitepaek.com/`,
     social: {
       github: `https://github.com/WHITEPAEK`,
@@ -88,6 +88,7 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    'gatsby-plugin-sitemap',
     {
       resolve: `gatsby-plugin-feed`,
       options: {
@@ -149,6 +150,13 @@ module.exports = {
         // theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/whitepaek-icon.png`, // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-canonical-urls',
+      options: {
+        siteUrl: 'https://whitepaek.com/',
+        stripQueryString: true,
       },
     },
   ],
