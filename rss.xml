@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[WHITEPAEK Blog RSS Feed]]></title><description><![CDATA[시스템 설계와 구현 과정에서 경험한 내용을 공유합니다. 그리고 비즈니스와 일상에 대해 이야기를 풀어내는 공간입니다.]]></description><link>https://whitepaek.com</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 03 Jan 2024 17:39:26 GMT</lastBuildDate><item><title><![CDATA[백엔드 개발자의 작은 일탈]]></title><description><![CDATA[백엔드 개발자의 작은 일탈이라는 제목을 보고 어떤 내용인지 궁금하여 해당 포스트를 클릭했을 거예요. 포스트 제목은 신입 백엔드 개발자 후배에게 Vanilla CSS의 학습을 강제적(?)으로 요구했었는데, 후배가 Vanilla CSS…]]></description><link>https://whitepaek.com/2024/01/backend-developer-departure/</link><guid isPermaLink="false">https://whitepaek.com/2024/01/backend-developer-departure/</guid><pubDate>Thu, 04 Jan 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;strong&gt;백엔드 개발자의 작은 일탈&lt;/strong&gt;이라는 제목을 보고 어떤 내용인지 궁금하여 해당 포스트를 클릭했을 거예요.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;포스트 제목은 &lt;a href=&quot;https://github.com/eckrin/advanced-css&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;신입 백엔드 개발자 후배&lt;/a&gt;에게 Vanilla CSS의 학습을 강제적(?)으로 요구했었는데, 후배가 Vanilla CSS 학습을 &lt;strong&gt;백엔드 개발자의 작은 일탈&lt;/strong&gt;이라고 말한 것에서 빌려온 거예요.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/82008d31b5cf8a06f4993f88110b54d3/294fc/blog-brand-image.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 66.45569620253164%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAC4jAAAuIwF4pT92AAACfklEQVR42oWSW08aURSF50cZm/imCYl9tT7WB7mDFUQgBlNFtBEtFExjAWu0WBIuFTVeQVQQhpkBmyZtbNKfs7r3VuslJn1Y4UyG883aa23FZrPBarU+K5vNCrvdDpfLDb/fj4WFeaTTKWxvb+Ps7AztdhuGYaDb7ch5cXERisViAcvKegJzOh3wer2YmXmLlZUV5PN5VCoVqKp6C+qi07mB1U5PEYvF7oECtd5A2dXY2BimpqawvLyMzY0N7O/vo16vQ9M0gbAr/tV1XdxubW0hEok8BvL4TqcTPp9PXqZSKXyj8WqNBlRywZfZGYPuYI1GHaVSEUtLSzLNPyC7Gh8fx/T0NBKJD8jlvuL4+BhNgnXyJegq5SUgAhLUMHQ0m03s7e1JHIGAHw6HHQq7crvdCAYDEur6+rr86fz8XLLS6fKPj5/wyxOEflGHTrmxs1ZLxdHRETKZDEKhkEzGcSkTExMIh8NYXV1FsVhEtVqRL2s8Irkx6g38nI/izxs/rtc20Pl9jXarhVqthmw2i7m5OcmbYTypEo/HKdAsDg8PKPQLcaVpnJcGnQrQCPo9/A7VYAi58DxSnzPSKH88Go3C4/Hewsw3wHK5TC3VxBXXzy2y+MxZndLleOw91mj/ClTQAcWxu7uLZDIpu8mRmc1mEUOVBjdIrhjwEHgnVW3h8vIS3asrGPR8QnuYTqclN4fDIaDR0VERn5U70EPxyI+fNTQJWjk5wZfNTczOzsLldj1aN5aM/BzwqXgCbr1QKMi++SYnxZ2FHI2MvMaroSG8HBzEwMDA/4AqVGqUy9rZKSOZSMBDuzo8PAyTyYS+vj709PTgRW+vnPv7+/EXv7zUV9baQasAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Blog Brand Image&quot;
+        title=&quot;&quot;
+        src=&quot;/static/82008d31b5cf8a06f4993f88110b54d3/f058b/blog-brand-image.png&quot;
+        srcset=&quot;/static/82008d31b5cf8a06f4993f88110b54d3/c26ae/blog-brand-image.png 158w,
+/static/82008d31b5cf8a06f4993f88110b54d3/6bdcf/blog-brand-image.png 315w,
+/static/82008d31b5cf8a06f4993f88110b54d3/f058b/blog-brand-image.png 630w,
+/static/82008d31b5cf8a06f4993f88110b54d3/40601/blog-brand-image.png 945w,
+/static/82008d31b5cf8a06f4993f88110b54d3/78612/blog-brand-image.png 1260w,
+/static/82008d31b5cf8a06f4993f88110b54d3/294fc/blog-brand-image.png 4500w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;저는 &lt;a href=&quot;https://whitepaek.tistory.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;티스토리(tistory) 블로그&lt;/a&gt;를 이용해서 포스트를 작성했었는데, 2021년 대학원 과정을 진행하면서 포스트를 더 이상 작성하지 않았어요.
+2023년에 대학원을 무사히 마치고, 2023년 12월 31일에 퇴사를 결정하면서 이 과정에서 약간의 여유 시간이 남게 되어 자주 접하지만 공부해 본 적 없는 바닐라 CSS(vanilla css)를 학습하게 되었어요.
+그리고 새로운 일 시작에 앞서 약 4일간의 공백 동안 학습한 CSS를 바탕으로 블로그를 새롭게 만들자는 목표를 가지고 진행했어요.&lt;/p&gt;
+&lt;p&gt;기존에 이용하던 티스토리 블로그와 다르게 작성한 리소스를 전부 관리할 수 있는 &lt;a href=&quot;https://docs.github.com/en/pages/quickstart&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;깃허브 페이지(github pages)&lt;/a&gt;을 선택했고,&lt;br&gt;
+많은 사람들에게 인기 있는 리액트 기반 프레임워크(react-base framework) &lt;a href=&quot;https://www.gatsbyjs.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;개츠비(gatsby)&lt;/a&gt;를 이용하여 블로그를 만들었어요.&lt;/p&gt;
+&lt;p&gt;백엔드 포지션에서 업무를 진행하는 저는 퍼블리셔가 만들어준 HTML, CSS를 복사-붙여넣기 수준만 가능할 정도의 낮은 이해도를 가지고 있었어요.
+그래서 바닐라 CSS의 기본 지식을 학습했어도 러닝 커브는 상당히 컸고, 블로그를 만들 수 없는 수준이었어요.&lt;/p&gt;
+&lt;p&gt;이렇게 새로운 블로그 만드는 목표를 포기하고 싶지 않았고, CSS 프레임워크로 컴포넌트 프레임워크(component frameworks)와 유틸리티 프레임워크(utility frameworks)가 있다는 것을 알게 되었어요.
+컴포넌트 프레임워크 중 &lt;a href=&quot;https://getbootstrap.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;부트스트랩(bootstrap)&lt;/a&gt;은 나만의 색깔을 가진 블로그를 제작하기 어렵다고 판단했어요. 그래서 유틸리티 프레임워크인 &lt;a href=&quot;https://tailwindcss.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;Tailwind CSS&lt;/a&gt;를 사용하기로 결정했어요.&lt;/p&gt;
+&lt;p&gt;Tailwind CSS 또한 러닝 커브가 있었지만, 그래도 바닐라 CSS 보다는 적었고 공식 문서를 보면서 하나씩 적용해 보면서 블로그를 만들 수 있었어요.
+물론, CSS 뿐만 아니라 리액트의 기본 지식도 없었기에 개츠비도 상당히 많은 삽질을 하면서 블로그를 만들었어요.&lt;/p&gt;
+&lt;p&gt;아직 적용해야 할 기능이 많은 남았지만 배포할 수 있는 정도의 완성도는 갖춰졌다 판단했고, 블로그를 만든 이유에 대해 첫 포스트를 작성하기로 결정했어요.
+후배와 함께 CSS를 학습하고, 블로그를 만든 과정에서의 우여곡절을 &lt;strong&gt;백엔드 개발자의 작은 일탈&lt;/strong&gt;이라는 제목으로 표현하게 되었어요.&lt;/p&gt;
+&lt;p&gt;백엔드 개발자 중에서 저처럼 HTML, CSS를 이용한 화면 개발에 약하거나 싫어하는 분들이 많을 거 같아요. 여유 시간이 생긴다면 &lt;strong&gt;백엔드 개발자의 작은 일탈&lt;/strong&gt;을 도전해 보세요!
+저처럼 블로그를 만드시는 분들께 도움이 될 수 있도록 블로그를 만드는 과정에 대해서도 포스트를 작성해 놓을게요.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;WHITEPAEK&lt;/strong&gt; 블로그에는 시스템 설계와 개발 과정에서 경험한 내용과 비즈니스, 일상에 대한 이야기를 작성할 거예요.&lt;br&gt;
+앞으로도 저의 블로그에 올라오는 포스트를 &lt;strong&gt;꼭&lt;/strong&gt; 봐주세요. 감사합니다!&lt;/p&gt;</content:encoded></item></channel></rss>
