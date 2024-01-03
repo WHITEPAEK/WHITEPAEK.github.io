@@ -14,7 +14,7 @@ const Posts = ({ data }) => {
           <div className="mx-auto max-w-4xl">
             <div className="mb-10 pl-3">
               <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl w-32 border-b-4 border-red-600">
-                Posts
+                포스트
               </h2>
               {/*<p className="mt-2 text-m leading-8 text-gray-500"></p>*/}
             </div>
