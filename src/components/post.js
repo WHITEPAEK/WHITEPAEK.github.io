@@ -11,7 +11,7 @@ const Post = ({ data: { previous, next, site, markdownRemark: post } }) => {
         <div className="mx-auto max-w-4xl px-6 sm:px-1 py-24 sm:py-32">
           <article>
             <header className="flex flex-col">
-              <h1 className="mt-6 text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl">
+              <h1 className="mt-6 text-2xl font-bold tracking-tight text-zinc-800 sm:text-4xl">
                 {post.frontmatter.title}
               </h1>
               <time

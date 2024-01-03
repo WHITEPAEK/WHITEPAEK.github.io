@@ -9,10 +9,10 @@ const Index = () => {
   return (
     <Layout>
       <div className="bg-white">
-        <div className="mx-auto max-w-7xl px-6 sm:px-8">
+        <div className="mx-auto max-w-7xl p-6 sm:p-8">
           <div className="px-6 pt-24 pb-16 sm:pt-32 sm:px-8">
             <div className="mx-auto max-w-2xl">
-              <h2 className="text-4xl tracking-tight text-gray-900 sm:text-4xl">
+              <h2 className="text-3xl tracking-tight text-gray-900 sm:text-4xl">
                 안녕하세요. <br/>
                 소프트웨어 엔지니어 <strong>백승주</strong>입니다.
               </h2>
