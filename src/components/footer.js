@@ -6,7 +6,7 @@ const Footer = () => {
     <footer
       className="bg-white mx-auto p-6 border-t w-full border-gray-900/10 sm:flex sm:items-center sm:justify-center">
       <div className="flex justify-center space-x-4">
-        <Link to="https://github.com/WHITEPAEK" className="text-gray-400 hover:text-gray-500">
+        <Link to="https://github.com/WHITEPAEK" className="text-gray-400 hover:text-gray-500" target="_blank">
           <span className="sr-only">GitHub</span>
           <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path fillRule="evenodd"
@@ -26,7 +26,7 @@ const Footer = () => {
           </svg>
         </Link>
 
-        <Link to="https://whitepaek.com/rss.xml" className="text-gray-400 hover:text-gray-500">
+        <Link to="https://whitepaek.com/rss.xml" className="text-gray-400 hover:text-gray-500" target="_blank">
           <span className="sr-only">RSS</span>
           <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
             <path

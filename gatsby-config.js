@@ -82,6 +82,13 @@ module.exports = {
               },
               escapeEntities: {},
             }
+          },
+          {
+            resolve: "gatsby-remark-external-links",
+            options: {
+              target: "_blank",
+              rel: "nofollow noreferrer"
+            }
           }
         ],
       },
