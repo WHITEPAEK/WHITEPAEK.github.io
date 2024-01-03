@@ -36,7 +36,7 @@ const Posts = ({ data }) => {
                             <span className="absolute inset-0"></span>
                             {post.frontmatter.title}
                         </h3>
-                        <p className="mt-5 line-clamp-3 text-sm leading-6 text-gray-600"
+                        <p className="mt-3 line-clamp-3 text-sm leading-6 text-gray-600"
                            dangerouslySetInnerHTML={{
                              __html: post.frontmatter.description || post.excerpt
                            }}
