@@ -41,12 +41,12 @@ const Header = () => {
           <Link to="/posts"
                 className="text-sm font-semibold leading-6 text-gray-900 hover:border-b-2 hover:border-red-600"
           >
-            POSTS
+            포스트
           </Link>
-          <Link to="/writing"
+          <Link to="/diaries"
                 className="text-sm font-semibold leading-6 text-gray-900 hover:border-b-2 hover:border-red-600"
           >
-            WRITING
+            다이어리
           </Link>
         </div>
       </nav>
@@ -80,12 +80,12 @@ const Header = () => {
                 <Link to="/posts"
                       className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
-                  POSTS
+                  포스트
                 </Link>
-                <Link to="/writing"
+                <Link to="/diaries"
                       className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
-                  WRITING
+                  다이어리
                 </Link>
               </div>
             </div>
