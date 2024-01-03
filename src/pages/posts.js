@@ -13,16 +13,14 @@ const Posts = ({ data }) => {
         <div className="mx-auto max-w-7xl px-6 sm:px-8">
           <div className="mx-auto max-w-4xl">
             <div className="mb-10 pl-3">
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl w-32 border-b-4 border-red-600">
                 Posts
               </h2>
-              <p className="mt-2 text-lg leading-8 text-gray-600">
-                글 쓰는 공간
-              </p>
+              {/*<p className="mt-2 text-m leading-8 text-gray-500"></p>*/}
             </div>
-            {posts.map(post => {
+            {posts.map((post, index) => {
               return (
-                <Link to={post.fields.slug}>
+                <Link to={post.fields.slug} key={index}>
                   <div className="mb-8 p-3 hover:bg-zinc-50 hover:rounded-2xl">
                     <article className="flex max-w-4xl flex-col items-start justify-between">
                       <div className="flex items-center gap-x-4 text-xs">
@@ -43,7 +41,7 @@ const Posts = ({ data }) => {
                              __html: post.frontmatter.description || post.excerpt
                            }}
                         />
-                        <div className="mt-3 gap-x-4 text-xs font-medium text-teal-500">
+                        <div className="mt-3 gap-x-4 text-xs font-medium text-red-600">
                           Read more >
                         </div>
                       </div>
@@ -62,7 +60,7 @@ const Posts = ({ data }) => {
 
 export default Posts
 
-export const Head = () => <Seo title="Posts" />
+export const Head = () => <Seo title="POSTS" />
 
 export const pageQuery = graphql`
   {
