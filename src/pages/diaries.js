@@ -22,4 +22,4 @@ const Diaries = () => {
 
 export default Diaries
 
-export const Head = () => <Seo title="WRITING" />
+export const Head = () => <Seo title="다이어리" />
