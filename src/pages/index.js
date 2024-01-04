@@ -145,4 +145,4 @@ const Index = () => {
 
 export default Index
 
-export const Head = () => <Seo title="HOME" />
+export const Head = () => <Seo title="홈" />

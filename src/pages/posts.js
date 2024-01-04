@@ -48,8 +48,7 @@ const Posts = ({ data }) => {
                     </article>
                   </div>
                 </Link>
-              )
-            })
+              )})
             }
           </div>
         </div>
@@ -60,7 +59,7 @@ const Posts = ({ data }) => {
 
 export default Posts
 
-export const Head = () => <Seo title="POSTS" />
+export const Head = () => <Seo title="포스트" />
 
 export const pageQuery = graphql`
   {
@@ -69,9 +68,12 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
+    allMarkdownRemark(
+      filter: {fileAbsolutePath: {regex: "/\/posts\//"}}
+      sort: { frontmatter: { date: DESC } }
+    ) {
       nodes {
-        excerpt(pruneLength: 320)
+        excerpt(format: PLAIN, pruneLength: 320, truncate: true)
         fields {
           slug
         }
