@@ -1,5 +1,5 @@
 import * as React from "react"
-import { graphql, Link } from "gatsby"
+import { Link } from "gatsby"
 import Seo from "../components/seo"
 
 const NotFoundPage = () => {
@@ -12,12 +12,12 @@ const NotFoundPage = () => {
           접속하신 주소를 확인해 주세요!
         </h1>
         <p className="mt-6 text-base leading-7 text-gray-600">
-          지금 입력하신 주소의 페이지는 삭제 또는 변경된 거 같습니다.<br/>
+          지금 입력하신 주소의 페이지는 삭제 또는 변경된 거 같습니다.<br />
           주소를 다시 한번 확인해 주세요.
         </p>
         <div className="mt-6 flex items-center justify-center gap-x-6">
           <Link to="/"
-             className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
             홈으로 이동
           </Link>
         </div>

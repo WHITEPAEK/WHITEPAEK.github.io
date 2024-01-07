@@ -7,11 +7,8 @@
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
-// Define the template for blog post
-const blogPost = path.resolve(`./src/templates/post.js`)
-
 /**
- * @type {import('gatsby').GatsbyNode['createPages']}
+ * @type {import("gatsby").GatsbyNode["createPages"]}
  */
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
@@ -49,40 +46,35 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   if (posts.length > 0) {
     // 블로그 포스트 페이지 생성
     posts.forEach((post, index) => {
-      const previousPostId = index === 0 ? null : posts[index - 1].id
-      const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
-
       createPage({
         path: post.node.fields.slug,
-        component: blogPost,
+        component: path.resolve(`./src/templates/post.js`),
         context: {
-          id: post.node.id,
-          previousPostId,
-          nextPostId,
-        },
+          id: post.node.id
+        }
       })
     })
 
     // 블로그 포스트 목록 페이지 생성
     const postsPerPage = 5 // 한 페이지에 보여줄 포스트 개수
     const numPages = Math.ceil(posts.length / postsPerPage) // 전체 페이지 개수
-    Array.from({length: numPages}).forEach((_, index) => {
+    Array.from({ length: numPages }).forEach((_, index) => {
       createPage({
         path: index === 0 ? `/posts` : `/posts/${index}`,
-        component: path.resolve('./src/templates/posts.js'),
+        component: path.resolve("./src/templates/posts.js"),
         context: {
           limit: postsPerPage,
           skip: index * postsPerPage,
           numPages,
           currentPage: index
-        },
+        }
       })
     })
   }
 }
 
 /**
- * @type {import('gatsby').GatsbyNode['onCreateNode']}
+ * @type {import("gatsby").GatsbyNode["onCreateNode"]}
  */
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
@@ -93,13 +85,13 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     createNodeField({
       name: `slug`,
       node,
-      value,
+      value
     })
   }
 }
 
 /**
- * @type {import('gatsby').GatsbyNode['createSchemaCustomization']}
+ * @type {import("gatsby").GatsbyNode["createSchemaCustomization"]}
  */
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions

@@ -1,5 +1,4 @@
 import * as React from "react"
-import { Link, graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -13,7 +12,7 @@ const Index = () => {
           <div className="px-6 pt-24 pb-16 sm:pt-32 sm:px-8">
             <div className="mx-auto max-w-2xl">
               <h2 className="text-3xl tracking-tight text-gray-900 sm:text-4xl">
-                안녕하세요. <br/>
+                안녕하세요. <br />
                 소프트웨어 엔지니어 <strong>백승주</strong>입니다.
               </h2>
               <p className="mt-6 text-lg leading-8 text-gray-600">
@@ -30,7 +29,8 @@ const Index = () => {
                 <div className="absolute left-0 top-0 flex w-6 justify-center -bottom-6">
                   <div className="w-px bg-gray-200"></div>
                 </div>
-                <svg className="relative mt-3 h-6 w-6 flex-none rounded-full bg-gray-50" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <svg className="relative mt-3 h-6 w-6 flex-none rounded-full bg-gray-50" viewBox="0 0 24 24"
+                     fill="currentColor" aria-hidden="true">
                   <path fillRule="evenodd"
                         d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
                         clipRule="evenodd" />

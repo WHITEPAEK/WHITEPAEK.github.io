@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
@@ -11,7 +11,7 @@ const Posts = (props) => {
   const isLast = currentPage === (numPages - 1) // 현재 페이지가 마지막 페이지인지
   const prevPage = currentPage === 1 ? `/posts` : `/posts/${currentPage - 1}` // 이전 페이지
   const nextPage = `/posts/${currentPage + 1}` // 다음 페이지
-  const perPage = 7, startPageIndex = 3; // 화면에 보여지는 최대 페이지 개수 / 현재 페이지 표시 위치
+  const perPage = 7, startPageIndex = 3 // 화면에 보여지는 최대 페이지 개수 / 현재 페이지 표시 위치
 
   return (
     <Layout>
@@ -19,7 +19,8 @@ const Posts = (props) => {
         <div className="mx-auto max-w-7xl px-6 sm:px-8">
           <div className="mx-auto max-w-4xl">
             <div className="mb-10 pl-3">
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl w-32 border-b-4 border-red-600">
+              <h2
+                className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl w-32 border-b-4 border-red-600">
                 포스트
               </h2>
               {/*<p className="mt-2 text-m leading-8 text-gray-500"></p>*/}
@@ -81,29 +82,29 @@ const Posts = (props) => {
               <div className="hidden sm:-mt-px sm:flex">
                 {
                   (currentPage < startPageIndex + 1 || numPages < perPage + 1) ?
-                    Array.from({length: numPages > perPage ? perPage : numPages}).map((_, index) => {
+                    Array.from({ length: numPages > perPage ? perPage : numPages }).map((_, index) => {
                       return (
                         <Link to={index === 0 ? `/posts` : `/posts/${index}`}
-                              className={`inline-flex items-center border-t-2 px-4 pt-4 text-sm font-medium ${index === currentPage ? 'border-red-500 text-red-600' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'}`}
+                              className={`inline-flex items-center border-t-2 px-4 pt-4 text-sm font-medium ${index === currentPage ? "border-red-500 text-red-600" : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700"}`}
                               key={index}
                         >
                           {index + 1}
                         </Link>
                       )
                     }) :
-                    Array.from({length: perPage}).map((_, index) => {
+                    Array.from({ length: perPage }).map((_, index) => {
                       const pageNum = (numPages - currentPage > startPageIndex) ? (currentPage + index - startPageIndex) : (numPages + index - perPage)
 
                       return (
                         <Link to={pageNum === 0 ? `/posts` : `/posts/${pageNum}`}
-                              className={`inline-flex items-center border-t-2 px-4 pt-4 text-sm font-medium ${pageNum === currentPage ? 'border-red-500 text-red-600' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'}`}
+                              className={`inline-flex items-center border-t-2 px-4 pt-4 text-sm font-medium ${pageNum === currentPage ? "border-red-500 text-red-600" : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700"}`}
                               key={index}
                         >
                           {pageNum + 1}
                         </Link>
                       )
                     })
-                  }
+                }
               </div>
 
               <div className="-mt-px flex w-0 flex-1 justify-end">
@@ -119,7 +120,7 @@ const Posts = (props) => {
                             clipRule="evenodd" />
                     </svg>
                   </Link>
-                  )}
+                )}
               </div>
             </nav>
           </div>
@@ -134,12 +135,7 @@ export default Posts
 export const Head = () => <Seo title="포스트" />
 
 export const pageQuery = graphql`
-  query($skip: Int!, $limit: Int!) {
-    site {
-      siteMetadata {
-        title
-      }
-    }
+  query ($skip: Int!, $limit: Int!) {
     allMarkdownRemark(
       sort: { frontmatter: { date: DESC } }
       limit: $limit

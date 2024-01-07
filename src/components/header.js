@@ -1,17 +1,17 @@
 import * as React from "react"
-import { Link } from "gatsby"
 import { useState } from "react"
+import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 
 const Header = () => {
-  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
-  const currentPath = typeof window !== 'undefined' ? window.location.pathname : '';
-  const isPosts = currentPath.includes('/posts');
-  const isDiaries = currentPath.includes('/diaries');
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false)
+  const currentPath = typeof window !== "undefined" ? window.location.pathname : ""
+  const isPosts = currentPath.includes("/posts")
+  const isDiaries = currentPath.includes("/diaries")
 
   const handleToggleMobileNav = () => {
-    setIsMobileNavOpen(!isMobileNavOpen);
-  };
+    setIsMobileNavOpen(!isMobileNavOpen)
+  }
 
   return (
     <header className="fixed bg-white inset-x-0 top-0 z-50 border-b border-gray-900/10">
@@ -42,19 +42,19 @@ const Header = () => {
         </div>
         <div className="hidden sm:flex sm:gap-x-12">
           <Link to="/posts"
-                className={`text-sm font-semibold leading-6 text-gray-900 ${isPosts ? 'border-b-2 border-red-600' : 'border-b-2 border-transparent hover:border-b-2 hover:border-red-600'}`}
+                className={`text-sm font-semibold leading-6 text-gray-900 ${isPosts ? "border-b-2 border-red-600" : "border-b-2 border-transparent hover:border-b-2 hover:border-red-600"}`}
           >
             포스트
           </Link>
           <Link to="/diaries"
-                className={`text-sm font-semibold leading-6 text-gray-900 ${isDiaries ? 'border-b-2 border-red-600' : 'border-b-2 border-transparent hover:border-b-2 hover:border-red-600'}`}
+                className={`text-sm font-semibold leading-6 text-gray-900 ${isDiaries ? "border-b-2 border-red-600" : "border-b-2 border-transparent hover:border-b-2 hover:border-red-600"}`}
           >
             다이어리
           </Link>
         </div>
       </nav>
 
-      <div className={isMobileNavOpen ? 'block' : 'hidden'} role="dialog" aria-modal="true">
+      <div className={isMobileNavOpen ? "block" : "hidden"} role="dialog" aria-modal="true">
         <div className="fixed inset-0 z-50"></div>
         <div
           className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-8 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
@@ -81,12 +81,12 @@ const Header = () => {
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
                 <Link to="/posts"
-                      className={`-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 ${isPosts ? 'bg-gray-50' : 'hover:bg-gray-50'}`}
+                      className={`-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 ${isPosts ? "bg-gray-50" : "hover:bg-gray-50"}`}
                 >
                   포스트
                 </Link>
                 <Link to="/diaries"
-                      className={`-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 ${isDiaries ? 'bg-gray-50' : 'hover:bg-gray-50'}`}
+                      className={`-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 ${isDiaries ? "bg-gray-50" : "hover:bg-gray-50"}`}
                 >
                   다이어리
                 </Link>

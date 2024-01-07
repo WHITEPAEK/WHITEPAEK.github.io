@@ -1,10 +1,12 @@
 import * as React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Comments from "../components/comments"
 
-const Post = ({ data: { previous, next, site, markdownRemark: post } }) => {
+const Post = (props) => {
+  const post = props.data.markdownRemark
+
   return (
     <Layout>
       <div className="xl:relative">
@@ -32,11 +34,8 @@ const Post = ({ data: { previous, next, site, markdownRemark: post } }) => {
 
 export default Post
 
-export const Head = ({
-                       data: {
-                         markdownRemark: post
-                       }
-                     }) => {
+export const Head = (props) => {
+  const post = props.data.markdownRemark
   return (
     <Seo
       title={post.frontmatter.title}
@@ -46,16 +45,7 @@ export const Head = ({
 }
 
 export const pageQuery = graphql`
-  query PostBySlug(
-    $id: String!
-    $previousPostId: String
-    $nextPostId: String
-  ) {
-    site {
-      siteMetadata {
-        title
-      }
-    }
+  query ($id: String!) {
     markdownRemark(id: { eq: $id }) {
       id
       excerpt(pruneLength: 160)
@@ -64,22 +54,6 @@ export const pageQuery = graphql`
         title
         date(formatString: "YYYY-MM-DD")
         description
-      }
-    }
-    previous: markdownRemark(id: { eq: $previousPostId }) {
-      fields {
-        slug
-      }
-      frontmatter {
-        title
-      }
-    }
-    next: markdownRemark(id: { eq: $nextPostId }) {
-      fields {
-        slug
-      }
-      frontmatter {
-        title
       }
     }
   }
