@@ -1,11 +1,13 @@
 import * as React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Comments from "../components/comments"
 
 const Post = (props) => {
   const post = props.data.markdownRemark
+  const previous = props.data.previous
+  const next = props.data.next
 
   return (
     <Layout>
@@ -25,6 +27,43 @@ const Post = (props) => {
             </header>
             <div className="mt-8 prose" dangerouslySetInnerHTML={{ __html: post.html }}></div>
           </article>
+
+          <nav className="flex items-center justify-between border-t border-gray-200 px-4 sm:px-0">
+            <div className="-mt-px flex w-0 flex-1 truncate group">
+              {previous && (
+                <Link to={previous.fields.slug}
+                      rel={"prev"}
+                      className="inline-flex items-center border-t-2 border-transparent pr-1 pt-4 text-sm font-medium text-gray-500 group-hover:border-red-500 group-hover:text-red-600">
+                  <svg className="mr-3 h-5 w-5 text-gray-500 group-hover:text-red-600" viewBox="0 0 20 20"
+                       fill="currentColor"
+                       aria-hidden="true">
+                    <path fillRule="evenodd"
+                          d="M18 10a.75.75 0 01-.75.75H4.66l2.1 1.95a.75.75 0 11-1.02 1.1l-3.5-3.25a.75.75 0 010-1.1l3.5-3.25a.75.75 0 111.02 1.1l-2.1 1.95h12.59A.75.75 0 0118 10z"
+                          clipRule="evenodd" />
+                  </svg>
+                  {previous.frontmatter.title}
+                </Link>
+              )}
+            </div>
+
+            <div className="-mt-px flex w-0 flex-1 justify-end truncate group">
+              {next && (
+                <Link to={next.fields.slug}
+                      rel={"next"}
+                      className="inline-flex items-center border-t-2 border-transparent pl-1 pt-4 text-sm font-medium text-gray-500 group-hover:border-red-500 group-hover:text-red-600">
+                  {next.frontmatter.title}
+                  <svg className="ml-3 h-5 w-5 text-gray-500 group-hover:text-red-600" viewBox="0 0 20 20"
+                       fill="currentColor"
+                       aria-hidden="true">
+                    <path fillRule="evenodd"
+                          d="M2 10a.75.75 0 01.75-.75h12.59l-2.1-1.95a.75.75 0 111.02-1.1l3.5 3.25a.75.75 0 010 1.1l-3.5 3.25a.75.75 0 11-1.02-1.1l2.1-1.95H2.75A.75.75 0 012 10z"
+                          clipRule="evenodd" />
+                  </svg>
+                </Link>
+              )}
+            </div>
+          </nav>
+
           <Comments />
         </div>
       </div>
@@ -45,7 +84,7 @@ export const Head = (props) => {
 }
 
 export const pageQuery = graphql`
-  query ($id: String!) {
+  query ($id: String!, $previousPostId: String, $nextPostId: String) {
     markdownRemark(id: { eq: $id }) {
       id
       excerpt(pruneLength: 160)
@@ -54,6 +93,22 @@ export const pageQuery = graphql`
         title
         date(formatString: "YYYY-MM-DD")
         description
+      }
+    }
+    previous: markdownRemark(id: { eq: $previousPostId }) {
+      fields {
+        slug
+      }
+      frontmatter {
+        title
+      }
+    }
+    next: markdownRemark(id: { eq: $nextPostId }) {
+      fields {
+        slug
+      }
+      frontmatter {
+        title
       }
     }
   }

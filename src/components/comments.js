@@ -23,8 +23,8 @@ export const Comments = () => {
   }, [])
 
   return (
-    <div className="pt-12">
-      <hr className="my-0" />
+    <div className="pt-16">
+      {/*<hr className="my-0" />*/}
       <div ref={commentRef} />
     </div>
   )

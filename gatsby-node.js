@@ -46,11 +46,16 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   if (posts.length > 0) {
     // 블로그 포스트 페이지 생성
     posts.forEach((post, index) => {
+      const previousPostId = index === 0 ? null : posts[index - 1].node.id
+      const nextPostId = index === posts.length - 1 ? null : posts[index + 1].node.id
+
       createPage({
         path: post.node.fields.slug,
         component: path.resolve(`./src/templates/post.js`),
         context: {
-          id: post.node.id
+          id: post.node.id,
+          previousPostId,
+          nextPostId
         }
       })
     })
