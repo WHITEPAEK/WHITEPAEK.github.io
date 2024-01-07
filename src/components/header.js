@@ -5,6 +5,9 @@ import { StaticImage } from "gatsby-plugin-image"
 
 const Header = () => {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+  const currentPath = typeof window !== 'undefined' ? window.location.pathname : '';
+  const isPosts = currentPath.includes('/posts');
+  const isDiaries = currentPath.includes('/diaries');
 
   const handleToggleMobileNav = () => {
     setIsMobileNavOpen(!isMobileNavOpen);
@@ -13,7 +16,7 @@ const Header = () => {
   return (
     <header className="fixed bg-white inset-x-0 top-0 z-50 border-b border-gray-900/10">
       <nav className="mx-auto flex max-w-4xl items-center justify-between py-6 px-8 sm:px-1" aria-label="Global">
-        <div className="flex sm:flex-1">
+        <div className="flex h-10 sm:flex-1">
           <Link to="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
             <StaticImage className="h-8 w-auto"
@@ -39,12 +42,12 @@ const Header = () => {
         </div>
         <div className="hidden sm:flex sm:gap-x-12">
           <Link to="/posts"
-                className="text-sm font-semibold leading-6 text-gray-900 hover:border-b-2 hover:border-red-600"
+                className={`text-sm font-semibold leading-6 text-gray-900 ${isPosts ? 'border-b-2 border-red-600' : 'border-b-2 border-transparent hover:border-b-2 hover:border-red-600'}`}
           >
             포스트
           </Link>
           <Link to="/diaries"
-                className="text-sm font-semibold leading-6 text-gray-900 hover:border-b-2 hover:border-red-600"
+                className={`text-sm font-semibold leading-6 text-gray-900 ${isDiaries ? 'border-b-2 border-red-600' : 'border-b-2 border-transparent hover:border-b-2 hover:border-red-600'}`}
           >
             다이어리
           </Link>
@@ -78,12 +81,12 @@ const Header = () => {
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
                 <Link to="/posts"
-                      className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                      className={`-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 ${isPosts ? 'bg-gray-50' : 'hover:bg-gray-50'}`}
                 >
                   포스트
                 </Link>
                 <Link to="/diaries"
-                      className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                      className={`-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 ${isDiaries ? 'bg-gray-50' : 'hover:bg-gray-50'}`}
                 >
                   다이어리
                 </Link>

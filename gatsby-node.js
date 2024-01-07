@@ -8,7 +8,7 @@ const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
 // Define the template for blog post
-const blogPost = path.resolve(`./src/components/post.js`)
+const blogPost = path.resolve(`./src/templates/post.js`)
 
 /**
  * @type {import('gatsby').GatsbyNode['createPages']}
@@ -20,10 +20,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const result = await graphql(`
     {
       allMarkdownRemark(sort: { frontmatter: { date: ASC } }, limit: 1000) {
-        nodes {
-          id
-          fields {
-            slug
+        edges {
+          node {
+            id
+            fields {
+              slug
+            }
           }
         }
       }
@@ -38,24 +40,41 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return
   }
 
-  const posts = result.data.allMarkdownRemark.nodes
+  const posts = result.data.allMarkdownRemark.edges
 
   // Create blog posts pages
   // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
   // `context` is available in the template as a prop and as a variable in GraphQL
 
   if (posts.length > 0) {
+    // 블로그 포스트 페이지 생성
     posts.forEach((post, index) => {
       const previousPostId = index === 0 ? null : posts[index - 1].id
       const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
 
       createPage({
-        path: post.fields.slug,
+        path: post.node.fields.slug,
         component: blogPost,
         context: {
-          id: post.id,
+          id: post.node.id,
           previousPostId,
           nextPostId,
+        },
+      })
+    })
+
+    // 블로그 포스트 목록 페이지 생성
+    const postsPerPage = 5 // 한 페이지에 보여줄 포스트 개수
+    const numPages = Math.ceil(posts.length / postsPerPage) // 전체 페이지 개수
+    Array.from({length: numPages}).forEach((_, index) => {
+      createPage({
+        path: index === 0 ? `/posts` : `/posts/${index}`,
+        component: path.resolve('./src/templates/posts.js'),
+        context: {
+          limit: postsPerPage,
+          skip: index * postsPerPage,
+          numPages,
+          currentPage: index
         },
       })
     })
