@@ -1,6 +1,6 @@
 ---
 title: 백엔드 개발자의 작은 일탈
-date: "2024-01-04"
+date: 2024-01-04
 ---
 
 > 포스트 제목은 [신입 백엔드 개발자 후배](https://github.com/eckrin/advanced-css)에게 Vanilla CSS의 학습을 강제적(?)으로 요구했었는데, 후배가 Vanilla CSS 학습을 **백엔드 개발자의 작은 일탈**이라고 말한 것에서 빌려온 거예요.

@@ -1,6 +1,6 @@
 ---
 title: CSS 비교 (Vanilla CSS vs CSS Framework)
-date: "2024-01-06"
+date: 2024-01-06
 ---
 
 **[백엔드 개발자의 작은 일탈](https://whitepaek.com/posts/2024/01/backend-developer-departure/)** 포스트에서 말했듯이,
