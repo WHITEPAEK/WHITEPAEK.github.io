@@ -39,7 +39,7 @@ const Index = () => {
                   <div className="flex justify-between gap-x-4">
                     <div className="py-0.5 text-xs leading-5 text-gray-500">
                       <span className="font-medium text-gray-900">
-                        케레스랩 (대표)
+                        창업 (준비 단계)
                       </span>
                     </div>
                     <time dateTime="2024-01-01" className="flex-none py-0.5 text-xs leading-5 text-gray-500">

@@ -1,5 +1,5 @@
 ---
-title: 개츠비(Gatsby) 블로그 시작하기 1 - Setup
+title: 개츠비(Gatsby) 블로그 만들기 1 - 기본 세팅
 date: 2024-01-15
 ---
 
