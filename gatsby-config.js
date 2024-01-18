@@ -118,8 +118,7 @@ module.exports = {
               return allMarkdownRemark.nodes.map(node => {
                 return Object.assign({}, node.frontmatter, {
                   description: node.excerpt,
-                  createdAt: node.frontmatter.createdAt,
-                  editedAt: node.frontmatter.editedAt,
+                  date: node.frontmatter.createdAt,
                   url: site.siteMetadata.siteUrl + node.fields.slug,
                   guid: site.siteMetadata.siteUrl + node.fields.slug,
                   custom_elements: [{ "content:encoded": node.html }],
@@ -137,7 +136,6 @@ module.exports = {
                   frontmatter {
                     title
                     createdAt
-                    editedAt
                   }
                 }
               }
