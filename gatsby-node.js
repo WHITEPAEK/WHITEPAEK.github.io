@@ -16,7 +16,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // Get all markdown blog posts sorted by date
   const result = await graphql(`
     {
-      allMarkdownRemark(sort: { frontmatter: { date: ASC } }, limit: 1000) {
+      allMarkdownRemark(sort: { frontmatter: { createdAt: ASC } }, limit: 1000) {
         edges {
           node {
             id
@@ -131,7 +131,8 @@ exports.createSchemaCustomization = ({ actions }) => {
     type Frontmatter {
       title: String
       description: String
-      date: Date @dateformat
+      createdAt: Date @dateformat
+      editedAt: Date @dateformat
     }
 
     type Fields {

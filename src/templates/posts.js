@@ -32,8 +32,8 @@ const Posts = (props) => {
                     <div className="mb-8 p-3 hover:bg-zinc-50 hover:rounded-2xl">
                       <article className="flex max-w-4xl flex-col items-start justify-between">
                         <div className="flex items-center gap-x-4 text-xs">
-                          <time dateTime={post.frontmatter.date} className="text-gray-500">
-                            {post.frontmatter.date}
+                          <time dateTime={post.frontmatter.createdAt} className="text-gray-500">
+                            {post.frontmatter.createdAt}
                           </time>
                           {/*<Link to="#" className="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">
                                 Marketing
@@ -137,7 +137,7 @@ export const Head = () => <Seo title="포스트" />
 export const pageQuery = graphql`
   query ($skip: Int!, $limit: Int!) {
     allMarkdownRemark(
-      sort: { frontmatter: { date: DESC } }
+      sort: { frontmatter: { createdAt: DESC } }
       limit: $limit
       skip: $skip
     ) {
@@ -147,7 +147,8 @@ export const pageQuery = graphql`
           slug
         }
         frontmatter {
-          date(formatString: "YYYY-MM-DD")
+          createdAt(formatString: "YYYY-MM-DD")
+          editedAt(formatString: "YYYY-MM-DD")
           title
           description
         }

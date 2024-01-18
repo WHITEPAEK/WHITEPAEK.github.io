@@ -1,6 +1,7 @@
 ---
 title: 개츠비(Gatsby) 블로그 만들기 1 - 기본 세팅
-date: 2024-01-15
+createdAt: 2024-01-15
+editedAt: 2024-01-15
 ---
 
 [개츠비(Gatsby)](https://www.gatsbyjs.com/)로 블로그 만드는 과정을 제가 경험한 내용으로 설명드릴게요.
@@ -21,7 +22,7 @@ Node.js를 설치하기 전에 macOS에서 필수라고 볼 수 있는 패키지
 $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 $ xcode-select --install
 ```
-![Homebrew Install](./images/homebrew-install.png)
+![[1] Homebrew 설치](./images/homebrew-install.png)
 
 **2. Node.js 설치**   
 Homebrew 설치가 완료되었다면, 터미널에서 아래 명령어를 참고하여 Node.js를 설치해 주세요.
@@ -29,7 +30,7 @@ Homebrew 설치가 완료되었다면, 터미널에서 아래 명령어를 참�
 ```bash
 $ brew install node
 ```
-![Node.js Install](./images/node-install.png)
+![[2] Node.js 설치](./images/node-install.png)
 
 **3. gatsby-cli 설치**   
 Node.js 설치가 완료되었으면, 터미널에서 아래 명령어를 참고하여 gatsby-cli를 설치해 주세요.
@@ -37,42 +38,42 @@ Node.js 설치가 완료되었으면, 터미널에서 아래 명령어를 참고
 ```bash
 $ npm install -g gatsby-cli
 ```
-![gatsby-cli Install](./images/gatsby-cli-install.png)
+![[3] gatsby-cli 설치](./images/gatsby-cli-install.png)
 
 **4. gatsby-starter-blog 설치**   
 gatsby-cli까지 설치가 완료되었으면, 아래 명령어를 참고하여 gatsby-starter-blog 프로젝트를 설치할게요.
-`cd` 명령어로 본인이 설치하고 싶은 디렉터리 위치로 이동하고, 아래 명령어에서 **my-blog-starter** 위치에 본인이 하고 싶은 프로젝트 이름을 작성해 주세요.   
-저는 **/Users/whitepaek/Projects/Studies** 디렉터리 위치에 **whitepaek.github.io** 프로젝트 이름으로 설치할게요.
+`cd` 명령어로 본인이 설치하고 싶은 디렉터리 위치로 이동하고, 아래 명령어에서 **my-blog-starter** 위치에 본인이 하고 싶은 프로젝트 이름을 작성해 주세요.
+저는 설명을 위해서 공식 문서 예시를 그대로 진행할게요.
 
 ```bash
-$ cd ~
+$ cd ~/Downloads/
 $ gatsby new my-blog-starter https://github.com/gatsbyjs/gatsby-starter-blog
 ```
-![gatsby-starter-blog Install](./images/gatsby-starter-blog-install.png)
+![[4] gatsby-starter-blog 설치](./images/gatsby-starter-blog-install.png)
 
 **5. gatsby-starter-blog 실행**   
 gatsby-starter-blog 설치가 완료되었으면 실행해 보도록 할게요.
 Visual Studio Code 또는 웹스톰(webstorm) 도구(tool)로 설치한 gatsby-starter-blog 프로젝트를 열어주세요.
-저는 웹스톰으로 열도록 할게요.
+저는 웹스톰으로 할게요. 웹스톰을 실행하고 우측 상단에 Open 버튼을 클릭해서 프로젝트를 열어주세요.
 
-![WebStorm으로 gatsby-starter-blog 열기](./images/webstorm-blog-open.png)
+![[5] 웹스톰에서 gatsby-starter-blog 프로젝트 열기](./images/webstorm-blog-open.png)
 
-gatsby-starter-blog 프로젝트를 열었으면 아래 이미지처럼 서버를 실행해 주세요.
+gatsby-starter-blog 프로젝트를 열었으면, 아래 이미지처럼 package.json 파일을 열고 44번 라인의 `gatsby develop`을 실행해주세요.
 
-![gatsby-starter-blog 실행](./images/gatsby-develop-run.png)
+![[5-1] 웹스톰에서 gatsby-starter-blog 실행](./images/gatsby-develop-run.png)
 
 또는 터미널에서 위에서 설치한 프로젝트 위치로 이동 후 gatsby 명령어를 실행해 주세요.
 
 ```bash
-$ cd ~
+$ cd ~/Downloads/my-blog-starter/
 $ gatsby develop
 ```
-![gatsby-starter-blog 실행](./images/gatsby-develop-command.png)
+![[5-2] 터미널에서 gatsby-starter-blog 실행](./images/gatsby-develop-command.png)
 
 **6. 브라우저에서 블로그 접속**   
 크롬(chrome), 사파리(safari) 등 브라우저를 실행하고, 주소(url) 창에 `http://localhost:8000`를 입력해서 접속해 주세요.
 
-![Gatsby 블로그 접속](./images/gatsby-blog-url.png)
+![[6] 실행한 gatsby-starter-blog 프로젝트를 브라우저에서 접속](./images/gatsby-blog-url.png)
 
 개츠비 블로그 기본적인 세팅을 완료했어요!   
-다음 포스트에서는 **개츠비 프로젝트 구조를 파악하고, 테일윈드 CSS(tailwind CSS)를 적용**하도록 할게요.
+다음 포스트에서 **테일윈드 CSS(tailwind CSS)를 적용**하도록 할게요.

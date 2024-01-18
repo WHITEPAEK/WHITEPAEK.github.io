@@ -1,11 +1,12 @@
 ---
 title: 백엔드 개발자의 작은 일탈
-date: 2024-01-04
+createdAt: 2024-01-04
+editedAt: 2024-01-04
 ---
 
 > 포스트 제목은 [신입 백엔드 개발자 후배](https://github.com/eckrin/advanced-css)에게 Vanilla CSS의 학습을 강제적(?)으로 요구했었는데, 후배가 Vanilla CSS 학습을 **백엔드 개발자의 작은 일탈**이라고 말한 것에서 빌려온 거예요.
 
-![Blog Brand Image](./images/blog-brand-image.png)
+![](./images/blog-brand-image.png)
 
 저는 [티스토리(tistory) 블로그](https://whitepaek.tistory.com/)를 이용해서 포스트를 작성했었는데, 2021년 대학원 과정을 진행하면서 포스트를 더 이상 작성하지 않았어요.
 2023년에 대학원을 무사히 마치고, 2023년 12월 31일에 퇴사를 결정하면서 이 과정에서 약간의 여유 시간이 남게 되어 자주 접하지만 공부해 본 적 없는 바닐라 CSS(vanilla css)를 학습하게 되었어요.

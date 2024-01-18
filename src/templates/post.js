@@ -19,10 +19,10 @@ const Post = (props) => {
                 {post.frontmatter.title}
               </h1>
               <time
-                dateTime={post.frontmatter.date}
+                dateTime={post.frontmatter.createdAt}
                 className="order-first flex items-center text-base text-zinc-400">
                 <span className="h-4 w-0.5 rounded-full bg-zinc-200" />
-                <span className="ml-3">{post.frontmatter.date}</span>
+                <span className="ml-3">{post.frontmatter.createdAt}</span>
               </time>
             </header>
             <div className="mt-8 prose" dangerouslySetInnerHTML={{ __html: post.html }}></div>
@@ -91,7 +91,8 @@ export const pageQuery = graphql`
       html
       frontmatter {
         title
-        date(formatString: "YYYY-MM-DD")
+        createdAt(formatString: "YYYY-MM-DD")
+        editedAt(formatString: "YYYY-MM-DD")
         description
       }
     }

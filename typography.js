@@ -149,9 +149,10 @@ module.exports = function typographyStyles({ theme }) {
         // Figures
         figcaption: {
           color: 'var(--tw-prose-captions)',
-          fontSize: theme('fontSize.sm')[0],
+          fontSize: theme('fontSize.xs')[0],
           lineHeight: theme('lineHeight.6'),
           marginTop: theme('spacing.3'),
+          textAlign: 'center',
         },
         'figcaption > p': {
           margin: 0,
