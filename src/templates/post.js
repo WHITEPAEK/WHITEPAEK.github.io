@@ -91,9 +91,9 @@ export const pageQuery = graphql`
       html
       frontmatter {
         title
+        description
         createdAt(formatString: "YYYY-MM-DD")
         editedAt(formatString: "YYYY-MM-DD")
-        description
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {

@@ -147,10 +147,10 @@ export const pageQuery = graphql`
           slug
         }
         frontmatter {
-          createdAt(formatString: "YYYY-MM-DD")
-          editedAt(formatString: "YYYY-MM-DD")
           title
           description
+          createdAt(formatString: "YYYY-MM-DD")
+          editedAt(formatString: "YYYY-MM-DD")
         }
       }
     }
