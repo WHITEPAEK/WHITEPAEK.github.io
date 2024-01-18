@@ -1,4 +1,477 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[WHITEPAEK Blog RSS Feed]]></title><description><![CDATA[시스템 설계와 구현 과정에서 경험한 내용을 공유합니다. 그리고 비즈니스와 일상에 대해 이야기를 풀어내는 공간입니다.]]></description><link>https://whitepaek.com</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 17 Jan 2024 08:45:18 GMT</lastBuildDate><item><title><![CDATA[개츠비(Gatsby) 블로그 만들기 1 - 기본 세팅]]></title><description><![CDATA[개츠비(Gatsby…]]></description><link>https://whitepaek.com/posts/2024/01/gatsby-blog-start-1/</link><guid isPermaLink="false">https://whitepaek.com/posts/2024/01/gatsby-blog-start-1/</guid><pubDate>Mon, 15 Jan 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href=&quot;https://www.gatsbyjs.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;개츠비(Gatsby)&lt;/a&gt;로 블로그 만드는 과정을 제가 경험한 내용으로 설명드릴게요.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[WHITEPAEK Blog RSS Feed]]></title><description><![CDATA[시스템 설계와 구현 과정에서 경험한 내용을 공유합니다. 그리고 비즈니스와 일상에 대해 이야기를 풀어내는 공간입니다.]]></description><link>https://whitepaek.com</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 18 Jan 2024 07:43:58 GMT</lastBuildDate><item><title><![CDATA[개츠비(Gatsby) 블로그 만들기 2 - Tailwind CSS 적용]]></title><description><![CDATA[개츠비(Gatsby) 블로그 기본 세팅을 완료했으면 테일윈드 CSS(Tailwind CSS)를 적용해 보도록 할게요. 이전 포스트에서 세팅한 블로그 디렉터리 위치로 이동해주세요.  1. Tailwind CSS…]]></description><link>https://whitepaek.com/posts/2024/01/gatsby-blog-start-2/</link><guid isPermaLink="false">https://whitepaek.com/posts/2024/01/gatsby-blog-start-2/</guid><content:encoded>&lt;p&gt;&lt;a href=&quot;https://whitepaek.com/posts/2024/01/gatsby-blog-start-1/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;개츠비(Gatsby) 블로그 기본 세팅&lt;/a&gt;을 완료했으면 &lt;a href=&quot;https://tailwindcss.com/docs/guides/gatsby&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;테일윈드 CSS(Tailwind CSS)를 적용&lt;/a&gt;해 보도록 할게요.&lt;/p&gt;
+&lt;p&gt;이전 포스트에서 세팅한 블로그 디렉터리 위치로 이동해주세요.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token builtin class-name&quot;&gt;cd&lt;/span&gt; ~/Downloads/my-blog-starter/&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/6b212385ce16b2416f7da5bdfbfba8c1/d50e7/move-project-directory.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 66.45569620253164%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAABYlAAAWJQFJUiTwAAABcklEQVR42u2Sy06DQBSGSVw17iShFYO2NjDMQEtphxmovXir+j7dEd/RbUn6Fm3YFBnPodedunAnyZfzHw58DMnRuvXueRIN5jSU722bpy27n7YJT4V4TIej1zQePleI+PGYYUbgmSODd0KieR1cmmm2LSkn+XT6pu6SWTkevagkflIymak+v1fd3lgF4eRQ95n5yZ7S6wwV9WSOLq3RbN74QbIKeyMVDB424WBahAEvXBYVhCJ8B2SXb4GM8y18w/xYub5cNRrNG+3y8vbaoTx3PKkcJkpAEcD9OSWcTsFHc3RVQmzwJg7d38n+hX8njNY7IayB+IR1OEF8Q1RshdG6EuLuwABOCLvEZIkV9+oUusfbccgSKVkH3xV5tYe6bpleJ/7oBskSWFDGM9sJD/idOLNpP4NfypgnM8+XmU22PWbKooXriiX1xAe6NLjODKNVt237ihBi6rpu1mq1A6c95n2P1bKsql7ULq4Mw6ij6wtuvFCjVXmJIAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;gatsby-starter-blog 프로젝트 디렉터리 위치로 이동&quot;
+        title=&quot;&quot;
+        src=&quot;/static/6b212385ce16b2416f7da5bdfbfba8c1/f058b/move-project-directory.png&quot;
+        srcset=&quot;/static/6b212385ce16b2416f7da5bdfbfba8c1/c26ae/move-project-directory.png 158w,
+/static/6b212385ce16b2416f7da5bdfbfba8c1/6bdcf/move-project-directory.png 315w,
+/static/6b212385ce16b2416f7da5bdfbfba8c1/f058b/move-project-directory.png 630w,
+/static/6b212385ce16b2416f7da5bdfbfba8c1/40601/move-project-directory.png 945w,
+/static/6b212385ce16b2416f7da5bdfbfba8c1/78612/move-project-directory.png 1260w,
+/static/6b212385ce16b2416f7da5bdfbfba8c1/d50e7/move-project-directory.png 2280w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;gatsby-starter-blog 프로젝트 디렉터리 위치로 이동&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1. Tailwind CSS 의존성 설치&lt;/strong&gt;&lt;br&gt;
+그리고 아래 명령어로 테일윈드 CSS 사용에 필요한 의존성을 설치해 주세요.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-D&lt;/span&gt; tailwindcss postcss autoprefixer gatsby-plugin-postcss&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/364cc83add1281e5a320fcca01882278/d50e7/dependencies-install.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 66.45569620253164%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAABYlAAAWJQFJUiTwAAAClklEQVR42l2SyU/bUBCHkXop6qlEYglNaItSJ3E2b8+7Ey9xAoWA2FI4tOVQtWqP3CL+R65E4r8A+YLt6cxLArSRPs3zyPm9783zUmut9cbUlKuapF1vV9TJh+3OhKrMehNmDZCIo7JgYmAlGK4FQX2Bci0I2tUaZi0Vi9slZnqJ39sBz47zrjcEx+qD68SgMx9U2QVN8UDB2u440EKabQfqDXNBLjYtqIl6QllL+NsaHfj3v7+PoW8OH/fi/XQYfE4H/k4aunHq6r20a/qpb0cpY36qIB3ZTYWamlbrGvFYExng8/36+vstCiyfnUfJj59nYFq7eRgfgmZEYDpD0Mw+EoHCAqiKOloYIDbJyoBqnS3I0Y4Ck42Nj2UeOD7vJ18vD8EwhnkY7YPX2wXX2wHT7vNq2TGgFTRaJv5R+5+cgj9VlefAo9Mo+XZ5DB2pl1tOH2wX7XScH85Q0wNoSzQ3i0Ohs0rPNs0078ge9RaBb8t7ozAZjw9AN+Oc7IJwBA6ZOQO0jIHpIa86Hp9wu7ugaD2gIGQeaD8bfrmIkl9/xniLM0NmhNzMwNs2cI68ziFrsqNZ1vhc9Xy2ZovA1+XDo0FycroPihrmljuzIjsbsewBt6IgHS+LNqNKhtSTlW4+G4v7YoYn0cPFxQg0KUwdb5gRGJKhUaaxIMOQDDfgPUnxMtwwk9VuJjaNDG1TMm60zQceSN+OwrxENwKQJC+X1R7u7oOkdOd4QL35nJ4+6Nmx+eXk837Cv8NCoVTEm7tB5buO7NzWG2wq1JSpUFenNaQt2VM0mdZFxhGbOu/TO2KD1uxWqLI7nOENZdGRX62urq5VKpVNoVQqLi8vU/OJQqHAe1SJEr7z77pUXFl5t0kZlPUX68hnGQCofCYAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[1] Tailwind CSS 의존성 설치&quot;
+        title=&quot;&quot;
+        src=&quot;/static/364cc83add1281e5a320fcca01882278/f058b/dependencies-install.png&quot;
+        srcset=&quot;/static/364cc83add1281e5a320fcca01882278/c26ae/dependencies-install.png 158w,
+/static/364cc83add1281e5a320fcca01882278/6bdcf/dependencies-install.png 315w,
+/static/364cc83add1281e5a320fcca01882278/f058b/dependencies-install.png 630w,
+/static/364cc83add1281e5a320fcca01882278/40601/dependencies-install.png 945w,
+/static/364cc83add1281e5a320fcca01882278/78612/dependencies-install.png 1260w,
+/static/364cc83add1281e5a320fcca01882278/d50e7/dependencies-install.png 2280w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[1] Tailwind CSS 의존성 설치&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2. Tailwind CSS 설정 파일 생성&lt;/strong&gt;&lt;br&gt;
+의존성 설치가 완료되었으면, 테일윈드 설정 파일을 아래 명령어로 생성해 주세요.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ npx tailwindcss init &lt;span class=&quot;token parameter variable&quot;&gt;-p&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/29206f1f01fa82ea4acd304647293878/d50e7/init-tailwindcss.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 66.45569620253164%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAABYlAAAWJQFJUiTwAAACaklEQVR42o2TTU/bQBCGI/VSxIlaAhLkUAUc49heO/buev2VOK5D0i/1QEt7bH8Dt6j/kSuW+BcgX3C8nXGgoqhUPbyeXXvnmd131p05IduM+BeazX7qOl1pmrfCyEW+iqIC4kaUZ+27B+kGfyTIHbGLvT2y3el0Xqrv3s+qT58/SNNOmrE/lcRNJUafzaRHZ/cxk5TnbbSdWBqmeFBjWEKejHjV6x2pAOwcfvm2uPn+40z6tLhLJos6jE/rKFnUcbqsk8kSxqc17LKO4kUtwnkNxVpRPquhwB0Lcul66c3+/utD3GH/7HxZnX/9KBktmnT6VqIA2oqLNxITRFi0Y49OJRSD4lNpkQjV4I5NO6y63UEfgDv9ZJJWRTGXrj1poKpkfNYm+iz7Hen9O+LGYMdEOuO0BcK8IW4CNkQb4GAw6LteVrGgkEzkDQOfEIAJI1vgQokJFgnBLy6HJwxEW0EzUA34B3N/A+zudPu+l1RhPEfzmzDOYYcTObZD6ZFU2lYohwZF059TY5gBgOkGuANAymZVCL54LIMupwCeth5R6CgBf/4B+wuwC0CeVQkAgyBvOHiFx0Sj8ZjoEyb8NxAfnMW3RVLImcjqlE/XNonXjpusnXGyHlliDT6tIfEZsRrB+gm9bYF4dxyWV644lSRcNk60kFTAcUXeXu6RFT6+xE8UoBoTG2YFVXsPFVXtmURcWm5ybY7Tq6EZlMdDpzzSxuWx5paWHZTGiJY6CLpcmraAOW9lWviNX+mGuIbxpaKoPfxTXuzu7u45mnag62pPUbZ6Wx3Q1kaKovwhVVWfjFVY9+oAGcj6BVVFXeAz+02gAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[2] Tailwind CSS 설정 파일 생성&quot;
+        title=&quot;&quot;
+        src=&quot;/static/29206f1f01fa82ea4acd304647293878/f058b/init-tailwindcss.png&quot;
+        srcset=&quot;/static/29206f1f01fa82ea4acd304647293878/c26ae/init-tailwindcss.png 158w,
+/static/29206f1f01fa82ea4acd304647293878/6bdcf/init-tailwindcss.png 315w,
+/static/29206f1f01fa82ea4acd304647293878/f058b/init-tailwindcss.png 630w,
+/static/29206f1f01fa82ea4acd304647293878/40601/init-tailwindcss.png 945w,
+/static/29206f1f01fa82ea4acd304647293878/78612/init-tailwindcss.png 1260w,
+/static/29206f1f01fa82ea4acd304647293878/d50e7/init-tailwindcss.png 2280w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[2] Tailwind CSS 설정 파일 생성&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;3. Tailwind CSS 의존성, 설정 파일 세팅 결과 확인&lt;/strong&gt;&lt;br&gt;
+테일윈드 CSS에 필요한 의존성 설치부터 설정 파일 생성까지 완료했다면,&lt;br&gt;
+&lt;strong&gt;package.json&lt;/strong&gt; 파일에 &lt;strong&gt;&quot;autoprefixer, gatsby-plugin-postcss, postcss, tailwindcss&quot;&lt;/strong&gt; 의존성이 추가되고&lt;br&gt;
+&lt;strong&gt;postcss.config.js&lt;/strong&gt; 파일과 &lt;strong&gt;tailwind.config.js&lt;/strong&gt; 파일이 생성된걸 볼 수 있어요.&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/b5ef46a9fd3a20e802eb88f58345cff4/669cd/added-tailwindcss-files.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 73.41772151898735%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAABYlAAAWJQFJUiTwAAAC20lEQVR42n2TS28cRRSFZ2vJC0b2CLDd06+qrmc/ql+eie0ZTMZBYxbYoBALCRJlxRLxC6CZLOAPR5mU5nKrOxiMDItPdW+3+lRVn3NH15dfL26e/fD786sff322+LZbzK67PG07keadUgiuaVp1pl10KjedUGmPqVqk7t9j/4upTv+o6/PlqL642zy9+gY+W67txdkKTDmDhCmoshbKvIFcV8BlClRoiAm/h1DR4+ooZu9lWkDdzjcjxljXVAVcnjVvG5NulRTbaRBtC1Fta9luhdDbICHbEy/YetPwHtf/9ezEC9+GUQIk4b+NSCI3TTuDJ/MnNs1ykCoFPyBgZAWtPoVUFUCEAD+MYepHj4KiliYCEi7fjCLCN2U1g6ertc1NA1ykEIROsIYaBUvZQKI0BHECU9zoMTw/tgnXwLkeBNu2gvX6ylZNC4wLCIIIMsqBMwK+fwLeyacw/R+8449tQmIU7E+YbOrZCq6uv7Nmdg0inwOVBsr595DOXwJpX0BYvYCg/G98c2d5+xzNy96MAhQ8P/8SXn71yn5+eQfCLCFWMyiXP0O++gno2WsIzQ0E5haC4vbv9R/4+a3lzc0g6E54OlvAevWFnc+XwJSBEA2Q1MUhhDAKkCni4XOvr33vGK96dI93/AlemQz/EJ3ZpHkJQudW5wZ30fghBS0LCAkaMXVOxg8JHuL5EZqiBkHMTi+oUFBlRR/iAJ0TDIPMObpLUJj2uNrxWGwSJgdBqbNNVtQgdf5epWaHgrswojvN8h2VckcEw57sfCRwhPEORR7gwn2fw6KsN0XZOEGrcHyEziCiCWTCoEEZUD2EejgdBT/6EPBp6E7W1zgxNiJsEHSD7QKdF8U7vLrF3jKhrBC4KmUJ4zbBnkltqZD9msjUUibcdFhCuaWUvxNu3pnoRnt7e0cfHR5eTCaTszGyPx4P7Dv2+3r84d14gvV4qCf/4hA1Dg4Ojv4E8F+UhlvonCwAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[3] Tailwind CSS 의존성, 설정 파일 세팅 결과&quot;
+        title=&quot;&quot;
+        src=&quot;/static/b5ef46a9fd3a20e802eb88f58345cff4/f058b/added-tailwindcss-files.png&quot;
+        srcset=&quot;/static/b5ef46a9fd3a20e802eb88f58345cff4/c26ae/added-tailwindcss-files.png 158w,
+/static/b5ef46a9fd3a20e802eb88f58345cff4/6bdcf/added-tailwindcss-files.png 315w,
+/static/b5ef46a9fd3a20e802eb88f58345cff4/f058b/added-tailwindcss-files.png 630w,
+/static/b5ef46a9fd3a20e802eb88f58345cff4/40601/added-tailwindcss-files.png 945w,
+/static/b5ef46a9fd3a20e802eb88f58345cff4/78612/added-tailwindcss-files.png 1260w,
+/static/b5ef46a9fd3a20e802eb88f58345cff4/669cd/added-tailwindcss-files.png 3024w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[3] Tailwind CSS 의존성, 설정 파일 세팅 결과&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;기본적인 세팅은 완료했고, 이제부터 테일윈드 CSS 사용을 위해 설정을 진행할게요.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;4. PostCSS 플러그인 추가&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;gatsby-config.js&lt;/strong&gt; 파일을 열고 plugins 하위에 &lt;strong&gt;gatsby-plugin-postcss&lt;/strong&gt;을 추가해주세요.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;`gatsby-plugin-postcss`,&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/aa11639921408a813ad2f15259ddfda6/6c837/added-dependency-postcss.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 80.37974683544303%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABYlAAAWJQFJUiTwAAAChElEQVR42o2U707bMBTF+xAV+dDRJv4bx4njJC1kK7TAKBrqpEnToNLeYO8TiXclwnfXLkQwOokPR47d3J+PfW46ujo9Mz82Px9+Xf/pvq3uu3W77SrbdkobVN5JlXfW2s4uzjptKlzTYb1qTjtT4dyYztiqs/OTh6JpilFVne7W6w2sL27d8vMlNHULTGTA01dSftRAuUKlgwiTQZRLV5QN1HV7P6JC3Ve2hMuzk8dFXfZloftZTPoZoX3CeI8FQQnlfUzYXgnrj6fJoMmn2SMXCmSW3SFQ7MqqgeXy3BXGQpYbSBIOqcxRGSAIKJWAmwAWD5rOyCCcO4HvCpWjQyp2pqzhenPrTtol6NzCLGGQyxJSVUDMGc5pKJzFNDy/zA8CjxHYNHP4/f3WbVZXYOw8ACXLQCGQaQVMpYOIEBBT9g7ojzw4zE0Fq4sbZ+ctYLoBKCjeCe5KM4EQCYngQLgI7g4dOQSFeQxH/np149r2PAApJpflNfCsASotFnlH9PnIDDCUML5oGlPH0GEAxpTuynoB69UlApcIspAwAVpXUNZfQJkmOIwxnH9BB4E+ZX9kBDm9H8NLhGDSQocx4fxdEP8/slABqAsEFr5tyuCEoKOEiL0LgrCYfBQodh70GujdcJpCri1wH4yUH3eIIeyMbTzoyUNxdOjQJYQ7bHCHQTiEOXTosPigEPg0APHe8EtZ7O/QO8U7xEsODrPUQMx46D1/7Dft8uo5OMTOEAqBvhl9M5e2wg+8drmpsaFzYLgjY/7PQIaUCSYf1rwThqPU4JsZ5XDNSV/D5N0oiqKjKJpsJ5PJNho03eL6dhyNt+NxtBfOo0m0/z16fudNjV+Pjv4CmHClUKd0ErgAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[4] gatsby-config.js 파일에 PostCSS 플러그인 추가&quot;
+        title=&quot;&quot;
+        src=&quot;/static/aa11639921408a813ad2f15259ddfda6/f058b/added-dependency-postcss.png&quot;
+        srcset=&quot;/static/aa11639921408a813ad2f15259ddfda6/c26ae/added-dependency-postcss.png 158w,
+/static/aa11639921408a813ad2f15259ddfda6/6bdcf/added-dependency-postcss.png 315w,
+/static/aa11639921408a813ad2f15259ddfda6/f058b/added-dependency-postcss.png 630w,
+/static/aa11639921408a813ad2f15259ddfda6/40601/added-dependency-postcss.png 945w,
+/static/aa11639921408a813ad2f15259ddfda6/78612/added-dependency-postcss.png 1260w,
+/static/aa11639921408a813ad2f15259ddfda6/6c837/added-dependency-postcss.png 2962w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[4] gatsby-config.js 파일에 PostCSS 플러그인 추가&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;5. Tailwind CSS 사용을 위한 경로 설정&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;tailwind.config.js&lt;/strong&gt; 파일을 열고 content 하위에 테일윈드 CSS를 적용할 페이지 경로를 추가해 주세요.
+개츠비 블로그의 기본 디렉터리 구조에서는 &lt;strong&gt;&quot;components, pages, templates&quot;&lt;/strong&gt; 하위에 페이지를 구성하기 때문에 3개의 디렉터리 경로를 추가해 주세요.
+(디렉터리 구조를 변경 또는 추가 한다면 경로를 추가로 설정하면 돼요.)&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;&quot;./src/components/**/*.{js,jsx,ts,tsx}&quot;,
+&quot;./src/pages/**/*.{js,jsx,ts,tsx}&quot;,
+&quot;./src/templates/**/*.{js,jsx,ts,tsx}&quot;,&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/6ec7c370901e4d726fb8a282fea9bed2/6c837/added-tailwindcss-direcotry-path.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 80.37974683544303%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABYlAAAWJQFJUiTwAAACFUlEQVR42q2TW2+bMBTH8yGm8pByNTdjwJhLQsqtSds0U6RWm5awl2p73fdB6nctqs9MMkVRm0mdsoefhNHxz/+DD6PFtAwf774+f7v91a3qbdfk6y4K8w4T0vk+7ggmXRL5Xc7CLiRO52CrwwI2rCMi6qxdXRRHz0mSByPGpm3d3EFz/ZmXszkkcQ6OG0A2mQNNa8BRAYQV4AQFIFIeMP1KsH82SMn9uAEaZ9sRsvGWRRTm5eQlZWFPA6/XTNJn5VNfLX70s/qpv7r+2bvp914OHnqVPu4J/0AfeoV+eTHpLZimuRmEbUhjKIuCJ9kEPBKCrlvg2gQMDYGmaKCpOqiKAop8eRL5cswRQjCEG9m23WJCoW4qnk1FuzgA3bDAEGg6AkU1jkAnkRWDI8vdC5EQen4EZTUIZ+D5FFR9KNLfyP6OqH0vvCrnvGoWQIIIVA19WPZeiOw2oAnU8xWP0wm4XvA/hAwWN0ueTgvA4lLOEmpCSCMGq9U9z3Ixd+TchGJs/JDBrFlymoqE57YsI9QmcQab5T1fFjXQKD1PaGPSJmkON1XzWs0K7geMCyEXhR9GCF8PQhKylrIUXEK5F7DdHP5Lul1CWePIdMDGu4T+NhRtiovhYRTz4Xs62IfhxOGPecuw0XIwWDYG03JEKsJNC/Nhj2k6m5EkSReSNF6Px+O1dEBZi/frTyeQjut2a+V4ffEbyOGmstVEf6UAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[5] Tailwind CSS를 적용할 디렉터리 경로 설정&quot;
+        title=&quot;&quot;
+        src=&quot;/static/6ec7c370901e4d726fb8a282fea9bed2/f058b/added-tailwindcss-direcotry-path.png&quot;
+        srcset=&quot;/static/6ec7c370901e4d726fb8a282fea9bed2/c26ae/added-tailwindcss-direcotry-path.png 158w,
+/static/6ec7c370901e4d726fb8a282fea9bed2/6bdcf/added-tailwindcss-direcotry-path.png 315w,
+/static/6ec7c370901e4d726fb8a282fea9bed2/f058b/added-tailwindcss-direcotry-path.png 630w,
+/static/6ec7c370901e4d726fb8a282fea9bed2/40601/added-tailwindcss-direcotry-path.png 945w,
+/static/6ec7c370901e4d726fb8a282fea9bed2/78612/added-tailwindcss-direcotry-path.png 1260w,
+/static/6ec7c370901e4d726fb8a282fea9bed2/6c837/added-tailwindcss-direcotry-path.png 2962w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[5] Tailwind CSS를 적용할 디렉터리 경로 설정&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;6. global.css 파일 생성&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;src&lt;/strong&gt; 디렉터리 하위에 &lt;strong&gt;styles&lt;/strong&gt; 디렉터리를 생성하고, &lt;strong&gt;global.css&lt;/strong&gt; 파일을 생성해 주세요.
+그리고 파일에 아래 내용을 작성해 주세요.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;css&quot;&gt;&lt;pre class=&quot;language-css&quot;&gt;&lt;code class=&quot;language-css&quot;&gt;&lt;span class=&quot;token atrule&quot;&gt;&lt;span class=&quot;token rule&quot;&gt;@tailwind&lt;/span&gt; base&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token atrule&quot;&gt;&lt;span class=&quot;token rule&quot;&gt;@tailwind&lt;/span&gt; components&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token atrule&quot;&gt;&lt;span class=&quot;token rule&quot;&gt;@tailwind&lt;/span&gt; utilities&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/660fa66a1496c934f26e473270f30434/6c837/added-global-css-.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 80.37974683544303%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABYlAAAWJQFJUiTwAAAB7UlEQVR42q2S7WriQBSGvYil+WGbVPNlnGQyY75NTIzaqEgpLFsDu+0FFJa9moHea0Pn7CSKVFjYgv3xMOecOTy8DNNbRBl+uPv++mP1wjb5npXxjkVkyqiXM0xzhrySWUHFSPbAULBklneAZvcMxxtxv2J2tGEkmr96nuf0KI3qvLiD+XzL02kJwSSEGfah2v6G1fYP0OQn6PEvMJNnMNvzyCh5glH81NVG/Mxxcg+u6+57qmHtKXGhzMI3nzqN66BGUYaNrKiNcqs28o3S3HTIx/Njf5hdX8tvQ1UHzRw/tsIauxPI0pR7QQhjhEGIQFYGR4b/5UYecFUfQRtOCI3aQi4UxYyHUQKm5RyFw09zJjREwrHtQjrLuR8m0MovErYJXUxhU5S8Kkog1L9ciPEE1ouKL+dzsB16oVA1aoQ9SIuKUz+E0di5XOi4FJarigdxJt4QXya8FUKXUFhv1tyPZ0L4BQlth8A0X3MafEFCw0I1mQRQLZbvSZRyIeRCyMXipxHC95MQIVx7QQLTrOBhnEL7J/+d4sBpJg/OE2omGFaX0N5j4gFyCEeYcocEYJhjGAz1MzTDAl3MNZFE69Ig0NuZYXHRc9OyQdPMx54kSVeS1N8dkHZSv9/xTdQf6e77x52ulk+7JyTp6i9Lyqc2+GcVYgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[6] global.css 생성&quot;
+        title=&quot;&quot;
+        src=&quot;/static/660fa66a1496c934f26e473270f30434/f058b/added-global-css-.png&quot;
+        srcset=&quot;/static/660fa66a1496c934f26e473270f30434/c26ae/added-global-css-.png 158w,
+/static/660fa66a1496c934f26e473270f30434/6bdcf/added-global-css-.png 315w,
+/static/660fa66a1496c934f26e473270f30434/f058b/added-global-css-.png 630w,
+/static/660fa66a1496c934f26e473270f30434/40601/added-global-css-.png 945w,
+/static/660fa66a1496c934f26e473270f30434/78612/added-global-css-.png 1260w,
+/static/660fa66a1496c934f26e473270f30434/6c837/added-global-css-.png 2962w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[6] global.css 생성&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;7. global.css 파일 설정&lt;/strong&gt;&lt;br&gt;
+&lt;strong&gt;gatsby-browser.js&lt;/strong&gt; 파일에 global.css 파일을 import 해주세요.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;./src/styles/global.css&apos;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/f0403361cc355d4e96ea8246749f0fa4/6c837/import-global-css.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 80.37974683544303%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABYlAAAWJQFJUiTwAAACBUlEQVR42qWU626bMBSA8xBT+VEFws3EMTY2JAECgbVr00XRVGnawjPsfSz1XYvq0wOt1k1qukn58UlgW5+Oz8WT67wW97ffH37c/NJfm6Nui4NWstAslojQEY21lFLLvNFMZJoyhsRaZbkWSmkqhI4F7qfrhywr+ESpvGvaW2g/701dXkGWFkDIAoRIgDIOYUTBD+fgBYgfIWTED6KRYc31QsO4hCRdHSc+oUclE7iq149LxXvBWR+GpBex7COh+nDOe2cW9LbjnWRqu4+DPIiin4OwE0kKdVWZbLmGRSwgihhwXgJLSoiTDQQhA5TCzA3fBfdMiLciGNyEENJRlkDTbM0qLyCiHA/5iAuO74HjeWDPXLCd00ztmfFDTMEg9FG4iCVsm8as8xIjTFDgw9RBkf2K8zF4ZTPk+VVIu0FSVq0pqgZiTK6Dwn9JPhC+RFg3X0xZb2G+4GcKfdJhf0Hd7ozCoswX4jzhDIVpuoRvu71pNy0ImZ0vVCqF+/2dqcoG2Nk5HK6MkrK5M8mqGqfjLCGhrFPpCnbXN09lvjGUCYNCgwf/GxQ+/RYyJrpsVWLbYB8WGxgqfjLCP/vSdv+OEEeP0DHC+MixEDyRBgsyDjkO+7sEGMWAjw9FgOMZEjpgcM3gqwRBgLNsWdaFZV0erMsB6/DJOs3LGWT8tt/+39YvngGH3aMAi7ucKwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[7] global.css import 설정&quot;
+        title=&quot;&quot;
+        src=&quot;/static/f0403361cc355d4e96ea8246749f0fa4/f058b/import-global-css.png&quot;
+        srcset=&quot;/static/f0403361cc355d4e96ea8246749f0fa4/c26ae/import-global-css.png 158w,
+/static/f0403361cc355d4e96ea8246749f0fa4/6bdcf/import-global-css.png 315w,
+/static/f0403361cc355d4e96ea8246749f0fa4/f058b/import-global-css.png 630w,
+/static/f0403361cc355d4e96ea8246749f0fa4/40601/import-global-css.png 945w,
+/static/f0403361cc355d4e96ea8246749f0fa4/78612/import-global-css.png 1260w,
+/static/f0403361cc355d4e96ea8246749f0fa4/6c837/import-global-css.png 2962w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[7] global.css import 설정&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;8. Tailwind CSS 문법 적용&lt;/strong&gt;&lt;br&gt;
+테일윈드 CSS 사용을 위한 준비 과정이 전부 끝났어요.&lt;br&gt;
+테일윈드 CSS가 잘 적용되는지 확인을 위해 테스트용 페이지를 생성해서 적용해 보도록 할게요.
+저는 pages 디렉터리 하위에 &lt;strong&gt;tailwindcss 디렉터리와 index.js 파일을 생성&lt;/strong&gt;하도록 할게요.
+그리고 &lt;a href=&quot;https://tailwindui.com/components/marketing/feedback/404-pages&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;테일윈드 UI 컴포넌트&lt;/a&gt;의 404 Pages 코드를 사용할게요.&lt;br&gt;
+아래 코드를 복사해서 생성한 index.js 파일에 작성해 주세요.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;as&lt;/span&gt; React &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;react&quot;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;TailwindcssIndex&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+      &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;main className&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+        &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;div className&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;text-center&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+          &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;p className&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;text-base font-semibold text-indigo-600&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;404&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;p&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+          &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;h1 className&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;Page not found&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;h1&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+          &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;p className&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;mt-6 text-base leading-7 text-gray-600&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;Sorry&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; we couldn’t find the page you’re looking &lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;p&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+          &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;div className&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;mt-10 flex items-center justify-center gap-x-6&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+            &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;a href&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;#&quot;&lt;/span&gt;
+               className&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;Go
+              back home&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;a&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+            &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;a href&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;#&quot;&lt;/span&gt; className&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;text-sm font-semibold text-gray-900&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;Contact support &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;span
+              aria&lt;span class=&quot;token operator&quot;&gt;-&lt;/span&gt;hidden&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;true&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;amp;&lt;/span&gt;rarr&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;span&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;a&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+          &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;div&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+        &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;div&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+      &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;main&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+    &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;default&lt;/span&gt; TailwindcssIndex&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/2b10441b7041fd2cd5af375240f7055a/000b4/tailwindcss-test.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 82.27848101265823%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABYlAAAWJQFJUiTwAAAC8klEQVR42qWT2W7bRhSG9Qq9KaCF23C4DRdxkUQtlGTZkpzEVWo3te/sIBcMUKDPkAQIYsVBchP0SVoCveiTFZ7M3xGVujXQFgVy8eEMB2c+/jMcNg6z6eDx8rtfz5blL6vZk2o+PKmG0bBK/LjKorhKwqjq95Iq62dVkiVV5Ic1eZZXWZLJcVTFQffnvJ//luZF1giC9GJSLDCbL8V4NBe9pI/UtpEwF8zxwCwCx1Bha3+iwNYVOLocf8bSOnzge+imw7MGpc73SRzjcDK47afd2zTyue/43B5dcDYruTW54mR8yclQ1tEVNyVG/pQbg0uu51dczS650nv2u59uYJqd0wZ1nPOwm6KYFKI3GImQMXj+GOb6LYYXPyF+8g7sdAv27bauwekNgsfv4Z3cwP/mA0KJd/KRx/MfQbTmWS10WYRiKoX5WDDXq4Xk8AW6m2tEm9dwHryE8/AVXInzYF/dXT1+BXv9EnR9zeNZuRca1DmPZMJHi4VYTWciDiMpLGTCLcLNBwSbd3Af3UjegB5v5eItrOO3cCT2+hpkeQ1j9Z5H0x8+J5TCIEqxnBVieXAgkjiF66Ygo0to4UOo7hwqO4QmUe+xgOLtx4p3xP2ggEXIfsssiNCfzMVgOhdRlMAnJkz5RXcQTYOhdCTtv9G5N6d3mjyiBJbl7hP6YYJivhLjYi48P4JrUnhS6pgubMpAdQqqEYn5j5gq4cz2QHZCg9J6y7PFWqRZvxZqBkVHJVBUY4+U/Rcd1eDmX8LdR0lwcLQW2XAhdtvXpVCVjf8X+VJO74QGlfcwxnIthXlRJ/wiocPYeTfO5D1cimww/fKEjIXnWT/H6mj1aTyafpIJhWwSHUUXqkrukIv+Fdl7Sy0X8hxPG7btXfQGY+SjQuTDiegmPYTycrteAJM6IKYt/1EbtsNqLJlkt9hyAsl+Tqbju6Oqr81XrZbSVtXy62azbDbbZbutlqZplqqul812+45dzz10896zqurPW62W8gc+S8VN0Y4qBQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[8-1] Tailwind UI의 404 Pages 컴포넌트를 이용한 Tailwind CSS 적용 테스트&quot;
+        title=&quot;&quot;
+        src=&quot;/static/2b10441b7041fd2cd5af375240f7055a/f058b/tailwindcss-test.png&quot;
+        srcset=&quot;/static/2b10441b7041fd2cd5af375240f7055a/c26ae/tailwindcss-test.png 158w,
+/static/2b10441b7041fd2cd5af375240f7055a/6bdcf/tailwindcss-test.png 315w,
+/static/2b10441b7041fd2cd5af375240f7055a/f058b/tailwindcss-test.png 630w,
+/static/2b10441b7041fd2cd5af375240f7055a/40601/tailwindcss-test.png 945w,
+/static/2b10441b7041fd2cd5af375240f7055a/78612/tailwindcss-test.png 1260w,
+/static/2b10441b7041fd2cd5af375240f7055a/000b4/tailwindcss-test.png 2912w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[8-1] Tailwind UI의 404 Pages 컴포넌트를 이용한 Tailwind CSS 적용 테스트&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;코드 준비가 완료됐으면 개츠비 서버를 실행 후, &lt;code class=&quot;language-text&quot;&gt;http://localhost:8000/tailwindcss/&lt;/code&gt;로 접속하여 404 Pages 컴포넌트가 잘 나오는지 확인해 주세요.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token builtin class-name&quot;&gt;cd&lt;/span&gt; ~/Downloads/my-blog-starter/
+$ gatsby develop&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/0968463af59fddb141f001f7d067d93e/41045/404-pages-compoent.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 67.72151898734178%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAABYlAAAWJQFJUiTwAAABkUlEQVR42q2Ry07bQBSGXakbpEqV2kdDPACWyDNkx45dtqx4BySqrtmWiogoakvjgBKmsY1aEyeey5nBGf89CbckgkIjfunzORrNfD72BEcng42jb/GWENlmT6Rh+jsPeymFXyIVfo3oSZrnLmxOa0Sbx13aap0X69uHh2+DfCxjAmCI/NWowDCXyHLCZV4iU7jnihne1kwC6fCa+xK5Lr1yFfJCXzQajQ8BKTkwcBiTLIdy5KVUvlDKG0YymoxXWnni6qzxZLTXSnrDa5b0lJLnAWnZr+/sfAycczFu4rGUqrph1uOhX8rsnNYk6vX6orBCNSerFsSP9fNCokeE87v4n+Jn5wxxcomoK3AhBswvnsQsv/CFQmPQbJ3gR+eUxRFOO1202t8xGherCCve4JD9KZHEfGGFnU1M1sK669U+eTKp8GlfYm93hH6PoE0BpcyTl/Ks8D+yKLTWDmar3pd+KZO7x8T/K+WtsH8nTF51QiHE5zRN20mSHDPNFZiea7PnoFarvQ84a8y7V2DqefMXGm2/2Toq1eEAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[8-2] Tailwind UI 404 Pages 컴포넌트 적용 확인&quot;
+        title=&quot;&quot;
+        src=&quot;/static/0968463af59fddb141f001f7d067d93e/f058b/404-pages-compoent.png&quot;
+        srcset=&quot;/static/0968463af59fddb141f001f7d067d93e/c26ae/404-pages-compoent.png 158w,
+/static/0968463af59fddb141f001f7d067d93e/6bdcf/404-pages-compoent.png 315w,
+/static/0968463af59fddb141f001f7d067d93e/f058b/404-pages-compoent.png 630w,
+/static/0968463af59fddb141f001f7d067d93e/40601/404-pages-compoent.png 945w,
+/static/0968463af59fddb141f001f7d067d93e/78612/404-pages-compoent.png 1260w,
+/static/0968463af59fddb141f001f7d067d93e/41045/404-pages-compoent.png 2434w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[8-2] Tailwind UI 404 Pages 컴포넌트 적용 확인&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;개츠비(Gatsby) 블로그에 테일윈드 CSS(Tailwind CSS) 적용을 완료했어요!&lt;/p&gt;
+&lt;p&gt;테일윈드 CSS 문법은 &lt;a href=&quot;https://tailwindcss.com/docs/grid-template-columns&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;공식 문서&lt;/a&gt;를 통해 확인하고 사용하면 돼요.
+테일윈드 CSS를 사용하기 위해서는 &lt;a href=&quot;https://whitepaek.com/posts/2024/01/css-vanilla-component-utility/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;CSS 비교 (Vanilla CSS vs CSS Framework)&lt;/a&gt; 포스트에서 설명했듯,
+바닐라 CSS(Vanilla CSS) 문법의 기본적인 동작 방식에 대한 이해와 테일윈드 CSS 문법을 학습해야 해요.
+(테일윈드 UI 컴포넌트를 활용하면 학습에 도움이 될 수 있어요.)&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;이번 포스트를 끝내기 전에 &lt;strong&gt;style.css&lt;/strong&gt; 파일과 &lt;strong&gt;normalize.css&lt;/strong&gt; 파일은 어떻게 해야 하는지 궁금하실 거예요.&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/4d2a481e6bc708c7ed7df109a4890903/000b4/css-files.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 82.27848101265823%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABYlAAAWJQFJUiTwAAACMklEQVR42qWTy27TQBSG8wpskJLUji/jGc/YYztO4lucuE3TtCpdFAlXICQ2VYEFK8SahwJLLHgyVHcOxwGBKtoiNYtPM2d05tOvufQWi1fJ2fHrb8/Xl19PqoumKp41kcwaIQTCG0JpU0jarKOgyQRrKLMbzkkTYe1JgXPacNf5Mo7j73FaTnp8dnqRV2ewrA5VOd9XcZyA5B4USQVxvkIOQE4OwJL7YPl3Y3hV62FPGMfPe4SQF3EUwGqeXE/HwXUsRes7vA1Xn9rg5HMrVh9bL71szex9a9zJu3aUf/jhzGqwR3vnPcJYLcMY5vNSTWepEjIE16HgMw+4FwB3OdjGCHRNvxdtT2sJ7rEct0vIau6FsFyWKs0K5YoATNsBmzhgUWxiDAybgq7boI/uRtOtllD+Vyj8COblUiUo7FIZJumaUNJh4ibrQTTdxITubyHrEkaQF7kqyoXy5Hgr/J/kQaHwJWR4hkVZKikDGBn244Wmqdd+fADHJ2/UZvNSedPT3RKaxKzlOIOjo3OVp5USYb6rkNVBiLe8WqtxhkLP31FoEhRGsN5s1CQt/9zyo4VMiDqMJlAu1mqSLJTwdxQKIevJLIWjw81NkS9uMKEyDKLwDd4CN93LnmZc28QFm/LzHqX8YpoUkOZzleZLFWBaC3/GLQgDhwmgSPcjHCqw9rY1xRHX2u6onC7hk8FAG+r61dN+/6o/1K+6eX84/Idufcu2x9iib8df6zh/OxgMtJ/4S65xF1cLVwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[9] style.css, normalize.css 파일&quot;
+        title=&quot;&quot;
+        src=&quot;/static/4d2a481e6bc708c7ed7df109a4890903/f058b/css-files.png&quot;
+        srcset=&quot;/static/4d2a481e6bc708c7ed7df109a4890903/c26ae/css-files.png 158w,
+/static/4d2a481e6bc708c7ed7df109a4890903/6bdcf/css-files.png 315w,
+/static/4d2a481e6bc708c7ed7df109a4890903/f058b/css-files.png 630w,
+/static/4d2a481e6bc708c7ed7df109a4890903/40601/css-files.png 945w,
+/static/4d2a481e6bc708c7ed7df109a4890903/78612/css-files.png 1260w,
+/static/4d2a481e6bc708c7ed7df109a4890903/000b4/css-files.png 2912w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[9] style.css, normalize.css 파일&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;테일윈드 CSS만 사용하실 거라면 style.css, normalize.css 파일을 삭제하고 gatsby-browser.js 파일에서 2개의 import를 제거하세요.
+테일윈드 CSS 문법을 커스텀에서 사용하고 싶으면 &lt;a href=&quot;https://tailwindcss.com/docs/adding-custom-styles&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;공식 문서&lt;/a&gt;를 참고해서 &lt;strong&gt;tailwind.config.js 파일에 설정&lt;/strong&gt;하면 돼요.
+그리고 클래스(class)를 직접 정의해서 사용하고 싶다면 global.css 파일에 추가하거나 또는 css 파일을 생성하여 작성 후 gatsby-browser.js 파일에 import 하면 돼요.&lt;/p&gt;
+&lt;p&gt;테일윈드 CSS를 사용하지 않고 본인이 직접 CSS를 작성하여 디자인하고 싶다면, 이번 포스트 설정은 따라 하지 않고 style.css 파일에 직접 코드를 작성해서 사용하면 돼요.&lt;/p&gt;
+&lt;p&gt;이상으로 &lt;strong&gt;&quot;개츠비(Gatsby) 블로그 만들기 2 - Tailwind CSS 적용&quot;&lt;/strong&gt; 포스트는 끝낼게요!&lt;/p&gt;</content:encoded></item><item><title><![CDATA[개츠비(Gatsby) 블로그 만들기 1 - 기본 세팅]]></title><description><![CDATA[개츠비(Gatsby…]]></description><link>https://whitepaek.com/posts/2024/01/gatsby-blog-start-1/</link><guid isPermaLink="false">https://whitepaek.com/posts/2024/01/gatsby-blog-start-1/</guid><content:encoded>&lt;p&gt;&lt;a href=&quot;https://www.gatsbyjs.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;개츠비(Gatsby)&lt;/a&gt;로 블로그 만드는 과정을 제가 경험한 내용으로 설명드릴게요.&lt;/p&gt;
 &lt;p&gt;개츠비를 기반으로 블로그를 처음부터 하나씩 세팅하기에는 까다로워요. 특히 저처럼 이해도가 전혀 없는 상태라면, 시작조차 못할 수 있어요.
 그래서 저는 개츠비에서 공식적으로 제공해 주는 &lt;a href=&quot;https://www.gatsbyjs.com/starters/gatsbyjs/gatsby-starter-blog&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;gatsby-starter-blog&lt;/a&gt;를 이용해서 세팅을 해주도록 할게요.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/gatsbyjs/gatsby-starter-blog&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;깃허브(github)에서 gatsby-starter-blog 설치&lt;/a&gt;하기 전에 Node.js와 gatsby-cli를 설치해야 해요.&lt;br&gt;
@@ -9,7 +482,8 @@
 터미널(terminal)을 실행하여 아래 명령어를 입력해 주세요.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ /bin/bash &lt;span class=&quot;token parameter variable&quot;&gt;-c&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&lt;span class=&quot;token variable&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;curl&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-fsSL&lt;/span&gt; https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh&lt;span class=&quot;token variable&quot;&gt;)&lt;/span&gt;&lt;/span&gt;&quot;&lt;/span&gt;
 $ xcode-select &lt;span class=&quot;token parameter variable&quot;&gt;--install&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;span
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
       style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
     &gt;
@@ -26,7 +500,7 @@ $ xcode-select &lt;span class=&quot;token parameter variable&quot;&gt;--install&
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
-        alt=&quot;Homebrew Install&quot;
+        alt=&quot;[1] Homebrew 설치&quot;
         title=&quot;&quot;
         src=&quot;/static/833c3ca7642af220ba8e0c9c019e6c60/f058b/homebrew-install.png&quot;
         srcset=&quot;/static/833c3ca7642af220ba8e0c9c019e6c60/c26ae/homebrew-install.png 158w,
@@ -41,11 +515,14 @@ $ xcode-select &lt;span class=&quot;token parameter variable&quot;&gt;--install&
         decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[1] Homebrew 설치&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;2. Node.js 설치&lt;/strong&gt;&lt;br&gt;
 Homebrew 설치가 완료되었다면, 터미널에서 아래 명령어를 참고하여 Node.js를 설치해 주세요.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ brew &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;node&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;span
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
       style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
     &gt;
@@ -62,7 +539,7 @@ Homebrew 설치가 완료되었다면, 터미널에서 아래 명령어를 참�
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
-        alt=&quot;Node.js Install&quot;
+        alt=&quot;[2] Node.js 설치&quot;
         title=&quot;&quot;
         src=&quot;/static/1082c231561b7af4d44e66a6d7247f85/f058b/node-install.png&quot;
         srcset=&quot;/static/1082c231561b7af4d44e66a6d7247f85/c26ae/node-install.png 158w,
@@ -77,11 +554,14 @@ Homebrew 설치가 완료되었다면, 터미널에서 아래 명령어를 참�
         decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[2] Node.js 설치&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;3. gatsby-cli 설치&lt;/strong&gt;&lt;br&gt;
 Node.js 설치가 완료되었으면, 터미널에서 아래 명령어를 참고하여 gatsby-cli를 설치해 주세요.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-g&lt;/span&gt; gatsby-cli&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;span
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
       style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
     &gt;
@@ -98,7 +578,7 @@ Node.js 설치가 완료되었으면, 터미널에서 아래 명령어를 참고
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
-        alt=&quot;gatsby-cli Install&quot;
+        alt=&quot;[3] gatsby-cli 설치&quot;
         title=&quot;&quot;
         src=&quot;/static/43c75cb67560e440893ef7a78198266f/f058b/gatsby-cli-install.png&quot;
         srcset=&quot;/static/43c75cb67560e440893ef7a78198266f/c26ae/gatsby-cli-install.png 158w,
@@ -113,156 +593,171 @@ Node.js 설치가 완료되었으면, 터미널에서 아래 명령어를 참고
         decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[3] gatsby-cli 설치&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;4. gatsby-starter-blog 설치&lt;/strong&gt;&lt;br&gt;
 gatsby-cli까지 설치가 완료되었으면, 아래 명령어를 참고하여 gatsby-starter-blog 프로젝트를 설치할게요.
-&lt;code class=&quot;language-text&quot;&gt;cd&lt;/code&gt; 명령어로 본인이 설치하고 싶은 디렉터리 위치로 이동하고, 아래 명령어에서 &lt;strong&gt;my-blog-starter&lt;/strong&gt; 위치에 본인이 하고 싶은 프로젝트 이름을 작성해 주세요.&lt;br&gt;
-저는 &lt;strong&gt;/Users/whitepaek/Projects/Studies&lt;/strong&gt; 디렉터리 위치에 &lt;strong&gt;whitepaek.github.io&lt;/strong&gt; 프로젝트 이름으로 설치할게요.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token builtin class-name&quot;&gt;cd&lt;/span&gt; ~
+&lt;code class=&quot;language-text&quot;&gt;cd&lt;/code&gt; 명령어로 본인이 설치하고 싶은 디렉터리 위치로 이동하고, 아래 명령어에서 &lt;strong&gt;my-blog-starter&lt;/strong&gt; 위치에 본인이 하고 싶은 프로젝트 이름을 작성해 주세요.
+저는 설명을 위해서 공식 문서 예시를 그대로 진행할게요.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token builtin class-name&quot;&gt;cd&lt;/span&gt; ~/Downloads/
 $ gatsby new my-blog-starter https://github.com/gatsbyjs/gatsby-starter-blog&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;span
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
       style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/dd88749724faca43bf45088246bcb421/d50e7/gatsby-starter-blog-install.png&quot;
+    href=&quot;/static/7af17758f08e3da160a36b5c09a4f900/d50e7/gatsby-starter-blog-install.png&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 66.45569620253164%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAABYlAAAWJQFJUiTwAAACIElEQVR42o2S207jMBBAK+2+VPuytFILRYWyKHXuvcSxc7+1hV2tlp/hLeIfeaUSfwHKCyHD2KXQCpA20pHHjn08Hk3L7ts/Qte9Nhz/RlFYeU5oeabQ0jCCMoguNwTL0vMKiZhbVlAS3EPIFueGEPe6j67WYHA+pHNexV4GEcuakCY4psCcBKxZArYkBmu6YYKxaYegm/6WxrAC0AxeCVfr5+HodEbDhyIqYOEXT4ugqHMvqxOW1jFL6szP6xzXEp5KXCeuiebWqv7Gk2YwIBp9OERX6+jo14kfrqos/wtx8ruJ40sQuG4Gto0Z6C4YBgfT3KBjrOpslwazE8JKuKQwyv5UxeoK8sW/plheQYpyjAHrBdxfwhzlBA+TfdHXQosmFcODXrBsXF6APQ0luulhvQI5qp/LPhc6NKu4vwDK8mbmpCiLpGSsUgnWTKL+f4YFClfAvEUjMvXDCwjjC7wge82Uywu2o7Zfx4/CKWboByjkRTOnqZRM5zGIbGfYPps5ttEkxLaJZBl2Mt4XHhwcnZiT4JF6C9Fv2AbsGX8+41PfwMN7iD3vuLUU6u6jFI5Go1NiBZViJzCeZo1ueK/Pe0czvkKUgDeWKIvlV7IPu93hwLT47WTi36va/E4Zz9a7mJa3JjqVYAOvDZxrOpMYJhfjHVHZPf67Fa4Wft97vbO+oijH3W530G639xBruwyHww9xp9M57vV6fXR9ewGdO1nd1wdVzAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 66.45569620253164%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAABYlAAAWJQFJUiTwAAACD0lEQVR42oWSy07bQBSGs+gm6qYkUm40ISlyHN+S+DZjO77FTipQUF+GncU7siUSbwHyBuPDOaaAExVq6dOMZzyf/zMzjXl3/t01zWtB5zcTwcomgpGd/8Vim4x5m8xykgqDJRnDVpSsTBTrmDeiaF930dUYDM6Hrhfm2+QCQictuR0D4ToJODyp+oywIrDMEJZ6CLLq1ikVzQNJ4Tm5Gj964zPG/IddkMJvL3mKvbQIeFz4PCo8K6j6xMoOCxff58tVMZPtOk+SwgBTP/TQ1ej3f42C8DKP0j8QJFdllFyBH10ClgpzI4SZwmGmOjCVGUwlBrR4Jh9QYjoS5uSqhCzc5nGyg3i9K2MUBiiM1jvg7gaYk4KJ5R5JvhYqCz83cJFuhuXSCHDSfl9AH38h+7fQ4mnuhxfgrrYlJbLxMBY6iT8W1n/yX6FqrjFhXCW0WAwmnqrF1rA06ESdKiW1bxylPhSenPRHhhnltG+4ZyWeIrziY0ofaAu0xeq9pTF17tUTHwn7/ZGkuY8LIwJFcwqceMaPn1/bt/4hKKlhF5VQth8r4XjcOxP1KJ8u11RKWS/to8TPoK3gpYrJJdXNq3vYbg8HqsZvVY3dC1P9DtnXUTVnL8kWwvaywveKxvcivhOKymn8Tpyxe7yft+Rq4PNtMpl0fwrCabPZHBzTbrc/ZTgcDkjSarVOO51Ol1wvpO5YyO6PULoAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
-        alt=&quot;gatsby-starter-blog Install&quot;
+        alt=&quot;[4] gatsby-starter-blog 설치&quot;
         title=&quot;&quot;
-        src=&quot;/static/dd88749724faca43bf45088246bcb421/f058b/gatsby-starter-blog-install.png&quot;
-        srcset=&quot;/static/dd88749724faca43bf45088246bcb421/c26ae/gatsby-starter-blog-install.png 158w,
-/static/dd88749724faca43bf45088246bcb421/6bdcf/gatsby-starter-blog-install.png 315w,
-/static/dd88749724faca43bf45088246bcb421/f058b/gatsby-starter-blog-install.png 630w,
-/static/dd88749724faca43bf45088246bcb421/40601/gatsby-starter-blog-install.png 945w,
-/static/dd88749724faca43bf45088246bcb421/78612/gatsby-starter-blog-install.png 1260w,
-/static/dd88749724faca43bf45088246bcb421/d50e7/gatsby-starter-blog-install.png 2280w&quot;
+        src=&quot;/static/7af17758f08e3da160a36b5c09a4f900/f058b/gatsby-starter-blog-install.png&quot;
+        srcset=&quot;/static/7af17758f08e3da160a36b5c09a4f900/c26ae/gatsby-starter-blog-install.png 158w,
+/static/7af17758f08e3da160a36b5c09a4f900/6bdcf/gatsby-starter-blog-install.png 315w,
+/static/7af17758f08e3da160a36b5c09a4f900/f058b/gatsby-starter-blog-install.png 630w,
+/static/7af17758f08e3da160a36b5c09a4f900/40601/gatsby-starter-blog-install.png 945w,
+/static/7af17758f08e3da160a36b5c09a4f900/78612/gatsby-starter-blog-install.png 1260w,
+/static/7af17758f08e3da160a36b5c09a4f900/d50e7/gatsby-starter-blog-install.png 2280w&quot;
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
         decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[4] gatsby-starter-blog 설치&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;5. gatsby-starter-blog 실행&lt;/strong&gt;&lt;br&gt;
 gatsby-starter-blog 설치가 완료되었으면 실행해 보도록 할게요.
 Visual Studio Code 또는 웹스톰(webstorm) 도구(tool)로 설치한 gatsby-starter-blog 프로젝트를 열어주세요.
-저는 웹스톰으로 열도록 할게요.&lt;/p&gt;
-&lt;p&gt;&lt;span
+저는 웹스톰으로 할게요. 웹스톰을 실행하고 우측 상단에 Open 버튼을 클릭해서 프로젝트를 열어주세요.&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
       style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/864c2301f17bc60ea0cb694488d3aef5/c02c7/webstorm-blog-open.png&quot;
+    href=&quot;/static/1e3c43b5bc6c803ab1589b71a3ec2dda/18d55/webstorm-blog-open.png&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 72.15189873417721%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAABYlAAAWJQFJUiTwAAACQElEQVR42o2T21LbMBRF8w99IMW25Ets6+6L7OCkSSjQDgU60If+Rf//effIXBqGoe3DHkXO8dLZZ8uLdvMJvffQxkIqDaUtqlpCGgPbtpBaozYOw9lEdQOE7ZEWBUohkJcVSqrVpoFteihaF93+B/zuHmb8BtlucX5xAW0tSikgrUZpHcy0ReM7KNpXrYchcClq8CJHwlOk2QpZXoLTuhg3V5gOt/DTNZzf4XB1iY46FlpBKIGi7TF9vcGwHhFlKUENvj/c0wE9YtpHjCNhGVgQz7Gwvcd2f45xXKOSGrYfUEuJhIpjniAju9MlHdJp6iQm+wpfbu/m7uOMIyZgAD1r0Y8bbHaf0XQjjOtwRjOtyE4AJjwGs2v4h1+Qu5/4YO9Q+z2u726gnaOa7C1wWG8INtDwHc2ugSOLYeARZ3OH8aoGc3twd8CJ3NE6Qg8DWY3pfxJjr4HatggKCdVCQikzWw6hFHVFXVAHaYSExNOYVoZ0RSlTTWoGsr16md8rYFBVCdRFhTQvqOuOQlFYRhFOE4aPcTIr7HmeQdE1SfwNolwSkL8DFA2lewZD1hWNQEjzeB3SAlHMX3QaMSyXEaLlCZIkwIq3QBOAZFsOExz9DhfVUkhVrZBT1wHMCPyscAgLdo9gbzoUysI0HlJaFCEMKuBPL8+Aoxff0xGQ7KoOrtujpaRbSr5Yifkr+B/QCzCk+wjs5u+26Qyc87PdAAx2Q2FylORfgWFWfyw7uocjHD0LUrqZZ/scThrm+A/gbw0sml/IPSy4AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 72.15189873417721%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAABYlAAAWJQFJUiTwAAACNUlEQVR42o2T2W7bMBRE/RcNaluyTO3URmrzviRNHLhO8tg+Fuj/f8N0KCGODSNtHwaQAfL4zszlIJ8toXQFmaSIZAqZKYRxgiQrUOgGaVFCFhWadgFdN5CqhRcmPJvB57k0jNHEEjnvxTLHoFi/QS9fEZcHRGqJ1XaPONeoNjtUbY0gChGoEpunI9r5AlFRwyUk5ABeJCGEC38yxVT4mDguBvX8AbPtEeXsGUW9xf3hGXq2wvr4G+vHX/DrH8jrA46nE5b8EzcIMfV7GbDlCAwtB5bda5Dqkge3qGknoI2iniNWDbbff+Lh2wvaxSMtt3g6vfJ7CRHEHUwEEQSBNoHjDjjtNNAELFZ7ZMxJZhrNYkuAxv5wwHq3Y241I1AEvmGx3nRTfQDlLbBq5shV1RURJzmKcsZ8+sADluTyopsU0Ot7+BFh/G2AjhdAeB5s5ncFlGkBIwML4xRJqhClOWK2bMDv1ozMdC6L8GVCFyV8vcLEjQic3AKNAuYTeREc14euuCJZjpHNww6nmPQaMXjh+ch0C7t5wUgksMY2YeIamFB+aKZs+J13exZw35ypscUmR/ZZX4cW7u6GGN59wXhsnWG3QGO7miHjd8ZdTLmsvmmVO/YOvpTFvbuE3Vg2GZqmA7Y3FQHGPHAFuLj4mS6Axq5i4xsovgzFZye8sNv+/wGdgabdHsh2pUSm+D5T3UVgpjRWLa7F5Wr8FZgyqw/LGRe87vIzMo/dgMOoL2di4P8A/gElBqDchg79rwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
-        alt=&quot;WebStorm으로 gatsby-starter-blog 열기&quot;
+        alt=&quot;[5] 웹스톰에서 gatsby-starter-blog 프로젝트 열기&quot;
         title=&quot;&quot;
-        src=&quot;/static/864c2301f17bc60ea0cb694488d3aef5/f058b/webstorm-blog-open.png&quot;
-        srcset=&quot;/static/864c2301f17bc60ea0cb694488d3aef5/c26ae/webstorm-blog-open.png 158w,
-/static/864c2301f17bc60ea0cb694488d3aef5/6bdcf/webstorm-blog-open.png 315w,
-/static/864c2301f17bc60ea0cb694488d3aef5/f058b/webstorm-blog-open.png 630w,
-/static/864c2301f17bc60ea0cb694488d3aef5/40601/webstorm-blog-open.png 945w,
-/static/864c2301f17bc60ea0cb694488d3aef5/78612/webstorm-blog-open.png 1260w,
-/static/864c2301f17bc60ea0cb694488d3aef5/c02c7/webstorm-blog-open.png 2472w&quot;
+        src=&quot;/static/1e3c43b5bc6c803ab1589b71a3ec2dda/f058b/webstorm-blog-open.png&quot;
+        srcset=&quot;/static/1e3c43b5bc6c803ab1589b71a3ec2dda/c26ae/webstorm-blog-open.png 158w,
+/static/1e3c43b5bc6c803ab1589b71a3ec2dda/6bdcf/webstorm-blog-open.png 315w,
+/static/1e3c43b5bc6c803ab1589b71a3ec2dda/f058b/webstorm-blog-open.png 630w,
+/static/1e3c43b5bc6c803ab1589b71a3ec2dda/40601/webstorm-blog-open.png 945w,
+/static/1e3c43b5bc6c803ab1589b71a3ec2dda/78612/webstorm-blog-open.png 1260w,
+/static/1e3c43b5bc6c803ab1589b71a3ec2dda/18d55/webstorm-blog-open.png 2470w&quot;
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
         decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;gatsby-starter-blog 프로젝트를 열었으면 아래 이미지처럼 서버를 실행해 주세요.&lt;/p&gt;
-&lt;p&gt;&lt;span
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[5] 웹스톰에서 gatsby-starter-blog 프로젝트 열기&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;gatsby-starter-blog 프로젝트를 열었으면, 아래 이미지처럼 package.json 파일을 열고 44번 라인의 &lt;code class=&quot;language-text&quot;&gt;gatsby develop&lt;/code&gt;을 실행해주세요.&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
       style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/026cf0220565fae49866763883bdf4b2/ed7fc/gatsby-develop-run.png&quot;
+    href=&quot;/static/d58b3d9218cbaa0e6be1dab5c883a0d0/b918a/gatsby-develop-run.png&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 67.72151898734178%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAABYlAAAWJQFJUiTwAAABnElEQVR42pVU2W7bMBDUfzSJKN4UKVFybMMw2hyGkRgI0P//m+nu+kAbpIDyMFhJJGZn9lDz8XzCYfeMeVzBhx5zWWMoE2yMMDZAE0LMcqaNl29XOELsC6ZpRKHzXFdo9vsd5rki5QStPdb9FnN+hAkB9w+d4O5e3Z4/g89+3BEoctLm6eWAutrApwJrAiYiy6lCO4+HVi+DOkdPTpr34xHb9Q49STc6IMcRyjq0rUGrzlhCymojiWp+v53wutuTsoFqEpFChjIWnXESFcUlpEwYmLA+bjFMa7FsdJQGtNpAaStou+UKhbAvFXmYkPoBwSUk+qiDhyIiJvuOZSFksjzORJTxa7PBcf8TY7nYpsZ0dpnKG+FA81eIMJJCrhvPl9Lu1hBBZ/59/wLSZR6bFdWQFZ5tj9J6zsTxu0h5RDMRyZgrNaOXhsh20EZIVqUXzyJbdqywRFIWK9mN6Mhqd7HLFxYP9pXQJzSBatfT7nquoaXtuBBd6/K/lftqBdlhw9PNI8MF5Qx/w7oo9j9DfgyXO4aWwbrz3Vwq/gAJgZAHiori5gAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 71.51898734177216%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAABYlAAAWJQFJUiTwAAAB80lEQVR42oWU63KbMBSEeY8mIARCiIuQuAQ78a04jmf6p52+/7tsj0SCnYZOf+wIwfBp90hHwfX8A9PhF/bPV4z9CdZsUdYtitogzRSUrGCrHoPd0juNVObgSQZB36SqkIocSSr9vLE9AmMtDrsRL5sBndXQdYlG1zAkxhPItMBYbdCqHrIoEAuBxzD2enhky/O3hwhZXiJoTEvAPfq+R60baK0XxUmKXJQYqhFD+YSmsBClAotThBH/JAd1iQJVaRxPZ+wOE4rKUFy7iHHhHWoC5RSP8wwRuQ5DvgoUskBQUV3OryfspzeCGII2i+JEQKQKlaTn9BbVA8MZcg90iwa1tvh9ecPP8wVtN6Ibtl5tv0FMDl3kMq/BpQTPMtI8xmIevwBdtGm64vJ6hTY9Kt0uckCVlcip2CF7j8fuojK+DjTkzPYjATsf1UV3cpFdDYui9rvLaO6iOzHaMMbTNeCtbh+gD0X0Y8IlMqkQZamHRHFyE0vWgWtyC5hcYtftsbEHOlYbOmc5gWZnHs5uO74A15wtrlWB78cJx5cJY/dMHTFHjUUGtkQXvpYL0LXLv6AxtZgvvHPC5k1wrv7WJ4e2e4Iq9eLqHug74v3s/VfUhh5oCFg3rT8ybrwHJmK+CJzcBeAuAncJeFFXZKRlTnKG/gCCmZ0/lpq3XgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
-        alt=&quot;gatsby-starter-blog 실행&quot;
+        alt=&quot;[5-1] 웹스톰에서 gatsby-starter-blog 실행&quot;
         title=&quot;&quot;
-        src=&quot;/static/026cf0220565fae49866763883bdf4b2/f058b/gatsby-develop-run.png&quot;
-        srcset=&quot;/static/026cf0220565fae49866763883bdf4b2/c26ae/gatsby-develop-run.png 158w,
-/static/026cf0220565fae49866763883bdf4b2/6bdcf/gatsby-develop-run.png 315w,
-/static/026cf0220565fae49866763883bdf4b2/f058b/gatsby-develop-run.png 630w,
-/static/026cf0220565fae49866763883bdf4b2/40601/gatsby-develop-run.png 945w,
-/static/026cf0220565fae49866763883bdf4b2/78612/gatsby-develop-run.png 1260w,
-/static/026cf0220565fae49866763883bdf4b2/ed7fc/gatsby-develop-run.png 4054w&quot;
+        src=&quot;/static/d58b3d9218cbaa0e6be1dab5c883a0d0/f058b/gatsby-develop-run.png&quot;
+        srcset=&quot;/static/d58b3d9218cbaa0e6be1dab5c883a0d0/c26ae/gatsby-develop-run.png 158w,
+/static/d58b3d9218cbaa0e6be1dab5c883a0d0/6bdcf/gatsby-develop-run.png 315w,
+/static/d58b3d9218cbaa0e6be1dab5c883a0d0/f058b/gatsby-develop-run.png 630w,
+/static/d58b3d9218cbaa0e6be1dab5c883a0d0/40601/gatsby-develop-run.png 945w,
+/static/d58b3d9218cbaa0e6be1dab5c883a0d0/78612/gatsby-develop-run.png 1260w,
+/static/d58b3d9218cbaa0e6be1dab5c883a0d0/b918a/gatsby-develop-run.png 2780w&quot;
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
         decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[5-1] 웹스톰에서 gatsby-starter-blog 실행&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;또는 터미널에서 위에서 설치한 프로젝트 위치로 이동 후 gatsby 명령어를 실행해 주세요.&lt;/p&gt;
-&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token builtin class-name&quot;&gt;cd&lt;/span&gt; ~
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token builtin class-name&quot;&gt;cd&lt;/span&gt; ~/Downloads/my-blog-starter/
 $ gatsby develop&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;span
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
       style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/d4b1ca5cb1fa240b4b4ab905aa87e000/a3a74/gatsby-develop-command.png&quot;
+    href=&quot;/static/6628cd228f87528311cdea7f922225fd/a3a74/gatsby-develop-command.png&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 79.74683544303798%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABYlAAAWJQFJUiTwAAACUklEQVR42qWTyW/UMBjFR1xYJC6VSg+kFUzSyd4kk8R2NieZTLrNIHqqxGH6b3Li0oE/CMqlSuOPz+lygFJaEenJWeyfXt6zR0xhL4kfflJ9crajBqt3kz8VkHoVReVqYkb3atcIzyZmfKrr+uvRzpvdcUJZN+czKEklkmkOaVhAFvFhzKMCSFyBN+Vg2uw+CctJQDfJhaqa9mhTUbWA55eL/WNx1CyvOD/sU9b0vpf2jk17x6G9Ycb9xIh7wyL36cq0KaDDH8pYd0eKqmpWUXRpcwx180EU5RHQdA66ReQkFAFc9JDEADTiC2VsOAPQRiCfL6BtT0Q9WwKvFpBkLUyj8l+wvwNz6bBeigqBOT8EmjQQxtdAHZ1KPQ6IGTp51ZXosJl/vAYWBxDRGlwvhT0/Ay/IwZ8WTwUuobpxiCNkCA2xXcuRTVIc6ROAvO7Kdgnt/ong1TGU9WJw5eyluIA+MUME7sV5F7EaXR2KnB8NGUp3QcjBdhOcHD0+w81NRcOsuiAssdVK3DYrQb9LLnwEUNXCqOoY7j2WtiLNDyCms6EEKVmM62VYTo5QJk/Ew8DtbU0NaXmJQJFk+1e4/3qSNH2UtH0Q13gS4h5/d5C8vz0hpk1unmM8KXJrRd/vMrTjrAvZDFjSCpq0QFiDLuU+rLGcAmQcUl7A74TxDKWhOyHj0C36czx23dHGhvLWcekXP0i/+kF+rhvheqy6a1Xz1rt6sHZcttZwlO9th6xdLxney2f5zXLi84lBvtku/by1tfN+hNcz1HPUq//UC8n6BfkBrOHOV8z6AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 79.74683544303798%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABYlAAAWJQFJUiTwAAACWUlEQVR42qWUSW/TQBiGIy4sEpdKoQfcqsRJbMdLvHu8O7Ed0jgBTkgc0r/JhVMNPwjKpXI8wzeTyoJAw2bplf2NZh698y3uIQ49dnXrHa+5Vxe8sb0YG1seNJbsTrY729p2+sPa9xqJ1tVYct4KgvC0d/5sNECu15RJTlInw74ZEccIyUT1iSQjJsNKiW6mXXwgPFF8IkjuDc9Lcq/P8UMjiW6rxQpf5tUuTZatHxStogWtIDmtOHHbsWh337/QTpI9Ag6/cANB7XE8P5TjuAnyFcnyDY7TS4KCksDGPxVmQNG54Qai0gGToiLF4g2e5RuSZisSRC/J1IjgKs4/AKOoicHhPH+Fs/kaYAti2imRVQQbbXbwCPgACDlUoqxJizUAN+BwTdJZxRwaVsJcUulm/HfA5A6YZBVJ4MrQKgCCaisIDnmEHrrH5c9ANZkxYFG+xtRdNq8AmDFXMrQPhVLJrJW83wM1J2ocNCdRssQxuAvjJau0DzKtlIGgjYimh+z7KLDf54aqFjS0eU07wzRvdAN1tH97dw79+4pzCOSHlp01KCioK0yL4Xhzdl0qdRoyZ5oesarDRBwHnp0NecvLbgGI/XCx88OydVHe2kHZmu6MTQOdkv2kOK0EsdRNCVuDSaHO7c9dDmUnbCzIIfJL7PklASCTRSutx2yWqaZG0onGNK90lmlehYn3dTBQ1d7JCfdc0dAHTQ8+TvXwGv4c9YBXa344rUeCXqtTv6Zr4KCWFXcfC0YtQqyoqJ7IzvVYRJ9k1Xt/enr+ogfPA9BD0JP/1CPK+gZbg60DNhwWOgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
-        alt=&quot;gatsby-starter-blog 실행&quot;
+        alt=&quot;[5-2] 터미널에서 gatsby-starter-blog 실행&quot;
         title=&quot;&quot;
-        src=&quot;/static/d4b1ca5cb1fa240b4b4ab905aa87e000/f058b/gatsby-develop-command.png&quot;
-        srcset=&quot;/static/d4b1ca5cb1fa240b4b4ab905aa87e000/c26ae/gatsby-develop-command.png 158w,
-/static/d4b1ca5cb1fa240b4b4ab905aa87e000/6bdcf/gatsby-develop-command.png 315w,
-/static/d4b1ca5cb1fa240b4b4ab905aa87e000/f058b/gatsby-develop-command.png 630w,
-/static/d4b1ca5cb1fa240b4b4ab905aa87e000/40601/gatsby-develop-command.png 945w,
-/static/d4b1ca5cb1fa240b4b4ab905aa87e000/78612/gatsby-develop-command.png 1260w,
-/static/d4b1ca5cb1fa240b4b4ab905aa87e000/a3a74/gatsby-develop-command.png 2272w&quot;
+        src=&quot;/static/6628cd228f87528311cdea7f922225fd/f058b/gatsby-develop-command.png&quot;
+        srcset=&quot;/static/6628cd228f87528311cdea7f922225fd/c26ae/gatsby-develop-command.png 158w,
+/static/6628cd228f87528311cdea7f922225fd/6bdcf/gatsby-develop-command.png 315w,
+/static/6628cd228f87528311cdea7f922225fd/f058b/gatsby-develop-command.png 630w,
+/static/6628cd228f87528311cdea7f922225fd/40601/gatsby-develop-command.png 945w,
+/static/6628cd228f87528311cdea7f922225fd/78612/gatsby-develop-command.png 1260w,
+/static/6628cd228f87528311cdea7f922225fd/a3a74/gatsby-develop-command.png 2272w&quot;
         sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
         decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[5-2] 터미널에서 gatsby-starter-blog 실행&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;6. 브라우저에서 블로그 접속&lt;/strong&gt;&lt;br&gt;
 크롬(chrome), 사파리(safari) 등 브라우저를 실행하고, 주소(url) 창에 &lt;code class=&quot;language-text&quot;&gt;http://localhost:8000&lt;/code&gt;를 입력해서 접속해 주세요.&lt;/p&gt;
-&lt;p&gt;&lt;span
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
       style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
     &gt;
@@ -279,7 +774,7 @@ $ gatsby develop&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
-        alt=&quot;Gatsby 블로그 접속&quot;
+        alt=&quot;[6] 실행한 gatsby-starter-blog 프로젝트를 브라우저에서 접속&quot;
         title=&quot;&quot;
         src=&quot;/static/736a750c9b4b0e5774050437af592052/f058b/gatsby-blog-url.png&quot;
         srcset=&quot;/static/736a750c9b4b0e5774050437af592052/c26ae/gatsby-blog-url.png 158w,
@@ -294,10 +789,12 @@ $ gatsby develop&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[6] 실행한 gatsby-starter-blog 프로젝트를 브라우저에서 접속&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;개츠비 블로그 기본적인 세팅을 완료했어요!&lt;br&gt;
-다음 포스트에서는 &lt;strong&gt;개츠비 프로젝트 구조를 파악하고, 테일윈드 CSS(tailwind CSS)를 적용&lt;/strong&gt;하도록 할게요.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[CSS 비교 (Vanilla CSS vs CSS Framework)]]></title><description><![CDATA[백엔드 개발자의 작은 일탈 포스트에서 말했듯이,
-블로그를 새롭게 만들자는 목표를 이루기 위해서 개인적으로 가장 중요하게 생각한 부분은 제가 원하는 디자인의 화면을 개발하는 것이었어요. 원하는 디자인으로 개발하기 위해서는 CSS…]]></description><link>https://whitepaek.com/posts/2024/01/css-vanilla-component-utility/</link><guid isPermaLink="false">https://whitepaek.com/posts/2024/01/css-vanilla-component-utility/</guid><pubDate>Sat, 06 Jan 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://whitepaek.com/posts/2024/01/backend-developer-departure/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;백엔드 개발자의 작은 일탈&lt;/a&gt;&lt;/strong&gt; 포스트에서 말했듯이,
+다음 포스트에서 &lt;strong&gt;테일윈드 CSS(tailwind CSS)를 적용&lt;/strong&gt;하도록 할게요.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[CSS 비교 (Vanilla CSS vs CSS Framework)]]></title><description><![CDATA[백엔드 개발자의 작은 일탈 포스트에서 말했듯이,
+블로그를 새롭게 만들자는 목표를 이루기 위해서 개인적으로 가장 중요하게 생각한 부분은 제가 원하는 디자인의 화면을 개발하는 것이었어요. 원하는 디자인으로 개발하기 위해서는 CSS…]]></description><link>https://whitepaek.com/posts/2024/01/css-vanilla-component-utility/</link><guid isPermaLink="false">https://whitepaek.com/posts/2024/01/css-vanilla-component-utility/</guid><content:encoded>&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://whitepaek.com/posts/2024/01/backend-developer-departure/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;백엔드 개발자의 작은 일탈&lt;/a&gt;&lt;/strong&gt; 포스트에서 말했듯이,
 블로그를 새롭게 만들자는 목표를 이루기 위해서 개인적으로 가장 중요하게 생각한 부분은 제가 원하는 디자인의 화면을 개발하는 것이었어요. 원하는 디자인으로 개발하기 위해서는 CSS가 필수적이라고 생각을 했고,
 앞서 공부한 바닐라 CSS(vanilla css)를 기반으로 화면 개발을 시작했어요.&lt;/p&gt;
 &lt;p&gt;하지만 바닐라 CSS로 헤더(header), 메인(main), 푸터(footer)를 구성하는 과정부터 원하는 대로 개발이 이뤄지지 않았고, 이론적으로 학습한 내용의 한계를 느꼈어요.
@@ -330,7 +827,8 @@ $ gatsby develop&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;컴포넌트 프레임워크(component framework)&lt;/strong&gt; 는 대표적으로 &lt;a href=&quot;https://getbootstrap.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;부트스트랩(Bootstrap)&lt;/a&gt;이 있어요.
 컴포넌트 프레임워크의 장점은 배지, 버튼, 리스트 등 컴포넌트가 개발되어 있기 때문에 공식 문서를 참고해서 &lt;strong&gt;가이드에 따라 정의해서 사용&lt;/strong&gt;하면 돼요.
 그리고 &lt;strong&gt;대부분의 브라우저 지원을 고려&lt;/strong&gt;했고, &lt;strong&gt;실행 속도도 빨라요.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
       style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
     &gt;
@@ -347,7 +845,7 @@ $ gatsby develop&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
-        alt=&quot;Bootstrap Example&quot;
+        alt=&quot;부트스트랩 예시&quot;
         title=&quot;&quot;
         src=&quot;/static/d89137cf8b923bf100693372e2df22c7/f058b/bootstrap-example.png&quot;
         srcset=&quot;/static/d89137cf8b923bf100693372e2df22c7/c26ae/bootstrap-example.png 158w,
@@ -360,13 +858,16 @@ $ gatsby develop&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;부트스트랩 예시&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;하지만 단점으로는 이미 정의되어 있는 &lt;strong&gt;컴포넌트를 수정할 수가 없고, 가이드에 정의되어 있는 규칙을 파악&lt;/strong&gt;해야 해요. 그리고 사용하지 않는 컴포넌트 코드까지 전부 다운로드가 돼요.
 가장 큰 단점으로는 정의되어 있는 컴포넌트를 사용하다 보니 &lt;strong&gt;디자인이 비슷해 보일 수 있어요.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;유틸리티 프레임워크(utility framework)&lt;/strong&gt; 는 대표적으로 &lt;a href=&quot;https://tailwindcss.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;테일윈드 CSS(Tailwind CSS)&lt;/a&gt;가 있어요.
 유틸리티 프레임워크 장점은 &lt;strong&gt;레이아웃과 유틸리티가 정의&lt;/strong&gt;되어 있기 때문에 공식 문서를 참고해서 &lt;strong&gt;본인이 원하는 레이아웃과 디자인을 개발&lt;/strong&gt;할 수 있어요.
 컴포넌트 프레임워크와 동일하게 &lt;strong&gt;대부분의 브라우저 지원을 고려했기 때문에 호환이 잘 되고, 속도도 빨라요.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;span
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
       style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
     &gt;
@@ -383,7 +884,7 @@ $ gatsby develop&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
-        alt=&quot;Tailwind CSS Example&quot;
+        alt=&quot;테일윈드 CSS 예시&quot;
         title=&quot;&quot;
         src=&quot;/static/955bda9af7204a43c0d449d7d1de5c6f/f058b/tailwind-css-example.png&quot;
         srcset=&quot;/static/955bda9af7204a43c0d449d7d1de5c6f/c26ae/tailwind-css-example.png 158w,
@@ -396,7 +897,9 @@ $ gatsby develop&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         decoding=&quot;async&quot;
       /&gt;
   &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;테일윈드 CSS 예시&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;단점으로는 &lt;strong&gt;공식 문서에 정의되어 있는 가이드를 파악&lt;/strong&gt;해야 하고, 사용하지 않는 유틸리티 클래스가 전부 포함되어 있어요. 그리고 클래스에 많은 요소가 정의되기 때문에 코드가 길어져요.&lt;/p&gt;
 &lt;p&gt;바닐라 CSS, 컴포넌트 프레임워크 그리고 유틸리티 프레임워크의 장단점에 대해 설명했어요.&lt;/p&gt;
 &lt;p&gt;저는 이 중에서 유틸리티 프레임워크인 테일윈드 CSS를 선택한 이유는 바닐라 CSS 보다 러닝 커브가 적었으며, 컴포넌트 프레임워크랑 다르게 &lt;strong&gt;원하는 디자인으로 CSS를 작업할 수 있었기 때문이에요.&lt;/strong&gt;
@@ -410,7 +913,7 @@ $ gatsby develop&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 계속 반복해서 하다 보면 언젠가는 익숙해지고, 자유자재로 CSS를 다룰 수 있는 날을 함께 기대해 보아요~!&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;러닝 커브(무언가를 습득하는데 드는 학습 비용)가 큰 순서는 &lt;strong&gt;Vanilla CSS &gt; Component Framework &gt; Utility Framework&lt;/strong&gt; 로 일반적으로 이야기한다고 해요.&lt;/p&gt;
-&lt;/blockquote&gt;</content:encoded></item><item><title><![CDATA[백엔드 개발자의 작은 일탈]]></title><description><![CDATA[포스트 제목은 신입 백엔드 개발자 후배에게 Vanilla CSS의 학습을 강제적(?)으로 요구했었는데, 후배가 Vanilla CSS 학습을 백엔드 개발자의 작은 일탈이라고 말한 것에서 빌려온 거예요.  저는 티스토리(tistory…]]></description><link>https://whitepaek.com/posts/2024/01/backend-developer-departure/</link><guid isPermaLink="false">https://whitepaek.com/posts/2024/01/backend-developer-departure/</guid><pubDate>Thu, 04 Jan 2024 00:00:00 GMT</pubDate><content:encoded>&lt;blockquote&gt;
+&lt;/blockquote&gt;</content:encoded></item><item><title><![CDATA[백엔드 개발자의 작은 일탈]]></title><description><![CDATA[포스트 제목은 신입 백엔드 개발자 후배에게 Vanilla CSS의 학습을 강제적(?)으로 요구했었는데, 후배가 Vanilla CSS 학습을 백엔드 개발자의 작은 일탈이라고 말한 것에서 빌려온 거예요.  저는 티스토리(tistory…]]></description><link>https://whitepaek.com/posts/2024/01/backend-developer-departure/</link><guid isPermaLink="false">https://whitepaek.com/posts/2024/01/backend-developer-departure/</guid><content:encoded>&lt;blockquote&gt;
 &lt;p&gt;포스트 제목은 &lt;a href=&quot;https://github.com/eckrin/advanced-css&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;신입 백엔드 개발자 후배&lt;/a&gt;에게 Vanilla CSS의 학습을 강제적(?)으로 요구했었는데, 후배가 Vanilla CSS 학습을 &lt;strong&gt;백엔드 개발자의 작은 일탈&lt;/strong&gt;이라고 말한 것에서 빌려온 거예요.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;span
@@ -430,7 +933,7 @@ $ gatsby develop&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
-        alt=&quot;Blog Brand Image&quot;
+        alt=&quot;blog brand image&quot;
         title=&quot;&quot;
         src=&quot;/static/82008d31b5cf8a06f4993f88110b54d3/f058b/blog-brand-image.png&quot;
         srcset=&quot;/static/82008d31b5cf8a06f4993f88110b54d3/c26ae/blog-brand-image.png 158w,
