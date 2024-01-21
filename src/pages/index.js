@@ -43,7 +43,7 @@ const Index = () => {
                       </span>
                     </div>
                     <time dateTime="2024-01-01" className="flex-none py-0.5 text-xs leading-5 text-gray-500">
-                      2024.01.01 - ing
+                      2024.01.01 - Present
                     </time>
                   </div>
                 </div>
