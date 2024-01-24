@@ -12,21 +12,21 @@ $ cd ~/Downloads/my-blog-starter/
 ```
 ![gatsby-starter-blog 프로젝트 디렉터리 위치로 이동](./images/move-project-directory.png)
 
-**1. Tailwind CSS 의존성 설치**   
+## 1. Tailwind CSS 의존성 설치
 그리고 아래 명령어로 테일윈드 CSS 사용에 필요한 의존성을 설치해 주세요.
 ```bash
 $ npm install -D tailwindcss postcss autoprefixer gatsby-plugin-postcss
 ```
 ![[1] Tailwind CSS 의존성 설치](./images/dependencies-install.png)
 
-**2. Tailwind CSS 설정 파일 생성**   
+## 2. Tailwind CSS 설정 파일 생성
 의존성 설치가 완료되었으면, 테일윈드 설정 파일을 아래 명령어로 생성해 주세요.
 ```bash
 $ npx tailwindcss init -p
 ```
 ![[2] Tailwind CSS 설정 파일 생성](./images/init-tailwindcss.png)
 
-**3. Tailwind CSS 의존성, 설정 파일 세팅 결과 확인**   
+## 3. Tailwind CSS 의존성, 설정 파일 세팅 결과 확인
 테일윈드 CSS에 필요한 의존성 설치부터 설정 파일 생성까지 완료했다면,   
 **package.json** 파일에 **"autoprefixer, gatsby-plugin-postcss, postcss, tailwindcss"** 의존성이 추가되고   
 **postcss.config.js** 파일과 **tailwind.config.js** 파일이 생성된걸 볼 수 있어요.
@@ -35,14 +35,14 @@ $ npx tailwindcss init -p
 
 기본적인 세팅은 완료했고, 이제부터 테일윈드 CSS 사용을 위해 설정을 진행할게요.
 
-**4. PostCSS 플러그인 추가**   
+## 4. PostCSS 플러그인 추가
 **gatsby-config.js** 파일을 열고 plugins 하위에 **gatsby-plugin-postcss**을 추가해주세요.
 ```text
 `gatsby-plugin-postcss`,
 ```
 ![[4] gatsby-config.js 파일에 PostCSS 플러그인 추가](./images/added-dependency-postcss.png)
 
-**5. Tailwind CSS 사용을 위한 경로 설정**   
+## 5. Tailwind CSS 사용을 위한 경로 설정
 **tailwind.config.js** 파일을 열고 content 하위에 테일윈드 CSS를 적용할 페이지 경로를 추가해 주세요.
 개츠비 블로그의 기본 디렉터리 구조에서는 **"components, pages, templates"** 하위에 페이지를 구성하기 때문에 3개의 디렉터리 경로를 추가해 주세요.
 (디렉터리 구조를 변경 또는 추가 한다면 경로를 추가로 설정하면 돼요.)
@@ -53,7 +53,7 @@ $ npx tailwindcss init -p
 ```
 ![[5] Tailwind CSS를 적용할 디렉터리 경로 설정](./images/added-tailwindcss-direcotry-path.png)
 
-**6. global.css 파일 생성**   
+## 6. global.css 파일 생성
 **src** 디렉터리 하위에 **styles** 디렉터리를 생성하고, **global.css** 파일을 생성해 주세요.
 그리고 파일에 아래 내용을 작성해 주세요.
 ```css
@@ -63,14 +63,14 @@ $ npx tailwindcss init -p
 ```
 ![[6] global.css 생성](./images/added-global-css-.png)
 
-**7. global.css 파일 설정**   
+## 7. global.css 파일 설정
 **gatsby-browser.js** 파일에 global.css 파일을 import 해주세요.
 ```js
 import './src/styles/global.css'
 ```
 ![[7] global.css import 설정](./images/import-global-css.png)
 
-**8. Tailwind CSS 문법 적용**   
+## 8. Tailwind CSS 문법 적용
 테일윈드 CSS 사용을 위한 준비 과정이 전부 끝났어요.   
 테일윈드 CSS가 잘 적용되는지 확인을 위해 테스트용 페이지를 생성해서 적용해 보도록 할게요.
 저는 pages 디렉터리 하위에 **tailwindcss 디렉터리와 index.js 파일을 생성**하도록 할게요.

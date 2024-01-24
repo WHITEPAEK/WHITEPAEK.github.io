@@ -1,5 +1,5 @@
 ---
-title: 개츠비(Gatsby) 블로그 만들기 3 - Pagination 적용
+title: 개츠비(Gatsby) 블로그 만들기 3 - 페이징(Pagination) 적용
 createdAt: 2024-01-22
 editedAt: 2024-01-22
 ---
@@ -14,12 +14,12 @@ editedAt: 2024-01-22
 
 ![Pagination 적용된 결과](./images/pagination-preview.png)
 
-**1. blog-list.js 파일 생성**   
+## 1. blog-list.js 파일 생성
 **./src/pages/** 디렉터리에 존재하는 **index.js** 파일을 **./src/templates/** 디렉터리 하위로 이동 후, **blog-list.js** 파일명으로 변경해 주세요.
 
 ![[1] "./src/pages/index.js -> ./src/templates/blog-list.js" 파일 변경](./images/move-index-file.png)
 
-**2. gatsby-node.js 파일에서 GraphQL Query 수정 및 페이지네이션 포스트 목록 코드 추가**   
+## 2. gatsby-node.js 파일에서 GraphQL Query 수정 및 페이지네이션 포스트 목록 코드 추가
 gatsby-node.js 파일에서 **[2-1] 이미지**의 1번 영역(22 ~ 30번 라인)의 GraphQL 쿼리를 2번 영역의 쿼리로 수정해 주세요.
 ```js
 // [2-1] 이미지의 2번 영역 코드
@@ -78,7 +78,7 @@ Array.from({ length: numPages }).forEach((_, i) => {
 ```
 ![[2-2] Pagination 코드 추가](./images/added-pagination-code.png)
 
-**3. blog-list.js 파일에서 GraphQL Query 수정 및 Pagination 적용**   
+## 3. blog-list.js 파일에서 GraphQL Query 수정 및 Pagination 적용
 blog-list.js 파일에서 73 ~ 94번 라인에 GraphQL을 `limit`, `skip` 추가된 쿼리로 수정해 주세요.
 ```js
 export const pageQuery = graphql`

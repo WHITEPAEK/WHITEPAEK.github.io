@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react"
 
-export const Comments = () => {
+const Comments = () => {
   const commentRef = useRef(null)
 
   useEffect(() => {
@@ -19,6 +19,7 @@ export const Comments = () => {
       "data-input-position": "bottom",
       "data-theme": "preferred_color_scheme",
       "data-lang": "ko",
+      "data-loading": "lazy",
       "crossorigin": "anonymous",
       "async": true
     }

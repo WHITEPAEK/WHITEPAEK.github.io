@@ -15,7 +15,7 @@ editedAt: 2024-01-15
 Node.js를 설치하기 전에 macOS에서 필수라고 볼 수 있는 패키지 관리자 [Homebrew](https://brew.sh/ko/)가 설치되어 있어야 해요.   
 (설치가 안 되어 있다면 1번부터 따라 하고, 되어 있다면 2번부터 따라 하면 돼요.)
 
-**1. Homebrew 설치**   
+## 1. Homebrew 설치
 터미널(terminal)을 실행하여 아래 명령어를 입력해 주세요.
 
 ```bash
@@ -24,7 +24,7 @@ $ xcode-select --install
 ```
 ![[1] Homebrew 설치](./images/homebrew-install.png)
 
-**2. Node.js 설치**   
+## 2. Node.js 설치
 Homebrew 설치가 완료되었다면, 터미널에서 아래 명령어를 참고하여 Node.js를 설치해 주세요.
 
 ```bash
@@ -32,7 +32,7 @@ $ brew install node
 ```
 ![[2] Node.js 설치](./images/node-install.png)
 
-**3. gatsby-cli 설치**   
+## 3. gatsby-cli 설치
 Node.js 설치가 완료되었으면, 터미널에서 아래 명령어를 참고하여 gatsby-cli를 설치해 주세요.
 
 ```bash
@@ -40,7 +40,7 @@ $ npm install -g gatsby-cli
 ```
 ![[3] gatsby-cli 설치](./images/gatsby-cli-install.png)
 
-**4. gatsby-starter-blog 설치**   
+## 4. gatsby-starter-blog 설치
 gatsby-cli까지 설치가 완료되었으면, 아래 명령어를 참고하여 gatsby-starter-blog 프로젝트를 설치할게요.
 `cd` 명령어로 본인이 설치하고 싶은 디렉터리 위치로 이동하고, 아래 명령어에서 **my-blog-starter** 위치에 본인이 하고 싶은 프로젝트 이름을 작성해 주세요.
 저는 설명을 위해서 공식 문서 예시를 그대로 진행할게요.
@@ -51,7 +51,7 @@ $ gatsby new my-blog-starter https://github.com/gatsbyjs/gatsby-starter-blog
 ```
 ![[4] gatsby-starter-blog 설치](./images/gatsby-starter-blog-install.png)
 
-**5. gatsby-starter-blog 실행**   
+## 5. gatsby-starter-blog 실행
 gatsby-starter-blog 설치가 완료되었으면 실행해 보도록 할게요.
 Visual Studio Code 또는 웹스톰(webstorm) 도구(tool)로 설치한 gatsby-starter-blog 프로젝트를 열어주세요.
 저는 웹스톰으로 할게요. 웹스톰을 실행하고 우측 상단에 Open 버튼을 클릭해서 프로젝트를 열어주세요.
@@ -70,7 +70,7 @@ $ gatsby develop
 ```
 ![[5-2] 터미널에서 gatsby-starter-blog 실행](./images/gatsby-develop-command.png)
 
-**6. 브라우저에서 블로그 접속**   
+## 6. 브라우저에서 블로그 접속
 크롬(chrome), 사파리(safari) 등 브라우저를 실행하고, 주소(url) 창에 `http://localhost:8000`를 입력해서 접속해 주세요.
 
 ![[6] 실행한 gatsby-starter-blog 프로젝트를 브라우저에서 접속](./images/gatsby-blog-url.png)
