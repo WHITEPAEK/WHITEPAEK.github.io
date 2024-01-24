@@ -1,5 +1,5 @@
 ---
-title: 개츠비(Gatsby) 블로그 만들기 4 - 댓글(giscus) 기능 적용
+title: 개츠비(Gatsby) 블로그 만들기 4 - 댓글(giscus) 적용
 createdAt: 2024-01-25
 editedAt: 2024-01-25
 ---
