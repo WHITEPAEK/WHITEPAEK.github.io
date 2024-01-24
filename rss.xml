@@ -1,4 +1,592 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[WHITEPAEK Blog RSS Feed]]></title><description><![CDATA[시스템 설계와 구현 과정에서 경험한 내용을 공유합니다. 그리고 비즈니스와 일상에 대해 이야기를 풀어내는 공간입니다.]]></description><link>https://whitepaek.com</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 21 Jan 2024 20:18:38 GMT</lastBuildDate><item><title><![CDATA[개츠비(Gatsby) 블로그 만들기 3 - Pagination 적용]]></title><description><![CDATA[이전 포스트에서 세팅을 완료한 개츠비(Gatsby) 블로그에 페이지네이션(pagination…]]></description><link>https://whitepaek.com/posts/2024/01/gatsby-blog-start-3/</link><guid isPermaLink="false">https://whitepaek.com/posts/2024/01/gatsby-blog-start-3/</guid><pubDate>Mon, 22 Jan 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;이전 포스트에서 세팅을 완료한 &lt;a href=&quot;https://whitepaek.com/posts/2024/01/gatsby-blog-start-1/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;개츠비(Gatsby) 블로그&lt;/a&gt;에 페이지네이션(pagination)을 알아보고, 적용해 보도록 할게요.&lt;/p&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[WHITEPAEK Blog RSS Feed]]></title><description><![CDATA[시스템 설계와 구현 과정에서 경험한 내용을 공유합니다. 그리고 비즈니스와 일상에 대해 이야기를 풀어내는 공간입니다.]]></description><link>https://whitepaek.com</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 24 Jan 2024 17:23:57 GMT</lastBuildDate><item><title><![CDATA[개츠비(Gatsby) 블로그 만들기 4 - 댓글(giscus) 기능 적용]]></title><description><![CDATA[이번 포스트에서는 개츠비 블로그에 댓글 기능을 적용해 보도록 할게요.
+댓글 기능으로 대표적인 오픈소스로 utterances와 giscus가 있어요.
+저는 GitHub Discussions로 작동하는 댓글 시스템 giscus…]]></description><link>https://whitepaek.com/posts/2024/01/gatsby-blog-start-4/</link><guid isPermaLink="false">https://whitepaek.com/posts/2024/01/gatsby-blog-start-4/</guid><pubDate>Thu, 25 Jan 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;이번 포스트에서는 개츠비 블로그에 댓글 기능을 적용해 보도록 할게요.
+댓글 기능으로 대표적인 오픈소스로 utterances와 giscus가 있어요.
+저는 GitHub Discussions로 작동하는 댓글 시스템 giscus 오픈소스 앱을 적용하여 방문자가 포스트에 댓글과 반응을 남길 수 있도록 할게요.
+이유는 utterances 보다 giscus가 좀 더 풍부한 옵션을 제공하고 있으며, 최신 버전까지 관리가 잘 되고 있어 많은 사람에게 선택받고 있어요.&lt;/p&gt;
+&lt;p&gt;몇 가지 설정을 진행하면 giscus 기능을 적용할 수 있어요. 순서대로 잘 따라해 주세요!&lt;/p&gt;
+&lt;h2&gt;1. GitHub Repository 생성&lt;/h2&gt;
+&lt;p&gt;giscus는 GitHub Discussions를 이용하기 때문에 레포지토리를 설정해 주어야 해요.
+저는 지금까지 만든 개츠비 블로그를 &lt;a href=&quot;https://docs.github.com/en/pages/quickstart&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;GitHub Pages&lt;/a&gt;를 이용해서 배포할 거라,
+공식 문서 가이드에 따라 레포지토리를 생성할게요. &lt;a href=&quot;https://github.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;깃허브&lt;/a&gt;의 내 레포지토리로 접속해서 &lt;strong&gt;New&lt;/strong&gt; 버튼을 클릭해 주세요.
+&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 58.22784810126582%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAABYlAAAWJQFJUiTwAAABxklEQVR42qWSzWobMRDH99wH6Es4b9DSPJqvgdY9FHpMejIYH9pTCBTaS5uDTalDAmkS4o+23q6dguNdr6SRRtJktB+hDqYYsvBDzKz0139mFI2Hw73pr/j1PE5eJfHf1tV13BpNktb1aDOjybw1CmtF2B/y4/Hs5fHxydNIgtJgLQFYrwFJgyHvPG37WbTeWUdaa9/v93eiye8/4udwaG+TxKRphulK4DJboVCAShuUoO8RShf/c6FQgUGlDBrtTC4BbxaZOfr0pREBaE2gSC4WfpULWglF2lhSwGltyLJb5xlXojmXS8UVIcU3U/p6+tkTF2QQ3WAwaES8QQfrk1nq9w9/0MHhOU3nWVGOZyFEpDzPSSnFAAkhOBahVNJoKJVp0R9rbSVoSsFv57F/8/6M3n44o++Xs1KQqQWllIVYiWS3rm7juqCpBLkv/t3RBbU/XlKWy8rhVnPZLMi99EGIG1yUunaC44f8TxBCQkjllsulBwDvyk3bEmr3WA+ldljfhPwmQ9/KyTq+2ZWrc/cxu/nX5bpDbrLkRxkepmUcT7MCKtRGuJKa4hwPDXu9XiPqdDrP2u32Lq8vHkO3233ebDaf3AF2rmeiHp7AzQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[1-1] GitHub Repository&quot;
+        title=&quot;&quot;
+        src=&quot;/static/2780e1042ed7a0a74e2f0c3d8072cc01/f058b/repo-new.png&quot;
+        srcset=&quot;/static/2780e1042ed7a0a74e2f0c3d8072cc01/c26ae/repo-new.png 158w,
+/static/2780e1042ed7a0a74e2f0c3d8072cc01/6bdcf/repo-new.png 315w,
+/static/2780e1042ed7a0a74e2f0c3d8072cc01/f058b/repo-new.png 630w,
+/static/2780e1042ed7a0a74e2f0c3d8072cc01/40601/repo-new.png 945w,
+/static/2780e1042ed7a0a74e2f0c3d8072cc01/78612/repo-new.png 1260w,
+/static/2780e1042ed7a0a74e2f0c3d8072cc01/db806/repo-new.png 3424w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[1-1] GitHub Repository&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;레포지토리 이름은 [1-2]번 이미지처럼 본인의 username을 넣은 &lt;strong&gt;${username}.github.io&lt;/strong&gt;로 작성해 주세요.
+이유는 개츠비 블로그 레포지토리로 사용할 겸 해당 레포지토리의 Discussions를 이용하기 위함이에요.
+그리고 Public을 선택해서 레포지토리를 생성해 주세요.
+&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/1d2c3ce3a91ca2ce976430ec94681106/db806/create-new-repo.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 70.88607594936708%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAABYlAAAWJQFJUiTwAAAB4UlEQVR42p1S24oTQRDNl+h/CP7EBvRRRf0tMW+CDwshATEkZGB/YB8U1oVsmMvOJDNJb2Yy0/cqq+eyxmhw14ZDV1dXnzrVVb1vl5fPoyD4lETJR5ayQRJvBkt/fRJ+i+58s0wGi2XyIQw3n6+vw2e9KIjeI619KaySGo2xaAlgAR+yLMUppbWzwzB80/N9/21RVcjyQgqptNRau72suOac64p2bQx5CcbWdxUXmrYDKO4Iv18tXvWiqFHokgE0qpRSGES3uAhWmKSb+ixbONtYcyy0VhjH8esjwvaWKmC7AndbhqsoxGrHyKnQ3TdJ4aGETaAxBrMNQ5alGIdL3K5uUewLpHKxlBVKLR9JSAp3jKHkFQIpM1KiEgK1FHUyYy0CPIaQHmdBgGW6Rnm3RcHoH6lsm9/9rdx/E1pSkcQxZlnTEKfYjZIxgAD/QejKWq1TakzuZqxGKS2WAvDEeP4iTJLknTsQGX1NHQ7UZSBCoFmsbaE07IUFLm3X4mOoPwidsC7AEed5AWVZQcV5jT1XwGlyKCsoo08THpZ8WEM3cx0oSe2/Sm/w648L3MuyjYPfSx6NRk+n0+mL+Xx+NpvN+ofwvNb2vHvf+Mu4fz4+708mk3sfvT/zPO/lcDh88hP+IQ5zHfq7cgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[1-2] 레포지토리 생성&quot;
+        title=&quot;&quot;
+        src=&quot;/static/1d2c3ce3a91ca2ce976430ec94681106/f058b/create-new-repo.png&quot;
+        srcset=&quot;/static/1d2c3ce3a91ca2ce976430ec94681106/c26ae/create-new-repo.png 158w,
+/static/1d2c3ce3a91ca2ce976430ec94681106/6bdcf/create-new-repo.png 315w,
+/static/1d2c3ce3a91ca2ce976430ec94681106/f058b/create-new-repo.png 630w,
+/static/1d2c3ce3a91ca2ce976430ec94681106/40601/create-new-repo.png 945w,
+/static/1d2c3ce3a91ca2ce976430ec94681106/78612/create-new-repo.png 1260w,
+/static/1d2c3ce3a91ca2ce976430ec94681106/db806/create-new-repo.png 3424w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[1-2] 레포지토리 생성&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;레포지토리를 생성했다면 &lt;strong&gt;Settings &gt; General&lt;/strong&gt;로 이동하여 &lt;strong&gt;Features 항목에 Discussions를 클릭&lt;/strong&gt;해 주세요.
+&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/df9463ec82b9b3e0a86e0aa4c6f3163b/db806/checked-discussions.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 110.12658227848102%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAWCAYAAADAQbwGAAAACXBIWXMAABYlAAAWJQFJUiTwAAADGElEQVR42pVUy24bNxTVdzT/UfQPGiD9hwZo+0WJV1kE6MILA90JsOFuAmSTwEECJ7YTI35II41GmjeHMxxyOOTpJTVynVSJXQJHdzS8c+65D3J09ub4p9l09iycLp6G03BnNl3ufL4IdyaTiLC8E1dX0c7FxfxJEMTPz8+DH0fhLPwDtBqhjGgkZNtBSQ3TW9xnGWPRdVq75yiKHo8mQfBbkpdYJZlarRKd5YVmjOuKN7qqhWberp+rqtbZLNAl+QiptRBKN62DbA0Rnpxd/DoKw7VCxWtTLUKoPINKYvA0AeM1+t4QevSGLAkxNYclaykBSz8Oxph/FW4I6SMTxwmapvGpOBsuIqhOE6gMSvn3rhCGSCiOJx3WfwkpiuF1Da1779FKhesgRJqmKIoCaZZTEAEpJWqqc1FTIG2/TUgCzSqOidDveWXLrEJSNKhcsyiAgwvEWw0uOnTafI+wN0XJnNK1wlYiThJUVEeplFe2SXvL2q6wZAy8bjypoLSWaeUJOXeWox7qa2/huzVM0szXyaesXHoS91zbCVlV+Tr5LrcKcZpDCEFDL/zYbBR5dcPYfJNwPQ32xknTSSkZR0VlcNCdgjU9wbjonvFOwts5KOpglHOsmEDKW5SyR9n2YNIg5g1mZQHR6fsT0hHFaVTg9WWEo+sVPqYCn7IWV8zg5XyKP9+/xKxiw3k2dxO6I5eU1F2qZdP14LKj+VOkqr/psPk/KTuFH8ICR5MYH6ISp3FDKlt8KiT++niE58cvELDi/gpdU0Kq4SQusCgFklqCKUOwWNFoLeiScGrvVjhk0VQN8qtLSFZC+cbS2FjjO725FbZ2eblc/j5s9rcPge6NPQ1z+3aysqdRaT8XrT3PhL1mxr6YXtq9k1c2rJj3pWDdNoVfEcJOUm6v08pOMm4XXBGBtLEwRJ7bd8vAMiU3/l8QeoV0yxh/kRIMpdVSVzO6sgSdX9kKbzeQokVHHdc0h85fD1fUfD5/PNrb23uwv7//6PDw8OeDg4OHG/w92PF4wMEafn88pnfjm//0vfv2l93d3R/+Ac6JZgQJYXQkAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[1-3] Discussions 설정&quot;
+        title=&quot;&quot;
+        src=&quot;/static/df9463ec82b9b3e0a86e0aa4c6f3163b/f058b/checked-discussions.png&quot;
+        srcset=&quot;/static/df9463ec82b9b3e0a86e0aa4c6f3163b/c26ae/checked-discussions.png 158w,
+/static/df9463ec82b9b3e0a86e0aa4c6f3163b/6bdcf/checked-discussions.png 315w,
+/static/df9463ec82b9b3e0a86e0aa4c6f3163b/f058b/checked-discussions.png 630w,
+/static/df9463ec82b9b3e0a86e0aa4c6f3163b/40601/checked-discussions.png 945w,
+/static/df9463ec82b9b3e0a86e0aa4c6f3163b/78612/checked-discussions.png 1260w,
+/static/df9463ec82b9b3e0a86e0aa4c6f3163b/db806/checked-discussions.png 3424w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[1-3] Discussions 설정&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;그리고 상단에 &lt;strong&gt;Discussions&lt;/strong&gt;를 클릭 후, Categories 영역에 존재하는 &lt;strong&gt;연필 아이콘을 클릭&lt;/strong&gt;해 주세요.
+&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/258fe6c9b882a70a08666e76bfb9c9d7/db806/discussions-tab.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 60.75949367088608%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAABYlAAAWJQFJUiTwAAABwElEQVR42pVS247TMBDNn8B/IPEVICFeAAH/tSJvqKLvSFWrilceVkL7sArqNsTrXDbd5mI7ztgZxm6i7qogdS2deGzPHJ/jSXD58/IlS5KvLOZfWMLCOOZhFCXhZpuF221OyEaMcZwfQevNhoebG36RJMW3KGIvAvaHfUYardRWtgp1p1FrgwYMnjMGOyD0BlzMOX8f/L6JPxb3e8zLe50VJZRpChXnUDUC6lYSxAhJexL2dQuNUKA0gKBPI5Wb1UCEv66idwFjB4XWGEsq0XYKTVsjdB12BCClAIBKdVjVDbatQOXOlMYo3+L36x9YqeaocCLswdhbnuGeisxANkSLUkq01h6s0Z7HFJNVYw1q07ucU0LatLtdSUrUsZjgCAeCU9k0Damsse/749ngrsB/EwpSNSb4Qa9ADeqx09rbLe5KzIs7zHYtCtUTsaYc8z9CY8uyQDHadGSPuvngInKLD5aPCdM0/eTVEGNdNYMQgiAHUuWf60z0J4R2sMYTdU8iOiWcLDtOnE7p0V0TDtaNU+9n8LHxv5Kx9sRykiQfgvl8/ny5XL5Zr9evVqvVa4fFYnEWpnyqd7VvZ7PZs7+hvXPWzRrVlgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[1-4] Discussions 카테고리 생성&quot;
+        title=&quot;&quot;
+        src=&quot;/static/258fe6c9b882a70a08666e76bfb9c9d7/f058b/discussions-tab.png&quot;
+        srcset=&quot;/static/258fe6c9b882a70a08666e76bfb9c9d7/c26ae/discussions-tab.png 158w,
+/static/258fe6c9b882a70a08666e76bfb9c9d7/6bdcf/discussions-tab.png 315w,
+/static/258fe6c9b882a70a08666e76bfb9c9d7/f058b/discussions-tab.png 630w,
+/static/258fe6c9b882a70a08666e76bfb9c9d7/40601/discussions-tab.png 945w,
+/static/258fe6c9b882a70a08666e76bfb9c9d7/78612/discussions-tab.png 1260w,
+/static/258fe6c9b882a70a08666e76bfb9c9d7/db806/discussions-tab.png 3424w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[1-4] Discussions 카테고리 생성&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;New Category&lt;/strong&gt; 버튼을 클릭해 주세요.
+&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/1d9054580f6e34ec4f5ad5c2b61b9364/db806/new-category.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 60.75949367088608%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAABYlAAAWJQFJUiTwAAABv0lEQVR42oVSy67TMBDNn8B/IPEVVEJsAAH/hegOVXSJVAm1UtcsroRYFcoNzk2dpLR52I49todxkt62UIqloxnbx2fO2I5uPt88Thh7n7L0XcKScRzz8ep70mG9Tse3txmBH2OcnWG95oH3lrH8w2qVPIqSn8kbpCGkdqJRqKRG3QIabRE9/nd45xGMhZCnafoi+vYjfpXv9phtdzorfsG+rKCqBTRSQdXIEwgo6wZ2Zd3NlQaQrQZJPKm0ciT45evqeZQkvUNrrSu2WyzyAjPOMctzNAAI1naR9js439sWqkWx32Od3iEodXR4EKTheFZgzO6Q51skF3QNbX+QQGZQG0uADq02qFqD5I4KucuCQgjkWY5lVaMnJ35wE8Jhfg/s14J75/4hSPeBZVmhpupa60A8Ef4DfRWEa4KNkJ2gMR1pcOevwhhzLrjZbF4PB20thK+a2mujPRE9ES9YO4JKeuok8MxfguGhhWj8Jue+kYKIxtOrXhUka1TchNxcbJlK0SeFoeXjg9x/4iH3p3mfdC0zxl5G0+n04Xw+f0p4slwsRsvlcvRxNhvNzvDpbH7YXxA/IJyl+GwymTz4DUupc8c15BxdAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[1-5] 신규 카테고리 생성하기&quot;
+        title=&quot;&quot;
+        src=&quot;/static/1d9054580f6e34ec4f5ad5c2b61b9364/f058b/new-category.png&quot;
+        srcset=&quot;/static/1d9054580f6e34ec4f5ad5c2b61b9364/c26ae/new-category.png 158w,
+/static/1d9054580f6e34ec4f5ad5c2b61b9364/6bdcf/new-category.png 315w,
+/static/1d9054580f6e34ec4f5ad5c2b61b9364/f058b/new-category.png 630w,
+/static/1d9054580f6e34ec4f5ad5c2b61b9364/40601/new-category.png 945w,
+/static/1d9054580f6e34ec4f5ad5c2b61b9364/78612/new-category.png 1260w,
+/static/1d9054580f6e34ec4f5ad5c2b61b9364/db806/new-category.png 3424w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[1-5] 신규 카테고리 생성하기&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;카테고리 이름은 &lt;strong&gt;Comments&lt;/strong&gt;로 작성하도록 하고, 포맷은 &lt;strong&gt;Announcement&lt;/strong&gt;를 선택해서 카테고리를 생성해 주세요.
+&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/13b477a2eb554aed836c20663efcf9b2/db806/create-category.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 63.92405063291139%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAABYlAAAWJQFJUiTwAAABzklEQVR42pWSWW7bMBCGdZf2IC3QPjcXCxwYAYqewIWXg/SpTwEaBxZiy1ZkbZQicV8mQ1pJ3CxwS+DDcMjhT85woj9XV2fJZvN9t9mdp5t0FMfp6PpmG7hZpaNVfPeK+PZv/3qZnK/X+x9xnH2LSEUuAQelynAmQHAJUmjQ0oAzDk4N5xwoqbWfE9KOo3WyHZekhX1ZizTLdVU3umk73TOhO8p129EnmnuqCe75OeXyGSa4F1zdphcRIYcXGj+sBWsM8L6H7C6DIi/A4OVaIcEq9A3YEIdYF8CDzy9s2/ZyeDrmeEhR3reQLpfAij24rn1NQ8Bxdpx5EEStF4LDUFJBts+Bc47rNtTpYO2R7/5d0AfXpIG8KIELiemagHq0WIL/E8QaVWWFoCBjTzBKgSNGyhBzWnC41WJ96iQBstsCxTqyIgdRlSDrChSpQZPq/Ro+/vKw6BWdMdp1XecoZWh7x4VwQkinlMK90JwvUYdfJm+n7OtUVARQFBjjvi2GFrEBhV1i3Tsp53k+9g7+qELsMUIIK6UMVgge6Dtqf61+26TcWS2VZZz5WOk1iqK4iKbT6cf5fP5lNpt9Qvv5FD8Hjtf82cVi8XUymXx4ABXevbMBJTtkAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[1-6] 생성할 카테고리 정보 입력&quot;
+        title=&quot;&quot;
+        src=&quot;/static/13b477a2eb554aed836c20663efcf9b2/f058b/create-category.png&quot;
+        srcset=&quot;/static/13b477a2eb554aed836c20663efcf9b2/c26ae/create-category.png 158w,
+/static/13b477a2eb554aed836c20663efcf9b2/6bdcf/create-category.png 315w,
+/static/13b477a2eb554aed836c20663efcf9b2/f058b/create-category.png 630w,
+/static/13b477a2eb554aed836c20663efcf9b2/40601/create-category.png 945w,
+/static/13b477a2eb554aed836c20663efcf9b2/78612/create-category.png 1260w,
+/static/13b477a2eb554aed836c20663efcf9b2/db806/create-category.png 3424w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[1-6] 생성할 카테고리 정보 입력&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Comments&lt;/strong&gt;라는 카테고리가 생성된 걸 확인할 수 있어요.
+&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/d2b9f682153360606c333ca4d36e49c7/db806/added-category.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 71.51898734177216%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAABYlAAAWJQFJUiTwAAAB9klEQVR42oWT24rbMBCG8yzteyz0OVroLu2+W2lCLvaiV4GQXBdy0UILZXNw7JV8iBPbsmRpLE9HjpNtwE0EH6PD6NfMoBn8Wvx49xIET9znX5nPhr7Hh8sVG66IzYYPPT8eel50tITfcVpv6Gy95l+CIPm2XHp3g2AbPCKNUmmrhEKtNBoNCKZGbPDmaGxDvgBu7vv+w+D3s/fJj/e4DXfa4wlE+xx2mYC0ULDLyw4JCRHnAqKDgF0hIVcAmTKQSYdWkh7//nP5cbD4s35MlcVtnNkVS3G7V+gRm0OFjLy4wtY6XkpL6wbDCjEQdYtfAJ0hlBThYsXuB0FwTNna2oY8RMY48jDCKI5Ra02YFjpu07OWbGNRSYVSShSixLq2bcqM/SPoNA9FgT4LMdlnCHS5gvqMBou6fsXQucPN6ZEeQdoVSYwpY6iyA2IlL1GXNB2afK0x/YJlmmIWR2iKHHWeo5Xl+eL/APK1YPpTlkrhgYQ0/YLa1QrxJobK0Z8yCYqyxKIQ6DJwxW//WdNcgeppzDVBgbssRVkprCqNQJFeFbQ9gpzzz50gVJWycZrYUkoLULsQb0KPOqt7Izy10/GvNV3KXYt183P9mou+fG298Xj8djab3RPv5/P5B8dkMmmZTqfEyU6P+51165N/d/dhNBq9+QstJgyAuFBFpwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[1-7] 신규 카테고리 생성 완료&quot;
+        title=&quot;&quot;
+        src=&quot;/static/d2b9f682153360606c333ca4d36e49c7/f058b/added-category.png&quot;
+        srcset=&quot;/static/d2b9f682153360606c333ca4d36e49c7/c26ae/added-category.png 158w,
+/static/d2b9f682153360606c333ca4d36e49c7/6bdcf/added-category.png 315w,
+/static/d2b9f682153360606c333ca4d36e49c7/f058b/added-category.png 630w,
+/static/d2b9f682153360606c333ca4d36e49c7/40601/added-category.png 945w,
+/static/d2b9f682153360606c333ca4d36e49c7/78612/added-category.png 1260w,
+/static/d2b9f682153360606c333ca4d36e49c7/db806/added-category.png 3424w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[1-7] 신규 카테고리 생성 완료&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;h2&gt;2. giscus 앱 설치 및 설정&lt;/h2&gt;
+&lt;p&gt;Discussions 설정과 카테고리 생성까지 완료했으면, &lt;a href=&quot;https://github.com/apps/giscus&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;giscus 앱 설치 페이지&lt;/a&gt;에서 &lt;strong&gt;Install 버튼을 클릭&lt;/strong&gt;해 주세요.
+&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 58.22784810126582%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAABYlAAAWJQFJUiTwAAABjklEQVR42qWS20rDQBCGc+0D+BL6Boo+Wm8FjW9RKH0GeyFioQGt4EXBxtQDRUuqTUx3szu7s+NkayutR3TDx2z28OefmQSD/vVer5ccXl7GB1dXd+H93TBMR2n4MEzDOHkIk1VuRkvvcTz05wa3j/unpxfrgSxLXRpL00I5XQKhdeTQ0W+HNejQImmtXRRFm8EoHYsXIS0YBA1gKsBYjwazhOE1qh5kiAwfNUoBlEqbp6yAVutkIwAA/fYxZxEpm5Y0yTIqlVq4YM8+ZuULHfXbdJxE1IrblKtitl05tRa73e6yIJsnpTQJMeUUFCFaBhfCmSzouB9ROzmn9uCMCi2+F+S0aZxJGueS0omgvBDEeZJzzgNg2TmulvFrwWqn6scct9IbLhk9PWc0yXPiZv4sOFN1Pk0fV+bGWi9Uucb3P+GD4Lz66NMG47iOjjs6A4Cj8etVnM3B8X33Jubv8frnDv8wlh0KIST/lNxdZRn8A5bvo5TSdDqdjaDRaGzV6/Vdjjv/odlsbtdqtbVXuG5tHrojphwAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[2-1] giscus 앱 설치&quot;
+        title=&quot;&quot;
+        src=&quot;/static/c91bc01ff00f086e4fb0d8fb5d4c8c2d/f058b/install-giscus-app.png&quot;
+        srcset=&quot;/static/c91bc01ff00f086e4fb0d8fb5d4c8c2d/c26ae/install-giscus-app.png 158w,
+/static/c91bc01ff00f086e4fb0d8fb5d4c8c2d/6bdcf/install-giscus-app.png 315w,
+/static/c91bc01ff00f086e4fb0d8fb5d4c8c2d/f058b/install-giscus-app.png 630w,
+/static/c91bc01ff00f086e4fb0d8fb5d4c8c2d/40601/install-giscus-app.png 945w,
+/static/c91bc01ff00f086e4fb0d8fb5d4c8c2d/78612/install-giscus-app.png 1260w,
+/static/c91bc01ff00f086e4fb0d8fb5d4c8c2d/db806/install-giscus-app.png 3424w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[2-1] giscus 앱 설치&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Only select repositories&lt;/strong&gt;를 선택하고, Discussions를 설정했던 레포지토리를 선택해 주세요.
+&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/f0c7aff6aa6c63538ef2d36dcca10cdd/db806/select-repo.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 73.41772151898735%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAABYlAAAWJQFJUiTwAAAB90lEQVR42p2Ty27TUBCG/TA8CJFg3SerHJUFYhshNSpBYtElC56BEIk2dZSkxknt+O5zvwxzbCckCBU1ln57bP/z6feZY+/nbHYRzBfvp9OHy+8/Aj8I1n64DP0kSf35PPTnQeQHi82JFsvT+7v7x8vV6unDYrG98NIkfQd4NERqRgVwJkByCUYZMNqANRaeO6y1IIVSri7z8spbh5thRRkQJjllQpFermZCKsqx5lIx3tU1oaqoyMHXUO7EHDBYRkMv2iZtQsK4xkbYizhhWleXDYOspoD93Xvxx0c7X5swTtIrBMY9UJwAO2N3zaoG0pJirQ7P/gXcxsnzQOYkBCRpDnFOwC0VE2cCnacoS/yMHTDGQErZDkFr+3KgWz9cfyB1DTVCleA4+U5aqTMTumFgumi1gjyOQWNKi2BLCdB+WC9LyDg0RQm/4h0UVQ3GdvvR4g6hlJ+REFOIqoQmy4AWORhGW5ghzX8S4qkHuo1q90KjJVVjd3Fi67qyxk3DGGuMtse+Xu3EHMtDapsQeZpLDU4MpbB/Gt3BOt20k9VG978awN538Pe/Xrux12E0lNiQFZVEmb3ysjazxwezfNqYumGmrJqDjn29hAM6ljcajV6Nx5M319efXuN1cKyvX74Nbie3g4/jMWpy0N8+13tz8/mtY/0GuRFQ8QGQg6MAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[2-2] 읽기 권한 레포지토리 선택&quot;
+        title=&quot;&quot;
+        src=&quot;/static/f0c7aff6aa6c63538ef2d36dcca10cdd/f058b/select-repo.png&quot;
+        srcset=&quot;/static/f0c7aff6aa6c63538ef2d36dcca10cdd/c26ae/select-repo.png 158w,
+/static/f0c7aff6aa6c63538ef2d36dcca10cdd/6bdcf/select-repo.png 315w,
+/static/f0c7aff6aa6c63538ef2d36dcca10cdd/f058b/select-repo.png 630w,
+/static/f0c7aff6aa6c63538ef2d36dcca10cdd/40601/select-repo.png 945w,
+/static/f0c7aff6aa6c63538ef2d36dcca10cdd/78612/select-repo.png 1260w,
+/static/f0c7aff6aa6c63538ef2d36dcca10cdd/db806/select-repo.png 3424w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[2-2] 읽기 권한 레포지토리 선택&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;giscus 앱 설치가 완료됐으면, &lt;a href=&quot;https://giscus.app/ko&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;giscus 설정 페이지&lt;/a&gt;로 접속해 주세요.
+&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 110.12658227848102%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAWCAYAAADAQbwGAAAACXBIWXMAABYlAAAWJQFJUiTwAAACnElEQVR42p1TXW7TQBDOORDnQNwAHnoHKkHv0ldUwgMI8dYrpO9cgEoVVcG4UWLXruMkXq9/1vvjYWbXcdrGoVUtfZr12PvtfDPfjn6dn7/2/euvl5fXny4uvLHnzcfzaTiOo2T8B9eeH439adTFeDy1SOyaQHnPC05ms+T71dXs1Sich0eAT1VL09QNSIQSEsC08JSnxf+0VIrWURQdjn7+nr33FzkEWdXc5ELd5I1KKq3iUqnbUjtUul/T94CJ7TdCoeqVBvhx4b8bXU3DI6KPcmH+RmvwoxRiVkGOSY6gyLqY4yauXaT3tJJwywWshbYVegFWGIZOshDSrNcZNKJGGQaEVFAUBRitO2kGTMGhrSt6czn8ppUEY8xWck/YNCZJFvQR3LsExnKHnEPGOJQZh6asLV/b9ryAO3YJsa/GVtQRFkUJy9UKNFZBuU3+3kCQtbXMA4RCCJMuV1BWlZVXo/R0uQTOOUgp+81DGCRsUHKaphTt6RUSZ1lm41BVjxJShbfYQ+UsZWOWMXuA1mavbNvDoaGgLJMxJEB5rqcGkiS1squ6xgO0RVfR44QozUqGboPGuEhXkKZuMP979lbIccqbCtpu0ixnZCmbH5Ts8nsIeWHlEdtSZMBEaQs2rdlYDtoH2OvDshImjGLgWBXVIVgGZRyDkaqvZAh0W2CoQrINDUV3skq8HdE8gBV5E1vRCGH9eRd0LWt0gpZylxBtYtboO7SPJWxqAQx/rtGHBEGGJ0vRgRtChMS8UWqX0LXCGbfBe0yH0gb6l6ZMlqEbQ+8u3pv8ljCO4w8dkd70Gonuoc8/iHcgdwjJegNDfCq2hL7v9z0kac+B6noYBMHh6Pj448vPX74dTCaTN2dnZ2+fg27vwenp6Yt/1RRw37CkrFkAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[2-3] giscus 앱 설치 완료&quot;
+        title=&quot;&quot;
+        src=&quot;/static/223a6432522aa82bcd4feaf0ea938a12/f058b/setting-giscus-app.png&quot;
+        srcset=&quot;/static/223a6432522aa82bcd4feaf0ea938a12/c26ae/setting-giscus-app.png 158w,
+/static/223a6432522aa82bcd4feaf0ea938a12/6bdcf/setting-giscus-app.png 315w,
+/static/223a6432522aa82bcd4feaf0ea938a12/f058b/setting-giscus-app.png 630w,
+/static/223a6432522aa82bcd4feaf0ea938a12/40601/setting-giscus-app.png 945w,
+/static/223a6432522aa82bcd4feaf0ea938a12/78612/setting-giscus-app.png 1260w,
+/static/223a6432522aa82bcd4feaf0ea938a12/db806/setting-giscus-app.png 3424w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[2-3] giscus 앱 설치 완료&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;giscus 설정 페이지에서 생성한 저장소 이름을 입력해 주세요. 저장소 이름 형태는 &lt;strong&gt;${username}/${username}.github.io&lt;/strong&gt; 입니다.&lt;br&gt;
+그리고 &lt;strong&gt;Discussion 제목이 페이지 경로를 포함&lt;/strong&gt; 방법으로 선택하고, 카테고리는 위에서 생성한 &lt;strong&gt;Comments&lt;/strong&gt; 카테고리를 선택해 주세요.
+&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/f51ed118670716f43da0077432933dca/db806/giscus-setting-1.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 81.64556962025317%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABYlAAAWJQFJUiTwAAAB70lEQVR42p2U227TQBRF8zvwH0j8BaDCI35AfBmyVIX6IUJUUCXKU6WipA31bew6vsT2+DLjGR/OOJNwEVQ4I21lNDpe3p69lcm36+vnjuN8Xq/djyhr851Yd3e+ZduB5fuRlaeFtUsK3Mf/lOtGU+InX1cr+9kk9P03gKthney4ACkkdJ0Y9L9LStmpX8/zXk2CIDjT5xygVxRR17XI81x0SOWca3UCHxT7mV70/X5Wq1UAQsiLia8dqhfh0J7MORRFCYyxYc8YhxaFwKOrw6xeg0M09/KvQIaQNNsBOgVKKcLYAPsVMgoo8B5dNwDX8cAlW/BQ2ygGWtKjy1FATgtIQwJFGuOegmhqEGUO/cmfjID4gUBEPCizBMcxL85+S3YcEF2R9Qrsmxsgt7fQpgl0eaYwpwGxLtgpH+7vbbxLbwhHiO50h0IIiOMEHPIAXoBhVM2QtKrQofCjgYQEEIQRFJhs07RDlYYu6pnRtdmiw1IljHCOV6CASmqvzv5YP4FhGL4+HMp9yWRT19LebKTvOHKXprKhVNZKeE6rWlZVJYWe1WKP9xBD2EUR0CwDVlHsn4C+rdV3PhrK8OdgWdbT+Xz+DvV2sVgYSleXl8anc9OYmR+ML9OpcXVxYSxmM2O5XB51mFXSz743TfPJD/70rm4jsyo5AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[2-4] 레포지토리 이름, 연결 방식, 카테고리 설정&quot;
+        title=&quot;&quot;
+        src=&quot;/static/f51ed118670716f43da0077432933dca/f058b/giscus-setting-1.png&quot;
+        srcset=&quot;/static/f51ed118670716f43da0077432933dca/c26ae/giscus-setting-1.png 158w,
+/static/f51ed118670716f43da0077432933dca/6bdcf/giscus-setting-1.png 315w,
+/static/f51ed118670716f43da0077432933dca/f058b/giscus-setting-1.png 630w,
+/static/f51ed118670716f43da0077432933dca/40601/giscus-setting-1.png 945w,
+/static/f51ed118670716f43da0077432933dca/78612/giscus-setting-1.png 1260w,
+/static/f51ed118670716f43da0077432933dca/db806/giscus-setting-1.png 3424w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[2-4] 레포지토리 이름, 연결 방식, 카테고리 설정&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;본인이 사용하고자 하는 기능과 테마를 선택해 주세요. giscus 설정을 모두 완료하면 &lt;strong&gt;script&lt;/strong&gt;가 설정에 맞춰 생성됩니다.&lt;br&gt;
+해당 script를 참고하여 개츠비 블로그에 댓글 기능을 적용할게요.
+&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/481a1eb18f3d53ef4ed6cf002d884e30/db806/giscus-setting-2.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 69.62025316455697%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAABYlAAAWJQFJUiTwAAACA0lEQVR42pWTX27TQBDGcw5uAm9FcBdUATeBPPHABfKAEil+4CCAqqhKY9lp0thrx44d7z/vej9m7bRFglZhpZ/H2ex8+mZmPVr+WrwKb6IvV1fh58UiGl8vN2MflxSj6G58yIpxQYTh7m+itOcm3H2K4/Qr5bwcsR37CFpCGttqg852sKaD6xzOXZRjfEzT9HJEj/enfUX4P4wSwlQZM+JQGkvv0Mqg9egB/9tac3+ekF4gy7J3I8YGh7Ssc4Mr1XDEUYx1fIvmeISSknQ0DOGj5hxOyT9NPjr8pyAXuL1LUBwqaGMhdTvQkkE6Yo2B0+p8waY4IA1XaFgCkbOBLAXPc8iihC1zOMmHrCHneUHTHFEyhuZQQvqSm4ZcN2iFoAlQLrn7v5Ipka3XUNWBxBvoY93TnqLf79r2fEEjOMp8j4ztkSYZ6rKCJGF5JGhgsq5h1Rk9PPWDLEoke46fqxzXUYp9xSHotgxYcKFg5RMl0+PDw2bX32bXKeFI0P1Y5S7eFa7mynHV9pCo41w6I0R/9kT7rEMnqYf7CpukRF1TmVJBCjkgNZUt0D01lO122zvUWlNbFFpqdlNV2K1jZAkDox4mdCd325SgSMOir6gfnPaXnKC8XnCz2VyOJpPJi/l8/oa4mM1mrz3fHggeCb4TQb8/o/f7s57pdHoRBMFbr/UblzUD8+yuUJYAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[2-5] 기능, 테마 설정&quot;
+        title=&quot;&quot;
+        src=&quot;/static/481a1eb18f3d53ef4ed6cf002d884e30/f058b/giscus-setting-2.png&quot;
+        srcset=&quot;/static/481a1eb18f3d53ef4ed6cf002d884e30/c26ae/giscus-setting-2.png 158w,
+/static/481a1eb18f3d53ef4ed6cf002d884e30/6bdcf/giscus-setting-2.png 315w,
+/static/481a1eb18f3d53ef4ed6cf002d884e30/f058b/giscus-setting-2.png 630w,
+/static/481a1eb18f3d53ef4ed6cf002d884e30/40601/giscus-setting-2.png 945w,
+/static/481a1eb18f3d53ef4ed6cf002d884e30/78612/giscus-setting-2.png 1260w,
+/static/481a1eb18f3d53ef4ed6cf002d884e30/db806/giscus-setting-2.png 3424w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[2-5] 기능, 테마 설정&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;h2&gt;3. Gatsby Blog에 giscus 적용&lt;/h2&gt;
+&lt;p&gt;이전 &lt;a href=&quot;(https://whitepaek.com/posts/2024/01/gatsby-blog-start-1/)&quot;&gt;포스트에서 만든 개츠비 블로그 프로젝트를 열어&lt;/a&gt;주세요.&lt;br&gt;
+그리고 &lt;strong&gt;components&lt;/strong&gt; 디렉터리 하위에 &lt;strong&gt;comments.js&lt;/strong&gt; 파일을 생성 후, 아래 코드를 작성하고,
+[2-5]번 이미지에서 생성된 &lt;code class=&quot;language-text&quot;&gt;data-repo&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;data-repo-id&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;data-category-id&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;data-reactions-enabled&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;data-input-position&lt;/code&gt; 값을 넣어주세요.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; React&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; useEffect&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; useRef &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;react&quot;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;Comments&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; commentRef &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;useRef&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+  &lt;span class=&quot;token function&quot;&gt;useEffect&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; giscus &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; document&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;createElement&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;script&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; giscusConfig &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;token string-property property&quot;&gt;&quot;src&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;https://giscus.app/client.js&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token string-property property&quot;&gt;&quot;data-repo&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token string-property property&quot;&gt;&quot;data-repo-id&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token string-property property&quot;&gt;&quot;data-category&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;Comments&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token string-property property&quot;&gt;&quot;data-category-id&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token string-property property&quot;&gt;&quot;data-mapping&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;pathname&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token string-property property&quot;&gt;&quot;data-strict&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;0&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token string-property property&quot;&gt;&quot;data-reactions-enabled&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token string-property property&quot;&gt;&quot;data-emit-metadata&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;0&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token string-property property&quot;&gt;&quot;data-input-position&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token string-property property&quot;&gt;&quot;data-theme&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;preferred_color_scheme&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token string-property property&quot;&gt;&quot;data-lang&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;ko&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token string-property property&quot;&gt;&quot;data-loading&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;lazy&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token string-property property&quot;&gt;&quot;crossorigin&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;anonymous&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;token string-property property&quot;&gt;&quot;async&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+    Object&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;entries&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;giscusConfig&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;forEach&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;key&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; value&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      giscus&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;setAttribute&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;key&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; value&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+    commentRef&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;current&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;appendChild&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;giscus&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;div ref&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;commentRef&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;default&lt;/span&gt; Comments&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/7a8cff587dac34b44df2e0478a2e0d49/db806/added-giscus-script.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 75.31645569620254%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAABYlAAAWJQFJUiTwAAACqUlEQVR42pWU2W7TQBSG8xIgIcV2PDMee7zGsbO4NGlsukFZhLhqJbiECsItRaIlbQkSrwC5Q+IZQYzVn3GcVm1BAi4+eWwffTqb3ShWRsO74ydft4a7X8bZzjyJVudChHPb9efCjRT+Aj+K5rbwLxCKKE7nwg/nwgs+h1Hyrd1OVxpJMpjk+RaGw6JM0wzCDeD7bYigDS58MO7AclxwzmGa9AqUWjBJdSbS9QKEcbLf4I73MuqkWB2Nf8SdriTUkrYTST9IJOe+5MyXlMeSOB1p8kDqxJO6WaOZ7vLqfSc8gmU5zxvUciZJHGN4Oyt7vRTcEojy14gfnaD98BDBvSN4xSFocQJSHIPkU8XxJaYwi5nk+QEYY/sNUwm7vQG281GZJkroRPA230I8mkE8OAXbnsFRIlqcKuGHJbNLnMK880ny4l0trDKMky421kZl3E5g2SG8jQN4jz9C7JyCbihhXgnPRf8gDJVouJaXamrgShhtvoF//z3sjSOwYgoxViUvSp3+veRaWA2lKJO0p0oO4PkZvGCAIOjDdVPYdgzqdBQxiDq3rOgKBgulJRIwW9TCKrO1YqsM4y4os0EtDqaGY1ouTMahGy0YS3S9wriCpumyWqGl0Jp0uhlW19ZLL2yrvRNq0lzhqB2zYLSoEpJL0N/QdCIpc2qhSZ1Jv99HXqyXVS+rRWaUgagAo8Wuyf6MppuXhdZkkGVY39wugyhZlGyooFpG/18YBJ1X3V6GfFRIleGZSflZU2udqaAFuk4uOH92HRX/k1JbrZz7ouH78SRbGSIfqyknPVTfpKX6WFH1s8q46qVJqkE5C+rBiYt7Qm3piADqp7HfuKFpVG/Rp02D7BqE7BGFKnmvaRg1TWPvVrO5oH5+/o4tzsYCY1drtZ7d1HXyC0+mqokDbrngAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[3-1] comment.js 파일 생성 및 코드 작성&quot;
+        title=&quot;&quot;
+        src=&quot;/static/7a8cff587dac34b44df2e0478a2e0d49/f058b/added-giscus-script.png&quot;
+        srcset=&quot;/static/7a8cff587dac34b44df2e0478a2e0d49/c26ae/added-giscus-script.png 158w,
+/static/7a8cff587dac34b44df2e0478a2e0d49/6bdcf/added-giscus-script.png 315w,
+/static/7a8cff587dac34b44df2e0478a2e0d49/f058b/added-giscus-script.png 630w,
+/static/7a8cff587dac34b44df2e0478a2e0d49/40601/added-giscus-script.png 945w,
+/static/7a8cff587dac34b44df2e0478a2e0d49/78612/added-giscus-script.png 1260w,
+/static/7a8cff587dac34b44df2e0478a2e0d49/db806/added-giscus-script.png 3424w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[3-1] comment.js 파일 생성 및 코드 작성&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;코드 작성을 완료했으면, &lt;strong&gt;templates&lt;/strong&gt; 디렉터리 하위에 &lt;strong&gt;blog-post.js&lt;/strong&gt; 파일에 &lt;code class=&quot;language-text&quot;&gt;&amp;lt;Comments /&gt;&lt;/code&gt; 코드를 작성해 주세요.
+&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/a3b9aaed4fa0c629aef49f8082e862c9/db806/added-comments.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 110.12658227848102%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAWCAYAAADAQbwGAAAACXBIWXMAABYlAAAWJQFJUiTwAAADG0lEQVR42pWVW3PbRBiG/StgBmxpz9JqdfYhdh07cTNNy+G20zBwDRnq31N8xQV/Eqhkf7y7DqGZtKm5eGdX0u7j7+zBi/n58tvL179fn//w28Wz73aT+nznXLFzRb2zrtyltghr2U6xPz6Hd1BdT3a2KHdZVryr6vEfTTNdDGaz+Xbz/CWtVlf9dLIgHCaXOcrLhmxVkrKWuNAkZILVPJBUeCf9Xnf+fNOMbwcmdb9W7YSWq8u/6nbSSWU6Z9KudFWXu6TLs7QTXHbDiHejjyiKRff1kP2pjSWdZj8PpE63k3FLm9WyX8zPSGtNNskozWrSKqVEJKRgXcQk4fIjxXg/HLHO4I5K7G0AtmNYeL7oi6ohpVO4oimxGflDxmQktQeK04FVM6b1xbrP63EAcqHIlRUJY4hJFawbxfx0YAnQen3ZN+NZAMZckrY1LERcIO8y5wYAeRqwqMa0XG/6ZjILmfPAJG/J2hwxRQgAZFydbuF0tqDX33zfL8+e+UyRQJmYfEriztqYqXDxYwo/hGwnqfsXqLct6m+53PR5UVMCoNKGknpJQmVHIC6xJxQzAWB+BHKZbueLOb24ftWXzSTE0GcU1Y/4pcekxOKTeuSyB87Ozuhic4WyaUmhQCPGKU8qShJHkZCfBY4A1P8BNYALur667qu7soELqL001B9nmphQp9eht3AK4Hp10ddwWd4BOVaNQBvE0Wf+U0Av34LekABEVrd52VKW171vcO9ysBCrLxfBdbDiKbc9UKoPgD52Lq8eALlvdsTQ6OyziXkaqG0AMLiJ2NAwYv7C/wCGTnlooQRQYED4OagwbY6dciIwTbO3HpjllR+SB6ntATPxYF1xsMYdUpUdpDAHQA+I5QGARwLwvQeidH4ZYLi+9cMBwPeurPfI8p7FfI8O2Mfc7HFhj9a6X0f3Yvd7hOZv70UA5nmz9eXiyqY/WlpShqFg0SkqLUJM/ZhnQgeJu7EvYJHfh2f8BSS4A90OvogiwZX6kTH5BtP6xgvD4QaD4ear4RCKH0jge4zvsXbhjH+W0r4B46cvo4j/A+dDTLFn/q41AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[3-2] blog-post.js 파일에 코드 추가&quot;
+        title=&quot;&quot;
+        src=&quot;/static/a3b9aaed4fa0c629aef49f8082e862c9/f058b/added-comments.png&quot;
+        srcset=&quot;/static/a3b9aaed4fa0c629aef49f8082e862c9/c26ae/added-comments.png 158w,
+/static/a3b9aaed4fa0c629aef49f8082e862c9/6bdcf/added-comments.png 315w,
+/static/a3b9aaed4fa0c629aef49f8082e862c9/f058b/added-comments.png 630w,
+/static/a3b9aaed4fa0c629aef49f8082e862c9/40601/added-comments.png 945w,
+/static/a3b9aaed4fa0c629aef49f8082e862c9/78612/added-comments.png 1260w,
+/static/a3b9aaed4fa0c629aef49f8082e862c9/db806/added-comments.png 3424w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[3-2] blog-post.js 파일에 코드 추가&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;모든 준비가 끝났어요. 이제 서버를 시작해서 포스트를 클릭하면 하위에 giscus 댓글 기능이 추가된 걸 볼 수 있어요.
+&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/9c8aaf561def1728d110f0ccfc38dff4/db806/added-giscus-comments.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 58.22784810126582%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAABYlAAAWJQFJUiTwAAABrUlEQVR42pWSzW4TMRDHc+YBeInyBqDyaLki8fEEHHpopCivUHHsIZEgXLiUpg3dlFUqsfZ+2GuPPTOMzTaKREmLd3+a9Y7/M2N7Rqvvqzeb9eZDsf7xrrgp31+tt5n1zR97eVUe5OLyNrO6Lt+en399PnLeeUBk1wOBB8ZIHCNmSwLLe2hgRCIkFi0tFosXIw/eJKn4QNxBbPCuDz83RShvN6GpVWiFRqtQ6yp0jQ4YQ143AMnKgPl8fjQCAD8k29Xiesu11ly3LVdKcd20QsNt1wmGQ4z7RWZdlG0tl8uHA5pas9qWbMV2quK2+iXfNUdJhALtJE8JSHIArk9mmBJba/L/HeLfy/9YhcS+bdg6ly8nYoKyDUK6wFTlf1WYtqabTs7NsOn9DgAJCsRoDwd09x2QnYgUrCHjA1kHZPYoqju62BbUNYqGQHSvk1v+d4XpjMh7QXIlN0Cef77+wmffPrFW20FAf1dojLFeFjvnooAJay1K26BWCq0x6Po+I12H6QHvsR/WJp3okybkPpxOpy8nk8lrscePcXJ6cvxROH3AN5vNXo3H42e/AZhQbMKhTjCzAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[3-3] giscus 댓글 기능 적용 완료&quot;
+        title=&quot;&quot;
+        src=&quot;/static/9c8aaf561def1728d110f0ccfc38dff4/f058b/added-giscus-comments.png&quot;
+        srcset=&quot;/static/9c8aaf561def1728d110f0ccfc38dff4/c26ae/added-giscus-comments.png 158w,
+/static/9c8aaf561def1728d110f0ccfc38dff4/6bdcf/added-giscus-comments.png 315w,
+/static/9c8aaf561def1728d110f0ccfc38dff4/f058b/added-giscus-comments.png 630w,
+/static/9c8aaf561def1728d110f0ccfc38dff4/40601/added-giscus-comments.png 945w,
+/static/9c8aaf561def1728d110f0ccfc38dff4/78612/added-giscus-comments.png 1260w,
+/static/9c8aaf561def1728d110f0ccfc38dff4/db806/added-giscus-comments.png 3424w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[3-3] giscus 댓글 기능 적용 완료&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;이상으로 개츠비 블로그에 giscus 댓글 기능 적용에 대한 포스트를 끝낼게요!&lt;/p&gt;</content:encoded></item><item><title><![CDATA[개츠비(Gatsby) 블로그 만들기 3 - 페이징(Pagination) 적용]]></title><description><![CDATA[이전 포스트에서 세팅을 완료한 개츠비(Gatsby) 블로그에 페이지네이션(pagination…]]></description><link>https://whitepaek.com/posts/2024/01/gatsby-blog-start-3/</link><guid isPermaLink="false">https://whitepaek.com/posts/2024/01/gatsby-blog-start-3/</guid><pubDate>Mon, 22 Jan 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;이전 포스트에서 세팅을 완료한 &lt;a href=&quot;https://whitepaek.com/posts/2024/01/gatsby-blog-start-1/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;개츠비(Gatsby) 블로그&lt;/a&gt;에 페이지네이션(pagination)을 알아보고, 적용해 보도록 할게요.&lt;/p&gt;
 &lt;p&gt;블로그를 열심히 운영한다면 적게는 수십 개에서 많게는 수백, 수천 개의 포스트가 생성될 거예요.
 수많은 포스트를 불러오는 데 시간이 오래 걸릴 수 있고, 독자는 포스트를 찾는 경험이 나빠질 수 있어요.
 이런 경우 페이징 처리를 적용하면 포스트를 분할해서 시간을 단축하고, 독자는 페이지 단위로 포스트를 찾을 수가 있어요.&lt;/p&gt;
@@ -39,8 +627,8 @@
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;Pagination 적용된 결과&lt;/figcaption&gt;
   &lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;1. blog-list.js 파일 생성&lt;/strong&gt;&lt;br&gt;
-&lt;strong&gt;./src/pages/&lt;/strong&gt; 디렉터리에 존재하는 &lt;strong&gt;index.js&lt;/strong&gt; 파일을 &lt;strong&gt;./src/templates/&lt;/strong&gt; 디렉터리 하위로 이동 후, &lt;strong&gt;blog-list.js&lt;/strong&gt; 파일명으로 변경해 주세요.&lt;/p&gt;
+&lt;h2&gt;1. blog-list.js 파일 생성&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;./src/pages/&lt;/strong&gt; 디렉터리에 존재하는 &lt;strong&gt;index.js&lt;/strong&gt; 파일을 &lt;strong&gt;./src/templates/&lt;/strong&gt; 디렉터리 하위로 이동 후, &lt;strong&gt;blog-list.js&lt;/strong&gt; 파일명으로 변경해 주세요.&lt;/p&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
@@ -77,8 +665,8 @@
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[1] &amp;quot;./src/pages/index.js -&amp;gt; ./src/templates/blog-list.js&amp;quot; 파일 변경&lt;/figcaption&gt;
   &lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;2. gatsby-node.js 파일에서 GraphQL Query 수정 및 페이지네이션 포스트 목록 코드 추가&lt;/strong&gt;&lt;br&gt;
-gatsby-node.js 파일에서 &lt;strong&gt;[2-1] 이미지&lt;/strong&gt;의 1번 영역(22 ~ 30번 라인)의 GraphQL 쿼리를 2번 영역의 쿼리로 수정해 주세요.&lt;/p&gt;
+&lt;h2&gt;2. gatsby-node.js 파일에서 GraphQL Query 수정 및 페이지네이션 포스트 목록 코드 추가&lt;/h2&gt;
+&lt;p&gt;gatsby-node.js 파일에서 &lt;strong&gt;[2-1] 이미지&lt;/strong&gt;의 1번 영역(22 ~ 30번 라인)의 GraphQL 쿼리를 2번 영역의 쿼리로 수정해 주세요.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;// [2-1] 이미지의 2번 영역 코드&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;token function&quot;&gt;allMarkdownRemark&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;&lt;span class=&quot;token literal-property property&quot;&gt;sort&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;token literal-property property&quot;&gt;frontmatter&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;token literal-property property&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token constant&quot;&gt;ASC&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token literal-property property&quot;&gt;limit&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1000&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
@@ -197,8 +785,8 @@ Array&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span clas
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[2-2] Pagination 코드 추가&lt;/figcaption&gt;
   &lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;3. blog-list.js 파일에서 GraphQL Query 수정 및 Pagination 적용&lt;/strong&gt;&lt;br&gt;
-blog-list.js 파일에서 73 ~ 94번 라인에 GraphQL을 &lt;code class=&quot;language-text&quot;&gt;limit&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;skip&lt;/code&gt; 추가된 쿼리로 수정해 주세요.&lt;/p&gt;
+&lt;h2&gt;3. blog-list.js 파일에서 GraphQL Query 수정 및 Pagination 적용&lt;/h2&gt;
+&lt;p&gt;blog-list.js 파일에서 73 ~ 94번 라인에 GraphQL을 &lt;code class=&quot;language-text&quot;&gt;limit&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;skip&lt;/code&gt; 추가된 쿼리로 수정해 주세요.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; pageQuery &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; graphql&lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token template-punctuation string&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;
   query blogPageQuery($skip: Int!, $limit: Int!) {
     site {
@@ -503,8 +1091,8 @@ blog-list.js 파일에서 73 ~ 94번 라인에 GraphQL을 &lt;code class=&quot;l
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;gatsby-starter-blog 프로젝트 디렉터리 위치로 이동&lt;/figcaption&gt;
   &lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;1. Tailwind CSS 의존성 설치&lt;/strong&gt;&lt;br&gt;
-그리고 아래 명령어로 테일윈드 CSS 사용에 필요한 의존성을 설치해 주세요.&lt;/p&gt;
+&lt;h2&gt;1. Tailwind CSS 의존성 설치&lt;/h2&gt;
+&lt;p&gt;그리고 아래 명령어로 테일윈드 CSS 사용에 필요한 의존성을 설치해 주세요.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-D&lt;/span&gt; tailwindcss postcss autoprefixer gatsby-plugin-postcss&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
@@ -542,8 +1130,8 @@ blog-list.js 파일에서 73 ~ 94번 라인에 GraphQL을 &lt;code class=&quot;l
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[1] Tailwind CSS 의존성 설치&lt;/figcaption&gt;
   &lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;2. Tailwind CSS 설정 파일 생성&lt;/strong&gt;&lt;br&gt;
-의존성 설치가 완료되었으면, 테일윈드 설정 파일을 아래 명령어로 생성해 주세요.&lt;/p&gt;
+&lt;h2&gt;2. Tailwind CSS 설정 파일 생성&lt;/h2&gt;
+&lt;p&gt;의존성 설치가 완료되었으면, 테일윈드 설정 파일을 아래 명령어로 생성해 주세요.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ npx tailwindcss init &lt;span class=&quot;token parameter variable&quot;&gt;-p&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
@@ -581,8 +1169,8 @@ blog-list.js 파일에서 73 ~ 94번 라인에 GraphQL을 &lt;code class=&quot;l
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[2] Tailwind CSS 설정 파일 생성&lt;/figcaption&gt;
   &lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;3. Tailwind CSS 의존성, 설정 파일 세팅 결과 확인&lt;/strong&gt;&lt;br&gt;
-테일윈드 CSS에 필요한 의존성 설치부터 설정 파일 생성까지 완료했다면,&lt;br&gt;
+&lt;h2&gt;3. Tailwind CSS 의존성, 설정 파일 세팅 결과 확인&lt;/h2&gt;
+&lt;p&gt;테일윈드 CSS에 필요한 의존성 설치부터 설정 파일 생성까지 완료했다면,&lt;br&gt;
 &lt;strong&gt;package.json&lt;/strong&gt; 파일에 &lt;strong&gt;&quot;autoprefixer, gatsby-plugin-postcss, postcss, tailwindcss&quot;&lt;/strong&gt; 의존성이 추가되고&lt;br&gt;
 &lt;strong&gt;postcss.config.js&lt;/strong&gt; 파일과 &lt;strong&gt;tailwind.config.js&lt;/strong&gt; 파일이 생성된걸 볼 수 있어요.&lt;/p&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
@@ -622,8 +1210,8 @@ blog-list.js 파일에서 73 ~ 94번 라인에 GraphQL을 &lt;code class=&quot;l
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[3] Tailwind CSS 의존성, 설정 파일 세팅 결과&lt;/figcaption&gt;
   &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;기본적인 세팅은 완료했고, 이제부터 테일윈드 CSS 사용을 위해 설정을 진행할게요.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;4. PostCSS 플러그인 추가&lt;/strong&gt;&lt;br&gt;
-&lt;strong&gt;gatsby-config.js&lt;/strong&gt; 파일을 열고 plugins 하위에 &lt;strong&gt;gatsby-plugin-postcss&lt;/strong&gt;을 추가해주세요.&lt;/p&gt;
+&lt;h2&gt;4. PostCSS 플러그인 추가&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;gatsby-config.js&lt;/strong&gt; 파일을 열고 plugins 하위에 &lt;strong&gt;gatsby-plugin-postcss&lt;/strong&gt;을 추가해주세요.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;`gatsby-plugin-postcss`,&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
@@ -661,8 +1249,8 @@ blog-list.js 파일에서 73 ~ 94번 라인에 GraphQL을 &lt;code class=&quot;l
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[4] gatsby-config.js 파일에 PostCSS 플러그인 추가&lt;/figcaption&gt;
   &lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;5. Tailwind CSS 사용을 위한 경로 설정&lt;/strong&gt;&lt;br&gt;
-&lt;strong&gt;tailwind.config.js&lt;/strong&gt; 파일을 열고 content 하위에 테일윈드 CSS를 적용할 페이지 경로를 추가해 주세요.
+&lt;h2&gt;5. Tailwind CSS 사용을 위한 경로 설정&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;tailwind.config.js&lt;/strong&gt; 파일을 열고 content 하위에 테일윈드 CSS를 적용할 페이지 경로를 추가해 주세요.
 개츠비 블로그의 기본 디렉터리 구조에서는 &lt;strong&gt;&quot;components, pages, templates&quot;&lt;/strong&gt; 하위에 페이지를 구성하기 때문에 3개의 디렉터리 경로를 추가해 주세요.
 (디렉터리 구조를 변경 또는 추가 한다면 경로를 추가로 설정하면 돼요.)&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;&quot;./src/components/**/*.{js,jsx,ts,tsx}&quot;,
@@ -704,8 +1292,8 @@ blog-list.js 파일에서 73 ~ 94번 라인에 GraphQL을 &lt;code class=&quot;l
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[5] Tailwind CSS를 적용할 디렉터리 경로 설정&lt;/figcaption&gt;
   &lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;6. global.css 파일 생성&lt;/strong&gt;&lt;br&gt;
-&lt;strong&gt;src&lt;/strong&gt; 디렉터리 하위에 &lt;strong&gt;styles&lt;/strong&gt; 디렉터리를 생성하고, &lt;strong&gt;global.css&lt;/strong&gt; 파일을 생성해 주세요.
+&lt;h2&gt;6. global.css 파일 생성&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;src&lt;/strong&gt; 디렉터리 하위에 &lt;strong&gt;styles&lt;/strong&gt; 디렉터리를 생성하고, &lt;strong&gt;global.css&lt;/strong&gt; 파일을 생성해 주세요.
 그리고 파일에 아래 내용을 작성해 주세요.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;css&quot;&gt;&lt;pre class=&quot;language-css&quot;&gt;&lt;code class=&quot;language-css&quot;&gt;&lt;span class=&quot;token atrule&quot;&gt;&lt;span class=&quot;token rule&quot;&gt;@tailwind&lt;/span&gt; base&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/span&gt;
 &lt;span class=&quot;token atrule&quot;&gt;&lt;span class=&quot;token rule&quot;&gt;@tailwind&lt;/span&gt; components&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/span&gt;
@@ -746,8 +1334,8 @@ blog-list.js 파일에서 73 ~ 94번 라인에 GraphQL을 &lt;code class=&quot;l
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[6] global.css 생성&lt;/figcaption&gt;
   &lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;7. global.css 파일 설정&lt;/strong&gt;&lt;br&gt;
-&lt;strong&gt;gatsby-browser.js&lt;/strong&gt; 파일에 global.css 파일을 import 해주세요.&lt;/p&gt;
+&lt;h2&gt;7. global.css 파일 설정&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;gatsby-browser.js&lt;/strong&gt; 파일에 global.css 파일을 import 해주세요.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;./src/styles/global.css&apos;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
@@ -785,8 +1373,8 @@ blog-list.js 파일에서 73 ~ 94번 라인에 GraphQL을 &lt;code class=&quot;l
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[7] global.css import 설정&lt;/figcaption&gt;
   &lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;8. Tailwind CSS 문법 적용&lt;/strong&gt;&lt;br&gt;
-테일윈드 CSS 사용을 위한 준비 과정이 전부 끝났어요.&lt;br&gt;
+&lt;h2&gt;8. Tailwind CSS 문법 적용&lt;/h2&gt;
+&lt;p&gt;테일윈드 CSS 사용을 위한 준비 과정이 전부 끝났어요.&lt;br&gt;
 테일윈드 CSS가 잘 적용되는지 확인을 위해 테스트용 페이지를 생성해서 적용해 보도록 할게요.
 저는 pages 디렉터리 하위에 &lt;strong&gt;tailwindcss 디렉터리와 index.js 파일을 생성&lt;/strong&gt;하도록 할게요.
 그리고 &lt;a href=&quot;https://tailwindui.com/components/marketing/feedback/404-pages&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;테일윈드 UI 컴포넌트&lt;/a&gt;의 404 Pages 코드를 사용할게요.&lt;br&gt;
@@ -944,8 +1532,8 @@ $ gatsby develop&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 저는 윈도우(windows)가 설치되어 있는 컴퓨터가 없기 때문에 macOS를 기준으로 설명드릴게요.&lt;/p&gt;
 &lt;p&gt;Node.js를 설치하기 전에 macOS에서 필수라고 볼 수 있는 패키지 관리자 &lt;a href=&quot;https://brew.sh/ko/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;Homebrew&lt;/a&gt;가 설치되어 있어야 해요.&lt;br&gt;
 (설치가 안 되어 있다면 1번부터 따라 하고, 되어 있다면 2번부터 따라 하면 돼요.)&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;1. Homebrew 설치&lt;/strong&gt;&lt;br&gt;
-터미널(terminal)을 실행하여 아래 명령어를 입력해 주세요.&lt;/p&gt;
+&lt;h2&gt;1. Homebrew 설치&lt;/h2&gt;
+&lt;p&gt;터미널(terminal)을 실행하여 아래 명령어를 입력해 주세요.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ /bin/bash &lt;span class=&quot;token parameter variable&quot;&gt;-c&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;&lt;span class=&quot;token variable&quot;&gt;&lt;span class=&quot;token variable&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;curl&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-fsSL&lt;/span&gt; https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh&lt;span class=&quot;token variable&quot;&gt;)&lt;/span&gt;&lt;/span&gt;&quot;&lt;/span&gt;
 $ xcode-select &lt;span class=&quot;token parameter variable&quot;&gt;--install&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
@@ -984,8 +1572,8 @@ $ xcode-select &lt;span class=&quot;token parameter variable&quot;&gt;--install&
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[1] Homebrew 설치&lt;/figcaption&gt;
   &lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;2. Node.js 설치&lt;/strong&gt;&lt;br&gt;
-Homebrew 설치가 완료되었다면, 터미널에서 아래 명령어를 참고하여 Node.js를 설치해 주세요.&lt;/p&gt;
+&lt;h2&gt;2. Node.js 설치&lt;/h2&gt;
+&lt;p&gt;Homebrew 설치가 완료되었다면, 터미널에서 아래 명령어를 참고하여 Node.js를 설치해 주세요.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ brew &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;node&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
@@ -1023,8 +1611,8 @@ Homebrew 설치가 완료되었다면, 터미널에서 아래 명령어를 참�
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[2] Node.js 설치&lt;/figcaption&gt;
   &lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;3. gatsby-cli 설치&lt;/strong&gt;&lt;br&gt;
-Node.js 설치가 완료되었으면, 터미널에서 아래 명령어를 참고하여 gatsby-cli를 설치해 주세요.&lt;/p&gt;
+&lt;h2&gt;3. gatsby-cli 설치&lt;/h2&gt;
+&lt;p&gt;Node.js 설치가 완료되었으면, 터미널에서 아래 명령어를 참고하여 gatsby-cli를 설치해 주세요.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;token parameter variable&quot;&gt;-g&lt;/span&gt; gatsby-cli&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
@@ -1062,8 +1650,8 @@ Node.js 설치가 완료되었으면, 터미널에서 아래 명령어를 참고
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[3] gatsby-cli 설치&lt;/figcaption&gt;
   &lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;4. gatsby-starter-blog 설치&lt;/strong&gt;&lt;br&gt;
-gatsby-cli까지 설치가 완료되었으면, 아래 명령어를 참고하여 gatsby-starter-blog 프로젝트를 설치할게요.
+&lt;h2&gt;4. gatsby-starter-blog 설치&lt;/h2&gt;
+&lt;p&gt;gatsby-cli까지 설치가 완료되었으면, 아래 명령어를 참고하여 gatsby-starter-blog 프로젝트를 설치할게요.
 &lt;code class=&quot;language-text&quot;&gt;cd&lt;/code&gt; 명령어로 본인이 설치하고 싶은 디렉터리 위치로 이동하고, 아래 명령어에서 &lt;strong&gt;my-blog-starter&lt;/strong&gt; 위치에 본인이 하고 싶은 프로젝트 이름을 작성해 주세요.
 저는 설명을 위해서 공식 문서 예시를 그대로 진행할게요.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token builtin class-name&quot;&gt;cd&lt;/span&gt; ~/Downloads/
@@ -1104,8 +1692,8 @@ $ gatsby new my-blog-starter https://github.com/gatsbyjs/gatsby-starter-blog&lt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[4] gatsby-starter-blog 설치&lt;/figcaption&gt;
   &lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;5. gatsby-starter-blog 실행&lt;/strong&gt;&lt;br&gt;
-gatsby-starter-blog 설치가 완료되었으면 실행해 보도록 할게요.
+&lt;h2&gt;5. gatsby-starter-blog 실행&lt;/h2&gt;
+&lt;p&gt;gatsby-starter-blog 설치가 완료되었으면 실행해 보도록 할게요.
 Visual Studio Code 또는 웹스톰(webstorm) 도구(tool)로 설치한 gatsby-starter-blog 프로젝트를 열어주세요.
 저는 웹스톰으로 할게요. 웹스톰을 실행하고 우측 상단에 Open 버튼을 클릭해서 프로젝트를 열어주세요.&lt;/p&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
@@ -1220,8 +1808,8 @@ $ gatsby develop&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[5-2] 터미널에서 gatsby-starter-blog 실행&lt;/figcaption&gt;
   &lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;6. 브라우저에서 블로그 접속&lt;/strong&gt;&lt;br&gt;
-크롬(chrome), 사파리(safari) 등 브라우저를 실행하고, 주소(url) 창에 &lt;code class=&quot;language-text&quot;&gt;http://localhost:8000&lt;/code&gt;를 입력해서 접속해 주세요.&lt;/p&gt;
+&lt;h2&gt;6. 브라우저에서 블로그 접속&lt;/h2&gt;
+&lt;p&gt;크롬(chrome), 사파리(safari) 등 브라우저를 실행하고, 주소(url) 창에 &lt;code class=&quot;language-text&quot;&gt;http://localhost:8000&lt;/code&gt;를 입력해서 접속해 주세요.&lt;/p&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
     &lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;

@@ -10,8 +10,8 @@
 저는 윈도우(windows)가 설치되어 있는 컴퓨터가 없기 때문에 macOS를 기준으로 설명드릴게요.</p>
 <p>Node.js를 설치하기 전에 macOS에서 필수라고 볼 수 있는 패키지 관리자 <a href="https://brew.sh/ko/" target="_blank" rel="nofollow noreferrer">Homebrew</a>가 설치되어 있어야 해요.<br>
 (설치가 안 되어 있다면 1번부터 따라 하고, 되어 있다면 2번부터 따라 하면 돼요.)</p>
-<p><strong>1. Homebrew 설치</strong><br>
-터미널(terminal)을 실행하여 아래 명령어를 입력해 주세요.</p>
+<h2>1. Homebrew 설치</h2>
+<p>터미널(terminal)을 실행하여 아래 명령어를 입력해 주세요.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ /bin/bash <span class="token parameter variable">-c</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token function">curl</span> <span class="token parameter variable">-fsSL</span> https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span class="token variable">)</span></span>"</span>
 $ xcode-select <span class="token parameter variable">--install</span></code></pre></div>
 <p><figure class="gatsby-resp-image-figure" style="">
@@ -50,8 +50,8 @@ $ xcode-select <span class="token parameter variable">--install</span></code></p
     </span>
     <figcaption class="gatsby-resp-image-figcaption">[1] Homebrew 설치</figcaption>
   </figure></p>
-<p><strong>2. Node.js 설치</strong><br>
-Homebrew 설치가 완료되었다면, 터미널에서 아래 명령어를 참고하여 Node.js를 설치해 주세요.</p>
+<h2>2. Node.js 설치</h2>
+<p>Homebrew 설치가 완료되었다면, 터미널에서 아래 명령어를 참고하여 Node.js를 설치해 주세요.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ brew <span class="token function">install</span> <span class="token function">node</span></code></pre></div>
 <p><figure class="gatsby-resp-image-figure" style="">
     <span
@@ -89,8 +89,8 @@ Homebrew 설치가 완료되었다면, 터미널에서 아래 명령어를 참�
     </span>
     <figcaption class="gatsby-resp-image-figcaption">[2] Node.js 설치</figcaption>
   </figure></p>
-<p><strong>3. gatsby-cli 설치</strong><br>
-Node.js 설치가 완료되었으면, 터미널에서 아래 명령어를 참고하여 gatsby-cli를 설치해 주세요.</p>
+<h2>3. gatsby-cli 설치</h2>
+<p>Node.js 설치가 완료되었으면, 터미널에서 아래 명령어를 참고하여 gatsby-cli를 설치해 주세요.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">npm</span> <span class="token function">install</span> <span class="token parameter variable">-g</span> gatsby-cli</code></pre></div>
 <p><figure class="gatsby-resp-image-figure" style="">
     <span
@@ -128,8 +128,8 @@ Node.js 설치가 완료되었으면, 터미널에서 아래 명령어를 참고
     </span>
     <figcaption class="gatsby-resp-image-figcaption">[3] gatsby-cli 설치</figcaption>
   </figure></p>
-<p><strong>4. gatsby-starter-blog 설치</strong><br>
-gatsby-cli까지 설치가 완료되었으면, 아래 명령어를 참고하여 gatsby-starter-blog 프로젝트를 설치할게요.
+<h2>4. gatsby-starter-blog 설치</h2>
+<p>gatsby-cli까지 설치가 완료되었으면, 아래 명령어를 참고하여 gatsby-starter-blog 프로젝트를 설치할게요.
 <code class="language-text">cd</code> 명령어로 본인이 설치하고 싶은 디렉터리 위치로 이동하고, 아래 명령어에서 <strong>my-blog-starter</strong> 위치에 본인이 하고 싶은 프로젝트 이름을 작성해 주세요.
 저는 설명을 위해서 공식 문서 예시를 그대로 진행할게요.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token builtin class-name">cd</span> ~/Downloads/
@@ -170,8 +170,8 @@ $ gatsby new my-blog-starter https://github.com/gatsbyjs/gatsby-starter-blog</co
     </span>
     <figcaption class="gatsby-resp-image-figcaption">[4] gatsby-starter-blog 설치</figcaption>
   </figure></p>
-<p><strong>5. gatsby-starter-blog 실행</strong><br>
-gatsby-starter-blog 설치가 완료되었으면 실행해 보도록 할게요.
+<h2>5. gatsby-starter-blog 실행</h2>
+<p>gatsby-starter-blog 설치가 완료되었으면 실행해 보도록 할게요.
 Visual Studio Code 또는 웹스톰(webstorm) 도구(tool)로 설치한 gatsby-starter-blog 프로젝트를 열어주세요.
 저는 웹스톰으로 할게요. 웹스톰을 실행하고 우측 상단에 Open 버튼을 클릭해서 프로젝트를 열어주세요.</p>
 <p><figure class="gatsby-resp-image-figure" style="">
@@ -286,8 +286,8 @@ $ gatsby develop</code></pre></div>
     </span>
     <figcaption class="gatsby-resp-image-figcaption">[5-2] 터미널에서 gatsby-starter-blog 실행</figcaption>
   </figure></p>
-<p><strong>6. 브라우저에서 블로그 접속</strong><br>
-크롬(chrome), 사파리(safari) 등 브라우저를 실행하고, 주소(url) 창에 <code class="language-text">http://localhost:8000</code>를 입력해서 접속해 주세요.</p>
+<h2>6. 브라우저에서 블로그 접속</h2>
+<p>크롬(chrome), 사파리(safari) 등 브라우저를 실행하고, 주소(url) 창에 <code class="language-text">http://localhost:8000</code>를 입력해서 접속해 주세요.</p>
 <p><figure class="gatsby-resp-image-figure" style="">
     <span
       class="gatsby-resp-image-wrapper"
@@ -329,6 +329,6 @@ $ gatsby develop</code></pre></div>
           <script
             id="gatsby-chunk-mapping"
           >
-            window.___chunkMapping="{\"app\":[\"/app-f5114f16d92541d1a2d1.js\"],\"component---src-pages-404-js\":[\"/component---src-pages-404-js-091a68d90164c2ea6dd4.js\"],\"component---src-pages-diaries-js\":[\"/component---src-pages-diaries-js-4321197f48cd7176d58d.js\"],\"component---src-pages-index-js\":[\"/component---src-pages-index-js-595764da5af19c1f5319.js\"],\"component---src-templates-post-js\":[\"/component---src-templates-post-js-34deb05eff8a57170c6e.js\"],\"component---src-templates-posts-js\":[\"/component---src-templates-posts-js-ea6434087ca86a7852cd.js\"]}";
+            window.___chunkMapping="{\"app\":[\"/app-f5114f16d92541d1a2d1.js\"],\"component---src-pages-404-js\":[\"/component---src-pages-404-js-091a68d90164c2ea6dd4.js\"],\"component---src-pages-diaries-js\":[\"/component---src-pages-diaries-js-4321197f48cd7176d58d.js\"],\"component---src-pages-index-js\":[\"/component---src-pages-index-js-595764da5af19c1f5319.js\"],\"component---src-templates-post-js\":[\"/component---src-templates-post-js-199ca811316251fbd5a3.js\"],\"component---src-templates-posts-js\":[\"/component---src-templates-posts-js-ea6434087ca86a7852cd.js\"]}";
           </script>
-        <script>window.___webpackCompilationHash="839191e9d8e7bd3049ca";</script><script src="/webpack-runtime-afba13d5ae62cd710f7f.js" async></script><script src="/framework-195f9a31e5a4e6cebf51.js" async></script><script src="/app-f5114f16d92541d1a2d1.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>
+        <script>window.___webpackCompilationHash="0a1907666742cd5078ad";</script><script src="/webpack-runtime-dfed904b6a2387522f5b.js" async></script><script src="/framework-195f9a31e5a4e6cebf51.js" async></script><script src="/app-f5114f16d92541d1a2d1.js" async></script><!-- slice-end id="_gatsby-scripts-1" --></body></html>
