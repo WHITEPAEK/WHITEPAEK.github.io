@@ -1,7 +1,7 @@
 ---
 title: 개츠비(Gatsby) 블로그 만들기 2 - Tailwind CSS 적용
-createdAt: 2024-01-18
-editedAt: 2024-01-18
+createdAt: 2024-01-18T00:00:00.000Z
+editedAt: 2024-01-18T00:00:00.000Z
 ---
 
 [개츠비(Gatsby) 블로그 기본 세팅](https://whitepaek.com/posts/2024/01/gatsby-blog-start-1/)을 완료했으면 [테일윈드 CSS(Tailwind CSS)를 적용](https://tailwindcss.com/docs/guides/gatsby)해 보도록 할게요.

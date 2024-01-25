@@ -1,7 +1,7 @@
 ---
 title: 개츠비(Gatsby) 블로그 만들기 1 - 기본 세팅
-createdAt: 2024-01-15
-editedAt: 2024-01-15
+createdAt: 2024-01-15T00:00:00.000Z
+editedAt: 2024-01-15T00:00:00.000Z
 ---
 
 [개츠비(Gatsby)](https://www.gatsbyjs.com/)로 블로그 만드는 과정을 제가 경험한 내용으로 설명드릴게요.

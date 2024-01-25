@@ -1,7 +1,7 @@
 ---
 title: 개츠비(Gatsby) 블로그 만들기 3 - 페이징(Pagination) 적용
-createdAt: 2024-01-22
-editedAt: 2024-01-22
+createdAt: 2024-01-22T00:00:00.000Z
+editedAt: 2024-01-22T00:00:00.000Z
 ---
 
 이전 포스트에서 세팅을 완료한 [개츠비(Gatsby) 블로그](https://whitepaek.com/posts/2024/01/gatsby-blog-start-1/)에 페이지네이션(pagination)을 알아보고, 적용해 보도록 할게요.
