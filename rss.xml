@@ -1,6 +1,1065 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[WHITEPAEK Blog RSS Feed]]></title><description><![CDATA[시스템 설계와 구현 과정에서 경험한 내용을 공유합니다. 그리고 비즈니스와 일상에 대해 이야기를 풀어내는 공간입니다.]]></description><link>https://whitepaek.com</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 24 Jan 2024 17:59:03 GMT</lastBuildDate><item><title><![CDATA[개츠비(Gatsby) 블로그 만들기 4 - 댓글(giscus) 적용]]></title><description><![CDATA[이번 포스트에서는 개츠비 블로그에 댓글 기능을 적용해 보도록 할게요.
-댓글 기능으로 대표적인 오픈소스로 utterances와 giscus가 있어요.
-저는 GitHub Discussions로 작동하는 댓글 시스템 giscus…]]></description><link>https://whitepaek.com/posts/2024/01/gatsby-blog-start-4/</link><guid isPermaLink="false">https://whitepaek.com/posts/2024/01/gatsby-blog-start-4/</guid><pubDate>Thu, 25 Jan 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;이번 포스트에서는 개츠비 블로그에 댓글 기능을 적용해 보도록 할게요.
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[WHITEPAEK Blog RSS Feed]]></title><description><![CDATA[시스템 설계와 구현 과정에서 경험한 내용을 공유합니다. 그리고 비즈니스와 일상에 대해 이야기를 풀어내는 공간입니다.]]></description><link>https://whitepaek.com</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 25 Jan 2024 13:11:38 GMT</lastBuildDate><item><title><![CDATA[개츠비(Gatsby) 블로그 만들기 6 - 사용자 지정 도메인 적용]]></title><description><![CDATA[개츠비(Gatsby) 블로그 만들기 1 - 기본 세팅 개츠비(Gatsby) 블로그 만들기 2 - Tailwind CSS 적용 개츠비(Gatsby) 블로그 만들기 3 - 페이징(Pagination) 적용 개츠비(Gatsby) 블로그 만들기…]]></description><link>https://whitepaek.com/posts/2024/01/gatsby-blog-start-6/</link><guid isPermaLink="false">https://whitepaek.com/posts/2024/01/gatsby-blog-start-6/</guid><pubDate>Thu, 25 Jan 2024 00:22:00 GMT</pubDate><content:encoded>&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://whitepaek.com/posts/2024/01/gatsby-blog-start-1/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;개츠비(Gatsby) 블로그 만들기 1 - 기본 세팅&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://whitepaek.com/posts/2024/01/gatsby-blog-start-2/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;개츠비(Gatsby) 블로그 만들기 2 - Tailwind CSS 적용&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://whitepaek.com/posts/2024/01/gatsby-blog-start-3/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;개츠비(Gatsby) 블로그 만들기 3 - 페이징(Pagination) 적용&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://whitepaek.com/posts/2024/01/gatsby-blog-start-4/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;개츠비(Gatsby) 블로그 만들기 4 - 댓글(giscus) 적용&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://whitepaek.com/posts/2024/01/gatsby-blog-start-5/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;개츠비(Gatsby) 블로그 만들기 5 - 블로그(GitHub Pages) 배포&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;개츠비(Gatsby) 블로그 만들기 6 - 사용자 지정 도메인 적용&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&quot;http://localhost:8000/posts/2024/01/gatsby-blog-start-5/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;이전 포스트&lt;/a&gt;에서 GitHub Pages에 블로그 호스팅을 완료했어요.&lt;br&gt;
+GitHub Pages에서 기본으로 제공하는 &lt;strong&gt;${username}.github.io&lt;/strong&gt; 형태의 주소가 있지만, 기본 도메인 말고 개인 도메인을 구매하여 적용하고 싶으신 분도 있을 거예요.
+이번 포스트에서는 개인 도메인 즉, 사용자 지정 도메인을 GitHub Pages에 적용하는 방법을 설명할게요.&lt;/p&gt;
+&lt;p&gt;저는 가비아(gabia)에서 도메인을 구입했기 때문에 가비아를 기준으로 설정하는 방법을 설명드릴게요.&lt;br&gt;
+꼭 가비아가 아니더라도 설정하는 방법은 대부분 비슷할 거예요.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://domain.gabia.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;가비아&lt;/a&gt; 사이트에 접속해서 &lt;strong&gt;My가비아 &gt; 서비스 관리&lt;/strong&gt;로 이동하여 본인이 구매한 도메인의 &lt;strong&gt;관리&lt;/strong&gt; 버튼을 클릭해 주세요.
+&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 58.22784810126582%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAABYlAAAWJQFJUiTwAAAB7UlEQVR42n1SS24TQRCdNQfgEuEGoHA0b5EgnMBbS5bPwAZZLOwFDoIoSHwSMjYejzPjcU//P1VU94wDIYaWnl5XdfXrVzWTXX4rXqw2zev1unyVr+qzixt1dnGtOv4LH6/FA3z4zhN/umIv352fP860NSYgonUejAvoATEkQI8upu3RFeIRnVlrYD6fP8mMMQIQfN1qWzbKMWmc5tzJ260TvHWcIKVwvGWOLjnSSAjBu6ZpXFVVNsaOTmez2UlW71ojlMX1poJ8WWCxrZG1CoVUyIVExhXuW01QCbu9wKsfK1z+LLHatXhbM2BcY93wMJ0mQZYEiaGq91TQJBGpNAmLDhQnYYJSBvfNHlfrLQkyekRCKzQ9RILRoTHWYOcZvPdpLpGd88QhDQj6ecaJXS53OP1cprp+rtDd92GxWJxk1naCSikg0b4QjiKuTSPxa9GmvbEuPg69ifuCxMlhhBACQ+jcRaYPl6BoDCEZdbhlCt9+aVDbh4K6bznEtqMwYwxIKCE6iO6lpFlxAdQZWKOhKHfw5v0NaG3jXweW7t9zeJjFoeVj689srHH+d/rOIbUnYztaa08IERSHw57chTzPE9/liY3RgbxQbHzMUwcu/Yfj8fjpaDR6Tnz6LwyHw9P/nUdMJpNng8Hg0S/nMmlujwKWDgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[1] 가비아 사이트 접속&quot;
+        title=&quot;&quot;
+        src=&quot;/static/4d237334770639db46a16b4b5868d062/f058b/gibia-service.png&quot;
+        srcset=&quot;/static/4d237334770639db46a16b4b5868d062/c26ae/gibia-service.png 158w,
+/static/4d237334770639db46a16b4b5868d062/6bdcf/gibia-service.png 315w,
+/static/4d237334770639db46a16b4b5868d062/f058b/gibia-service.png 630w,
+/static/4d237334770639db46a16b4b5868d062/40601/gibia-service.png 945w,
+/static/4d237334770639db46a16b4b5868d062/78612/gibia-service.png 1260w,
+/static/4d237334770639db46a16b4b5868d062/db806/gibia-service.png 3424w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[1] 가비아 사이트 접속&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;DNS 정보 &gt; DNS 관리&lt;/strong&gt; 버튼을 클릭해서 이동해 주세요.
+&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/65e7b9a6d796394b65246d98648ccb6d/db806/dns-info.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 58.22784810126582%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAABYlAAAWJQFJUiTwAAABwElEQVR42p2S3WrbMBTHfb0H2Etkb7CxPVpuB5v3HCGEvEUvEgYeK+7FNtbQjjlxXMeW9S1Lp3/JpQzSXnSCH0fS4Xz9paz8uf/4/Rf78vWq/lz8aPLbqskPhya/qXh+uVN5eQN2E5c7cc5vnuzVNft0cfHtdSYNFgVSxgXrPI0+UAh0Dj29fHTDaawJ2+32TXZdNaJqmlFrZeF3o/fOjSOIZpzwo/MA4U9A1mExIe1ms5llp34wGp0xLkPbM5LGPiL0A1ITVxFzjtRBwPZc+JTwrvprnNYkpQyHQ02cCxoGTkIIimJYo6k7tsQ79szQkxpo0hdFMcuq2z9GS5m0UNqgG0kD56RQxFhL8S4S9whKaJz1g18bE6RSxIZhSlgfj7i35L0PjLHUWQyCdsm27Yl6SDGdR1hPEuMrEPe4C7FA1/e+LMtZxgXeGRoa50IMQuL0bMifEkAKFJEpebz7lwAwWsALY6rBlwUS1i3Tx46jfWSd9DgDhfClbHjG7+N0kGAaed9ys9v3dGI8PCr8spVCUHRKCN1kfddRz/iIV/Wx0gtJcZDGpW+zWCzertfrD6vV6j32/81yuXw3n89f3QN1tWyi+BFrkQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[2] DNS 관리&quot;
+        title=&quot;&quot;
+        src=&quot;/static/65e7b9a6d796394b65246d98648ccb6d/f058b/dns-info.png&quot;
+        srcset=&quot;/static/65e7b9a6d796394b65246d98648ccb6d/c26ae/dns-info.png 158w,
+/static/65e7b9a6d796394b65246d98648ccb6d/6bdcf/dns-info.png 315w,
+/static/65e7b9a6d796394b65246d98648ccb6d/f058b/dns-info.png 630w,
+/static/65e7b9a6d796394b65246d98648ccb6d/40601/dns-info.png 945w,
+/static/65e7b9a6d796394b65246d98648ccb6d/78612/dns-info.png 1260w,
+/static/65e7b9a6d796394b65246d98648ccb6d/db806/dns-info.png 3424w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[2] DNS 관리&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;설정하고자 하는 도메인의 &lt;strong&gt;설정&lt;/strong&gt; 버튼을 클릭해 주세요.
+&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/f4a78326d845edb9a6c2e77a06a7f6f0/db806/dns-setting.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 58.22784810126582%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAABYlAAAWJQFJUiTwAAABpElEQVR42qWSa04jMQyA5/cegEvADUDs0foXCYZbVKp6jRU/WqEtiJeQeFQr7bZDH8xkJg8ncYyTQQUK/IC19I3jcezYTrKL2+neyY04PL58ODi+Xua/maivxiL/O5nns3mZ/5nI/OxO52dj+Y7Tuybp83uxf3R0spEpYKFAxvrgMfCKKH4DLyJRXq/XBaOLfWAhDIfDrWw8XchpUXioS4tGOqel84iMd86/gGxz+Bss/3/U3mqwrpbK/hoMNrNlJUCDp6oSYblYklaKeAMDK7gLkuY9QgM9CB0qBbSoGhzEhLNHAY1x1CgT7ouSZo2jSampEIY3AxUVUCmBvPcMEpfLuGRH7QCC0orqpsbRaLSZNU0N3lniNoMysbKUvNUakraciP0JywkNV5zs9oDAI6G50G1Cay2k4caESqaW24sIpOPJoiJjTLI/AglD1P8mCxzFlpXmGlL5PjkQ1wK4ksinCWMAi7N2VaF5vn5ML+brpDie59uWn53fkRTHl9QmlFLGtx3n5Bn8Bp7jUSnl0rPp9Xrb3W73J+vd/6Hf7+90Op0fT0+WbjBkwgAYAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[3] DNS 설정&quot;
+        title=&quot;&quot;
+        src=&quot;/static/f4a78326d845edb9a6c2e77a06a7f6f0/f058b/dns-setting.png&quot;
+        srcset=&quot;/static/f4a78326d845edb9a6c2e77a06a7f6f0/c26ae/dns-setting.png 158w,
+/static/f4a78326d845edb9a6c2e77a06a7f6f0/6bdcf/dns-setting.png 315w,
+/static/f4a78326d845edb9a6c2e77a06a7f6f0/f058b/dns-setting.png 630w,
+/static/f4a78326d845edb9a6c2e77a06a7f6f0/40601/dns-setting.png 945w,
+/static/f4a78326d845edb9a6c2e77a06a7f6f0/78612/dns-setting.png 1260w,
+/static/f4a78326d845edb9a6c2e77a06a7f6f0/db806/dns-setting.png 3424w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[3] DNS 설정&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;레코드 수정&lt;/strong&gt; 버튼을 클릭해 주세요.
+&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/8ed3fb875a5306bd1007f76cc007cd6a/db806/record-setting.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 58.22784810126582%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAABYlAAAWJQFJUiTwAAAByElEQVR42pVS227TQBDNMx/AT5Q/AIVPyysSmC/IAw+NlP9AfYhVKUBp+wAqEbTErZPYXnt3vZeZYWZ7UZLykpWPz3pGPnvO2IPzH8W7bz/Vx9OLuw/55SrLz8vslPlyobKb5SorV3X2e6mzsyubnS30M3y96hJ//6Xen5x8eTkwjhch9T6iC0BMBIjEV4Ks7f3+Amlxz3mHeZ6/GiyKtS5ub6Nraw/OhNgbloUQYwx8SywAiIFf34HnemWjt86HThv/eTY7Gmya1lkXSTUKq7ohbSzp3iWYB9b2/1DGUaksNsybpoOZCJaVcl0fSesO/1xfk/eeAIDYFoUQCHmPaQTPwWnJBRlVpL7vYT6fHw3atnUcSYSwWC7p701B9aYiw07rtiOZcGTR+HDANjgxVdph1RlSrboXZCGXhguAKZ5qyTNHdhCTUyBre7JSA0zPj5AaO0M5zDm/L0joOK6PuxElvrX2Pv5eZOmJEXmf+0+CvRT4FFiv17jRHtkZwhZkWLBX2+qB9Hk0uw5ZEA070V5GfdDadai1NhKVY8W7soRVo0G+2AGI4o51QvptptPp68lk8pZ5OB6Ph5+Oj4eyPxSs8WY0Gr34BzZmbMqeAMx3AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[4] 레코드 수정&quot;
+        title=&quot;&quot;
+        src=&quot;/static/8ed3fb875a5306bd1007f76cc007cd6a/f058b/record-setting.png&quot;
+        srcset=&quot;/static/8ed3fb875a5306bd1007f76cc007cd6a/c26ae/record-setting.png 158w,
+/static/8ed3fb875a5306bd1007f76cc007cd6a/6bdcf/record-setting.png 315w,
+/static/8ed3fb875a5306bd1007f76cc007cd6a/f058b/record-setting.png 630w,
+/static/8ed3fb875a5306bd1007f76cc007cd6a/40601/record-setting.png 945w,
+/static/8ed3fb875a5306bd1007f76cc007cd6a/78612/record-setting.png 1260w,
+/static/8ed3fb875a5306bd1007f76cc007cd6a/db806/record-setting.png 3424w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[4] 레코드 수정&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;레코드 추가&lt;/strong&gt; 버튼을 클릭하여 아래 5개의 레코드 정보를 참고하여 입력 후 저장해주세요.&lt;br&gt;
+CNAME 레코드는 본인이 구매한 도메인을 넣고, 마지막에 &lt;code class=&quot;language-text&quot;&gt;.&lt;/code&gt; 기호를 넣어줘야 해요.&lt;br&gt;
+(참고로 A 레코드 정보는 &lt;a href=&quot;https://docs.github.com/ko/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;공식 문서&lt;/a&gt;에서 가이드 준 IP 주소예요.)&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;타입&lt;/th&gt;
+&lt;th&gt;호스트&lt;/th&gt;
+&lt;th&gt;값/위치&lt;/th&gt;
+&lt;th&gt;TTL&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;A&lt;/td&gt;
+&lt;td&gt;@&lt;/td&gt;
+&lt;td&gt;185.199.108.153&lt;/td&gt;
+&lt;td&gt;3600&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;A&lt;/td&gt;
+&lt;td&gt;@&lt;/td&gt;
+&lt;td&gt;185.199.109.153&lt;/td&gt;
+&lt;td&gt;3600&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;A&lt;/td&gt;
+&lt;td&gt;@&lt;/td&gt;
+&lt;td&gt;185.199.110.153&lt;/td&gt;
+&lt;td&gt;3600&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;A&lt;/td&gt;
+&lt;td&gt;@&lt;/td&gt;
+&lt;td&gt;185.199.111.153&lt;/td&gt;
+&lt;td&gt;3600&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CNAME&lt;/td&gt;
+&lt;td&gt;www&lt;/td&gt;
+&lt;td&gt;${domain}.&lt;/td&gt;
+&lt;td&gt;3600&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/d1abb74be6469fd1ea633702def1cf2a/db806/add-record.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 58.22784810126582%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAABYlAAAWJQFJUiTwAAACHElEQVR42n1S227TQBDNMx/AT5Q/AIVPyysSuBL0CZGHPiRS+A7Uh7gRKZe2QqAmBZU4sRvb671fZph1m5JGlJGPZn3We3xmdjqn37MXn3+w/cnZ6lV6XiTpaZ5MKJ/PWXK1KJK8qJKLK5bEvY/f1smnC558mYs7bN6/ztjLo6OTxx1pKBBQWw/GBaSEAQDpaRFje70bIW7RnrEG0jR90pln1yJbLr1pKhu0dE4RQnDWeWe24Lx3nvgNSMpZ4krlrTLWcSHth/F4r7OumVHGI2MMRFUiGIXo7X/hnUWhDDJpMGcKasrrmodxFMxLZiQJlkzAu+MVvj0R+PqY4cGE4ZstHEyalttPGb4/E7ERba3knlrlUWsdptPpXofzxpBzpDpgUWmcFRJ/XhPWCuc5x1+lxkviZiuOl8TPaZ0xg845jOdKYaDkElnDbgSttaZtbggQOEMvGwQtsCkyNGWBIBg6yTEQR31GXZfomjoaQKVNdAbeezTG3hek34GTApV1VIbDVVFgxRj1SqGgOaALQC7JCReoiY/lkonWSDxOju8E9WYCqsUS1r8z8IKDKNeg6gosb8BxDkFKME0Dq7wCXjMSoYpuxEJsKA3ffYdkO36Igit8KOJpQ3PqA+zSfx0KQQNkLSolfV4UoWhUiDembqF3YG6xxfnojnRcOzaj0ejpcDh8Trnb7/e7h4eDblw/hMHg3zxpPOv1eo/+AHg9YmiuTWKTAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[5] 레코드 추가&quot;
+        title=&quot;&quot;
+        src=&quot;/static/d1abb74be6469fd1ea633702def1cf2a/f058b/add-record.png&quot;
+        srcset=&quot;/static/d1abb74be6469fd1ea633702def1cf2a/c26ae/add-record.png 158w,
+/static/d1abb74be6469fd1ea633702def1cf2a/6bdcf/add-record.png 315w,
+/static/d1abb74be6469fd1ea633702def1cf2a/f058b/add-record.png 630w,
+/static/d1abb74be6469fd1ea633702def1cf2a/40601/add-record.png 945w,
+/static/d1abb74be6469fd1ea633702def1cf2a/78612/add-record.png 1260w,
+/static/d1abb74be6469fd1ea633702def1cf2a/db806/add-record.png 3424w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[5] 레코드 추가&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;가비아 사이트에서 설정은 모두 끝났어요. 이제 깃허브 레포지토리로 접속 후, &lt;strong&gt;Settings &gt; Pages&lt;/strong&gt; 메뉴로 이동해 주세요.&lt;br&gt;
+그리고 Custom domain 항목에 본인이 구매한 도메인을 입력하고 Save 버튼을 클릭해 주세요. 또한 &lt;strong&gt;Enforce HTTPS&lt;/strong&gt;도 클릭해야 해요.
+잠시 기다려서 &quot;DNS check successful&quot; 문구가 나온 후에 &lt;strong&gt;Visit site&lt;/strong&gt; 버튼을 클릭해서 본인 블로그에 접속해 주세요.
+&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/2383529d5918c647714da12bc3de15c2/1e496/regist-custom-domain.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 115.18987341772151%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAXCAYAAAALHW+jAAAACXBIWXMAABYlAAAWJQFJUiTwAAADDklEQVR42q1U3WobRxjVU0QYGxdfFEzagikmD5DSXARip9jg2MIx5J1iXTgXvbKfJlftRUtpUzsrWdJqf2fnZ3d2dHJmtYoECa4x/eBoNLuzZ86c7/ums7XRffLD99++293dPd/Z2ek//u5xf2Njo8H6+nq/2+32u2trLbr9NY6r8Os2NzfffrO19ev29vaPndNe7+z0zWucnJ26Xq8HjxOPkx6Ojo5wcHjY4NCPB4fYe/kL9vZfYp/Y29/nswO/zr46PsbzFy+OO9cfP74eTxOMw6gcjac2jBKbCWVFoW2htBVSt/+NFULaMAhsGk6tLq1Vupo/l1pXDnj/25+vOkEwPAOjLCtnyhLOzRqIQvlNoLVGXdcoK4uqrFCJHFarZs1sBoLrAes5bm4Gx53hcEFYulwIOL+KIeIMg2CEyShCzBPoLCUy6DyHTFMUSYKZlpjVDVdLeLMkpDoXTiMqqRrCKs+QUWE0SaDSHODHUHPUhYCKI9RUC7skHAxWFPJoTlDhInIqibmBKgrOmrO1cHMsns1jSRgEQUOoSBjFSeOJj4SqbicRpFLQxsxBD4uS/mqHnKjsHYRZGLrxhw9MgKPhDmkuEYwzhLFggoomMTMqq5mMBZYCV4/cEmqlnKDZikp8YqRUmKYCYSIRpgZ5YSCkadQVZo7yawpXkxLFcXO0xkOWzWiaQZoaistlNYMqvfoVO7+mcNXDSThFVTXvEEcJrv8dIEsyGGbcsGwM64/lxc0tJL10szsUMpylT5/rcDLG7fU/kAmLm8oV59YoelejtoRrM30Xof9ZbFqwZMK//4LyxaxLKjOQukLO8wvFbNOKOz38TNhO2J4IB1P88Tu7JS5gqK5gonxLFlJylE073kNhW4ex9/AGg+EIw9sJJuwa30ne5wUkie9F6GG0QcrizoVERuiyhrY+03Poapni/yQ0LB1fyL7AV0fLvq15GfjRNj18Dw8fGF8SUlndbvkQVF9cX/+bwkWn0CPnvXoI6rpeXrAXFxfdy8vLn6+urn56KPj9U47Pzs/PH30CdDhgrcaHsc0AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[6] 커스텀 도메인 등록&quot;
+        title=&quot;&quot;
+        src=&quot;/static/2383529d5918c647714da12bc3de15c2/f058b/regist-custom-domain.png&quot;
+        srcset=&quot;/static/2383529d5918c647714da12bc3de15c2/c26ae/regist-custom-domain.png 158w,
+/static/2383529d5918c647714da12bc3de15c2/6bdcf/regist-custom-domain.png 315w,
+/static/2383529d5918c647714da12bc3de15c2/f058b/regist-custom-domain.png 630w,
+/static/2383529d5918c647714da12bc3de15c2/40601/regist-custom-domain.png 945w,
+/static/2383529d5918c647714da12bc3de15c2/78612/regist-custom-domain.png 1260w,
+/static/2383529d5918c647714da12bc3de15c2/1e496/regist-custom-domain.png 3268w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[6] 커스텀 도메인 등록&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;본인이 구매하여 등록한 도메인 주소로 블로그 접속이 되는 걸 볼 수 있어요.
+&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/9b46f520cde422889f3bdddbaeeaa6a7/db806/custome-domain-blog.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 58.22784810126582%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAABYlAAAWJQFJUiTwAAAB2UlEQVR42qWSzYoaQRDH55xrMCIrqwhz2kVC8JaQPIAXXcR1lUhCDnkMr4Fk8haC+CaefAU9mGQ/xulWZ6a/K9U9M8HNbgIhBT/+PdNV1dVV7fn+6ad6o/G1flL50jitBy+et4JWqxX4vh88LZWCUrkclFDLqOVK5QHVajU4QWq12udms/nMG78f8/GHd/BxdGXeXvZhMLiC4XAIo9EILgcD/M7o9XrQ6XQyul1H9+LC+hi73+/3TbvdPve4ELEBUApAaA0SAOThcJCr1VpuNhvUlVyv1zJNU7dXoLV2KKWEVc65WCwWZ54QgkNmBoxxi3hP4ebHN7gLt3B9fYMawn5/AAyClDFQePKRuSBMrJfL5ZnHrRcanmJMkTBOIIwI7FCTJIE0ZagpSKkwUFtfsL4WG2djpJRZwnsV5saEglsaA4k56DzQBbsEvy7yeIWPJmQcbsMI7rYRRIRAhNVuEUIpULrDxPrfEiZMwPdwB+Euya95n9/sQUKWb+h802BbDSHEUEpRqdlGEUIMVmuwpybvW4GL+2sPbdPtte1E9dFEbR+FlK6Xf6wwxpHaQTPGFKIL8N05sm+u0cetCz1C2X9YuXTvcDabvZxOp29QX/8P8/n81WQyefITKwkZ3lZxPmEAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[7] 본인의 도메인 주소로 블로그 접속&quot;
+        title=&quot;&quot;
+        src=&quot;/static/9b46f520cde422889f3bdddbaeeaa6a7/f058b/custome-domain-blog.png&quot;
+        srcset=&quot;/static/9b46f520cde422889f3bdddbaeeaa6a7/c26ae/custome-domain-blog.png 158w,
+/static/9b46f520cde422889f3bdddbaeeaa6a7/6bdcf/custome-domain-blog.png 315w,
+/static/9b46f520cde422889f3bdddbaeeaa6a7/f058b/custome-domain-blog.png 630w,
+/static/9b46f520cde422889f3bdddbaeeaa6a7/40601/custome-domain-blog.png 945w,
+/static/9b46f520cde422889f3bdddbaeeaa6a7/78612/custome-domain-blog.png 1260w,
+/static/9b46f520cde422889f3bdddbaeeaa6a7/db806/custome-domain-blog.png 3424w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[7] 본인의 도메인 주소로 블로그 접속&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;추가로 개츠비 프로젝트를 열어서 &lt;strong&gt;static&lt;/strong&gt; 디렉터리 하위에 &lt;strong&gt;CNAME&lt;/strong&gt; 파일을 생성하고, 도메인을 작성해 주세요.&lt;br&gt;
+프로젝트에 CNAME 파일이 설정되어 있어야 프로젝트를 빌드하고 배포할 때 Custom domain 설정을 유지할 수 있어요.&lt;br&gt;
+만약 프로젝트에 CNAME 파일을 설정하지 않는다면, 배포할 때마다 [6]번 이미지의 설정을 매번 반복해야 하는 번거로움이 생겨요.
+&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/4208ae8bf0dfdd6f41049ebcc16fed86/db806/add-cname.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 58.22784810126582%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAABYlAAAWJQFJUiTwAAABd0lEQVR42q2S22rCQBCG8wS98KKU1I2HnNccNic10SiKJ7Ba6Av0gQqmj1tc3elErSAUxNqLj2WX4WNm55em/dXHavT+OcnfNoNsXiRRv2BBp3C84AKTOoVu0gOm7RQevrEgKnRKC9v2CsdhG0rpk5Rlw12ajqDd7gsWJJAmOXTjARhWC0zbPaAZFOoN/Ux5180W6Md3UatreKdgWW4oRXH0Ncy7u07Cti1q8yqpcYJUSf0CpdY8Q5TGGbxvy1PVrR12GkhxEPFZL4MojAV1fMCCWxEohKZqgKpaoeS5jC/GU0g6mbCp93ehZh6Fjufz4XgCUZIKA/9Bqan3CRljfDabH4W4iPs7dH0+Oozc+x+hz3ApiyV0s3yPQlEW3MgehaIUapodSK4fcQwuIAIDe7WjspsfLrd86tD1Q95yGQpDYVEXg6oi2u80dRzNArUc7wTGRZSRKYN9ED4rypKQ+iuyfpTlK5C1jHXkhEwInkdkRXmpVCoP3xK6N6nEGn4SAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[8] &quot;
+        title=&quot;&quot;
+        src=&quot;/static/4208ae8bf0dfdd6f41049ebcc16fed86/f058b/add-cname.png&quot;
+        srcset=&quot;/static/4208ae8bf0dfdd6f41049ebcc16fed86/c26ae/add-cname.png 158w,
+/static/4208ae8bf0dfdd6f41049ebcc16fed86/6bdcf/add-cname.png 315w,
+/static/4208ae8bf0dfdd6f41049ebcc16fed86/f058b/add-cname.png 630w,
+/static/4208ae8bf0dfdd6f41049ebcc16fed86/40601/add-cname.png 945w,
+/static/4208ae8bf0dfdd6f41049ebcc16fed86/78612/add-cname.png 1260w,
+/static/4208ae8bf0dfdd6f41049ebcc16fed86/db806/add-cname.png 3424w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[8] &lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;이상으로 사용지 지정 도메인 설정이 끝났어요!&lt;/p&gt;
+&lt;p&gt;제가 구상했던 &quot;개츠비(Gatsby) 블로그 만들기&quot; 포스트 시리즈는 전부 끝났어요.&lt;br&gt;
+포스팅했던 설정 외에도 &lt;strong&gt;&quot;메타 태그(meta tag), 사이트맵(sitemap), robots.txt 등&quot; 검색 엔진 최적화 설정과 웹 마스터 도구 설정&lt;/strong&gt;이 있어요.
+또한 &lt;strong&gt;방문자 접속 분석 도구인 구글 태그 매니저(GTM), 구글 애널리틱스(GA4) 설정&lt;/strong&gt;도 있고요.
+해당 설정들에 대한 포스트 작성은 당장 계획에 없어서 키워드만 말씀드려요. 해당 키워드를 기반으로 문서를 보면서 설정을 진행해 보세요.
+나중에 해당 설정에 대한 기록이 필요하다고 판단되면 포스트를 작성하도록 할게요. 지금까지 개츠비 블로그를 만드느라 수고하셨어요!&lt;/p&gt;</content:encoded></item><item><title><![CDATA[개츠비(Gatsby) 블로그 만들기 5 - 블로그(GitHub Pages) 배포]]></title><description><![CDATA[개츠비(Gatsby) 블로그 만들기 1 - 기본 세팅 개츠비(Gatsby) 블로그 만들기 2 - Tailwind CSS 적용 개츠비(Gatsby) 블로그 만들기 3 - 페이징(Pagination) 적용 개츠비(Gatsby) 블로그 만들기…]]></description><link>https://whitepaek.com/posts/2024/01/gatsby-blog-start-5/</link><guid isPermaLink="false">https://whitepaek.com/posts/2024/01/gatsby-blog-start-5/</guid><pubDate>Thu, 25 Jan 2024 00:19:00 GMT</pubDate><content:encoded>&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://whitepaek.com/posts/2024/01/gatsby-blog-start-1/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;개츠비(Gatsby) 블로그 만들기 1 - 기본 세팅&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://whitepaek.com/posts/2024/01/gatsby-blog-start-2/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;개츠비(Gatsby) 블로그 만들기 2 - Tailwind CSS 적용&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://whitepaek.com/posts/2024/01/gatsby-blog-start-3/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;개츠비(Gatsby) 블로그 만들기 3 - 페이징(Pagination) 적용&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://whitepaek.com/posts/2024/01/gatsby-blog-start-4/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;개츠비(Gatsby) 블로그 만들기 4 - 댓글(giscus) 적용&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;개츠비(Gatsby) 블로그 만들기 5 - 블로그(GitHub Pages) 배포&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://whitepaek.com/posts/2024/01/gatsby-blog-start-6/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;개츠비(Gatsby) 블로그 만들기 6 - 사용자 지정 도메인 적용&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;사람들이 본인이 만든 개츠비(gatsby) 블로그를 볼 수 있도록 GitHub에서 무료로 제공해 주는 웹 호스팅 서비스
+&lt;a href=&quot;https://docs.github.com/en/pages/quickstart&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;GitHub Pages&lt;/a&gt;를 이용하여 배포하도록 할게요.&lt;/p&gt;
+&lt;h2&gt;1. GitHub Repository 설정&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;http://localhost:8000/posts/2024/01/gatsby-blog-start-4/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;개츠비(Gatsby) 블로그 만들기 4 - 댓글(giscus) 적용&lt;/a&gt; 포스트에서
+생성한 깃허브 레포지토리로 접속해서 레포지토리 URL를 복사해 주세요.
+&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 84.81012658227847%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAARCAYAAADdRIy+AAAACXBIWXMAABYlAAAWJQFJUiTwAAACtklEQVR42nWT3U4TQRTH+xYQJNwQEsILkHqpib6AtgpEUwoGUHkT5coL77gnQHgS41c0UQuUbtv97O7O7M7uzu78PbNt1dYyyW/PmTOz/z0750xleXnh7trayrv19fW31Wr1aHll5Whufn7I3Nwko/j8eF37CwtHi0uLb5aWlt6vrq5WK81G4/DFyz3s7u/lO7u7aDZ30Njexubm5pCtLWyM7NONDdTqdTyu1VCvP0GNrI49e/5cNrabeFSrHVSu2sYr1w9guYPE6JnS8XwZsEiGPJYsEhP4FHf9UPphJCORlrAo0WtCAfj8/XK/0uv1DslHnhe5HzAMSFwkKYqi0LEJm2YZYpGQlUg0aTbeK7WGaZoHFWssWBR5yBiiKCKBfAI9hBDgnJfr2tdx/RGl1KTgOENayIMghO24lIUos5JakF7Sg5GQ5XjgcUxZJcikLAX1mCmYFSpv2QEuiZYd4sr0cN3p49owYQ04bJ/DDSIMmIAXxuTHcGhu+RFSOUMwoWS+dgf4aAT4YIT41Pbw5Vcf31oGftyY+Nmx0DI5Lk2Gts3R92NCwHA5RJbP/mXHG6DTNdG3PXQtF6brg4kUGZUwkQViqYgCgmxaDNHxmb9MwfzG6KJ11Qa1Dp0ZFSHWJKUfkY1JfAy1DLj2p6s8UZSQlUVxXA/a96lImogKoYugizSLWwUt20W700XPtGDZDvqmXcJ4VPZeJvP/0PFbBUPGy+x0VlqER3HZvONmniWomRCkx2sMh7QsW/X7pnIdV5mWpfwgUGmaqizTZcGtkGD296ZY1uFIMMfUkPrcRmenz1AzbvTprX8EDcMoM6RMZJIkSohEhSFTjHPFo0gxxhRduXL+r09XUOn9I8oMO53OfuX4+PjO2dnZg4uLi3vn5+f3NScnJyXj+XR8ev309FS/+1Br/QauQpG5OobBYwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[1-1] GitHub Repository 접속&quot;
+        title=&quot;&quot;
+        src=&quot;/static/9f51318db5dd2368e5bd6de84b4d5707/f058b/github-repo-url.png&quot;
+        srcset=&quot;/static/9f51318db5dd2368e5bd6de84b4d5707/c26ae/github-repo-url.png 158w,
+/static/9f51318db5dd2368e5bd6de84b4d5707/6bdcf/github-repo-url.png 315w,
+/static/9f51318db5dd2368e5bd6de84b4d5707/f058b/github-repo-url.png 630w,
+/static/9f51318db5dd2368e5bd6de84b4d5707/40601/github-repo-url.png 945w,
+/static/9f51318db5dd2368e5bd6de84b4d5707/78612/github-repo-url.png 1260w,
+/static/9f51318db5dd2368e5bd6de84b4d5707/db806/github-repo-url.png 3424w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[1-1] GitHub Repository 접속&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;지금까지 개발한 개츠비 블로그 소스코드를 레포지토리에 푸시(push) 할게요.&lt;br&gt;
+main 브랜치는 빌드 결과물을 배포하여 호스팅하는 브랜치로 사용할 거라, develop 브랜치를 생성해서 사용하도록 할게요.&lt;br&gt;
+터미널을 실행하고, 프로젝트 디렉터리로 이동하여 아래 명령어를 순서대로 진행해 주세요.&lt;br&gt;
+(기존에 커밋한 내역이 있다면, &lt;code class=&quot;language-text&quot;&gt;git add&lt;/code&gt;와 &lt;code class=&quot;language-text&quot;&gt;git commit&lt;/code&gt; 명령어는 생략해도 돼요.)&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token builtin class-name&quot;&gt;cd&lt;/span&gt; ~/Downloads/my-blog-starter/
+
+&lt;span class=&quot;token comment&quot;&gt;# [1-1] 이미지에서 복사한 본인의 레포지토리 URL을 입력해주세요. &lt;/span&gt;
+$ &lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; remote &lt;span class=&quot;token function&quot;&gt;add&lt;/span&gt; origin https://github.com/XPORAGE/xporage.github.io.git
+$ &lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; branch &lt;span class=&quot;token parameter variable&quot;&gt;-M&lt;/span&gt; develop
+$ &lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;add&lt;/span&gt; &lt;span class=&quot;token builtin class-name&quot;&gt;.&lt;/span&gt;
+$ &lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; commit &lt;span class=&quot;token parameter variable&quot;&gt;-m&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;first commit&quot;&lt;/span&gt;
+$ &lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; push &lt;span class=&quot;token parameter variable&quot;&gt;-u&lt;/span&gt; origin develop&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/cf8d6d424efe42d1a56f32a40b7be307/d50e7/git-cli.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 66.45569620253164%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAABYlAAAWJQFJUiTwAAABsklEQVR42tWSy07bQBSGLbWLWt2UWnKCkZumkTO33GzPjC8FQywaiSXPws7iHdkSibcAeYPx4UxM00gRIJa19PnMmWN/Gtm/NevNvmZxfEVCdT0cyWowiqphEFWRPqt0fl7ptCPS5aamZg/XhMgd4mtC1FUPXZbnjfw8L+pVeQHL41VbHq/gND+HAmuWlKDkKWh1BiouIIwKmIcFzBYnwCfZX1oxzYGJpDYu68u3/iDVyf3lyRIuiz+PF7/LppBZkyzyRofIImvUPEWyRnDVjKlsCFMN5VsemdBAhLrv938OrIPDXz8m86yO8QSRXLaxKoEvFARcQkAVjFlHgBCuge7T8kkKVOj6EF2WuVEa1xxfYDRuOY2Bse5h9gJ9m5bxBAiT/4SmwW+Aw6RF3hPsC8WrQt1+UPb/CtXDixBjoJ8wCjvod1BNJ1QPG6HJDg7whOnmp5hqYrCL2XudpOXTzBym3uTQcXxPTNOb2Ty7Q24Zl+tgHG4Rk2RNcM+AAV6LadePETPDWN0Squ9wdmNcFl6fXHfYC4LgiBDiOY7j2ba9xfS7+L6/t7bt70eu6/bQ9fkZu79SrWeupBMAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[1-2] git 명령어 실행&quot;
+        title=&quot;&quot;
+        src=&quot;/static/cf8d6d424efe42d1a56f32a40b7be307/f058b/git-cli.png&quot;
+        srcset=&quot;/static/cf8d6d424efe42d1a56f32a40b7be307/c26ae/git-cli.png 158w,
+/static/cf8d6d424efe42d1a56f32a40b7be307/6bdcf/git-cli.png 315w,
+/static/cf8d6d424efe42d1a56f32a40b7be307/f058b/git-cli.png 630w,
+/static/cf8d6d424efe42d1a56f32a40b7be307/40601/git-cli.png 945w,
+/static/cf8d6d424efe42d1a56f32a40b7be307/78612/git-cli.png 1260w,
+/static/cf8d6d424efe42d1a56f32a40b7be307/d50e7/git-cli.png 2280w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[1-2] git 명령어 실행&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;h2&gt;2. Git Push 접근 권한 문제&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git push&lt;/code&gt; 명령어를 실행하고, 문제가 발생하지 않는다면 &lt;strong&gt;3번 내용을 진행&lt;/strong&gt;하면 돼요.&lt;br&gt;
+[2-1] 이미지처럼 접근 권한 문제가 발생하면 &lt;strong&gt;[2-2] 이미지부터 진행&lt;/strong&gt;해 주세요.&lt;br&gt;
+만약, &lt;code class=&quot;language-text&quot;&gt;Username for &apos;https://github.com&apos;:&lt;/code&gt; 처럼 로그인이 진행되는 경우에는 &lt;strong&gt;[2-3] 이미지부터 진행&lt;/strong&gt;해 주세요.
+&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/ad574019abe2c09d414134870f8135b9/d50e7/github-403.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 66.45569620253164%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAABYlAAAWJQFJUiTwAAABzUlEQVR42tWS326bMBSHkbabaDfVkEhLRdstIg4YQhKwsfm/LKmqpXua3kV9x942Ut+iFTdlnB2TqmJdtl0P6eN3bPAn2zradDj9kIbhDZ2z25G92I5Gs62NGfFqK5LVHrHa8t6Yi+WWkKhHeEsIuxmiSzPNkRXKss6XG0iyq1ZmV8DlGkR6CSFfQrAoYRZWmAUE8wKm8xz8IAPHk+BQobJ1/QTruFYu7eLo6DzL0sfN+jtcr6+fN1+/NZVcNhkvmzwuMYsmZUWXoc+bmRs1C48hvCPyoucZZWBP2OPx8cW55p58PitZUefJClK5bovsEqo0hzIuXiih5AV8ERXImQQRCEjmcl8jSRC3kR8Dobw+QZemXsRhNXEFjHH7YzzGhIZAHGQSdUxUEkyHHaLF4+Ia1hdGdTfpshbBjN/Ae/kbnVA5Dgh5+4dFf+P/FLKnF2GD/MB77MH/AWv2QvbUCVXv4IdaNSlefKvS9X6la+CDxApsbKk2U3d9qOuWSX1xNw3kA3LvuNHOHs9f8XyxIzincCjfUT/u6jFCvXjnuPyeOPyBUn6nXBo+7wzj09C27VNCiKnrujkYDF5R4z6WZb2pLfzv46lhGEN0vf8J2RVVqJ/IAZUAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[2-1] git push 접근 권한(403) 문제 발생&quot;
+        title=&quot;&quot;
+        src=&quot;/static/ad574019abe2c09d414134870f8135b9/f058b/github-403.png&quot;
+        srcset=&quot;/static/ad574019abe2c09d414134870f8135b9/c26ae/github-403.png 158w,
+/static/ad574019abe2c09d414134870f8135b9/6bdcf/github-403.png 315w,
+/static/ad574019abe2c09d414134870f8135b9/f058b/github-403.png 630w,
+/static/ad574019abe2c09d414134870f8135b9/40601/github-403.png 945w,
+/static/ad574019abe2c09d414134870f8135b9/78612/github-403.png 1260w,
+/static/ad574019abe2c09d414134870f8135b9/d50e7/github-403.png 2280w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[2-1] git push 접근 권한(403) 문제 발생&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;macOS 기준으로 &quot;키체인 접근&quot; 앱을 실행하여 &quot;github.com&quot;을 삭제해 주세요.&lt;br&gt;
+(Windows는 자격 증명 관리자에서 진행하면 될 거예요.)
+&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/0ad2e76e984e51460c94ef586ebf6b36/82e86/keychain.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 65.18987341772153%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAABYlAAAWJQFJUiTwAAACU0lEQVR42qWTy27aQBSGaVa9RFWyyoOwbR8goIh9uuAJ8gxZtg/RVbrJpusqFdlVChEQwiUB33DBYOwB29j4gi/j0zMmJFSRKkUd6fPv8cz8c87Mce709HSnf1v/0Ok1jkRZPuRkpSAjxDAeMRCFqAVFVQs3bbnQvlMKnKhm9EX1sMePj1p30scca59OTt4PhT4/t1SYGSa15zr4SxuSNIU4SSCMokyD1QpcP4CRZsOELGG2CIBYPuimR50ghcF4LqDdm9zx8fF+o9PjpcEIyGSc/BTNtDo006kyTC3bTqMoSoMgSJMkSdEYlWYaxdhfkwA21/NENNzNlcvlvc5dT/g9GoOpT+jXNoXv9wFoQwmUiQoP8//VKHv4vi+h4Ts0LO21+5LAFhOiU8+xIfQ98JYOpr4ExzIhcF3AkMC1cSzwIQnD7FuMx4BQwE1tY742LJVKewNZFgxrAWQ6pvfNLvSqV6C2b2DabYHSaoBQ/QULkYPRbR0GtSuYtJtZfyFxYA94avL3MG7WpNzBwZOhaVmgE0Itaw4cxwHP89Dtdh9V07QMQRQyjeIILyxkSpeYCSHk7wiZoabr1PdcsDE1xoKp44CFYy6m6Lpe9t3zPAgxbVYBqzCkKVaEYZrPDaeaRtnEOI7X4NlEG8XF7H0DM9sYskvBjZ8MJVnuk9kM1KkWYYkkq9XqGcF2Pwy3iZjhwnH4rGyKxeI+hiuk66vPwn9h2y6b3Vw+n3/74+Lic+Xy8rxSqZxdX19/q9VqL+GsXq+fV6vVL2j4mv19rx7Y+U8ynz/9jSH28OSyHQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[2-2] 키체인 접근 앱에서 github.com 삭제&quot;
+        title=&quot;&quot;
+        src=&quot;/static/0ad2e76e984e51460c94ef586ebf6b36/f058b/keychain.png&quot;
+        srcset=&quot;/static/0ad2e76e984e51460c94ef586ebf6b36/c26ae/keychain.png 158w,
+/static/0ad2e76e984e51460c94ef586ebf6b36/6bdcf/keychain.png 315w,
+/static/0ad2e76e984e51460c94ef586ebf6b36/f058b/keychain.png 630w,
+/static/0ad2e76e984e51460c94ef586ebf6b36/40601/keychain.png 945w,
+/static/0ad2e76e984e51460c94ef586ebf6b36/78612/keychain.png 1260w,
+/static/0ad2e76e984e51460c94ef586ebf6b36/82e86/keychain.png 1978w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[2-2] 키체인 접근 앱에서 github.com 삭제&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;깃허브 레포지토리에서 우측 상단에 프로필 이미지를 클릭하여 &lt;strong&gt;Settings&lt;/strong&gt; 메뉴로 이동해 주세요.
+&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/f9f1b4773084afd87d194aa162907ebb/db806/profile-settings.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 84.81012658227847%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAARCAYAAADdRIy+AAAACXBIWXMAABYlAAAWJQFJUiTwAAADI0lEQVR42m2UzW7bRhSF9RYxHO0MI0AAd5GN4S6rRR4gTmt1YyWuG8Ro/CatVwVaIEANeOFFYPgdimzaIou2imFZlEiK5HCGw19RkgWT5umdkSw0sQh8uPOjObyX94xqj9ZWv3z8eP3nzc3Nn7a2to7W19ePVlZWjh4seDBnRa9rVv8/Xj16WK//WK/Xf11bW9uqvdjdPdw7eIW9V9+XL/e+Q+vFS+y2WthpNjXNedxpfouvv9nB9vPneLa9raOiSeutVqvY399Xvz2otS86P9iMo++waadnFabDCpfLwhOhhgXRYuz4QWF7vHB4UDAZFTLOijBKi/K2vAY9jLHXtU6nc3hTFAiTrHRIeOAxcBkhSlKEcTaPKcUMQZiABxGCKIEIY6RZjjzPQecLJSiEOKh1DOPwprxVB0vP5/BFQAKJFrojSTN6SQjGA70vpNTr6TBHGEYYjyf3BeNUZejDtF3KIpxnNhNWmSixvu3MBGlfRjGSbAguBAmO7wtKKrlt+WjbMz7aTHNhc/SClMhgygxWlMMKh3rO0xGGlGVRlp8K0leFSIblh56HPw0ff3R9Hf8yGD4YDv42ffxjcbTdlEhwwVJcBUN4cQ5J5S/9hqpky2Ho9GwYVHbXdNCzPXiqPGqIoEbwMCVUQ1IIalRM3y8w+xgHgRZkV1efCl52+2hfdkHWgcclyCoashHIPvDlDDX2RKS7H0cRptfXswwZ+7wpHObAheV4mFnI15EJqa0iSeAONVddVtXeAstLVl287PZgmLbuqGEONB51WFCpQZQuUPM0H2H+LBd0maByPcqM65IZlStkoo2+LMNsmWC3238zvSkQJ1nRtwaVYVqVNXCrnmVX5MsqCKNKhnFFntPQizXkz2o4Gleko7hZCPYt51BNRpPrUpWQjcbIxxMNHaQrmS5MrlBrGV03ZerRZHI/w9/fv3/T7fXx78eL0hei4oGsXMqMrmHFOF+MFS6jyMViHiVJNZ1OFTpD13Vf1zY2NupfPHnylP4LG7+8fds4ffeu8dvJiebk9LRxouJn3O2f0v75+Xnj7OzsK4pPj4+PH/4HpoFruliuRMMAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[2-3] Settings 클릭&quot;
+        title=&quot;&quot;
+        src=&quot;/static/f9f1b4773084afd87d194aa162907ebb/f058b/profile-settings.png&quot;
+        srcset=&quot;/static/f9f1b4773084afd87d194aa162907ebb/c26ae/profile-settings.png 158w,
+/static/f9f1b4773084afd87d194aa162907ebb/6bdcf/profile-settings.png 315w,
+/static/f9f1b4773084afd87d194aa162907ebb/f058b/profile-settings.png 630w,
+/static/f9f1b4773084afd87d194aa162907ebb/40601/profile-settings.png 945w,
+/static/f9f1b4773084afd87d194aa162907ebb/78612/profile-settings.png 1260w,
+/static/f9f1b4773084afd87d194aa162907ebb/db806/profile-settings.png 3424w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[2-3] Settings 클릭&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;Settings 메뉴로 이동했으면 좌측 목록에서 &lt;strong&gt;Developer settings&lt;/strong&gt; 메뉴를 클릭해 주세요.
+&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/a8a0cb6ffe05d7d8c9baeed49d3491d0/db806/developer-settings.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 110.12658227848102%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAWCAYAAADAQbwGAAAACXBIWXMAABYlAAAWJQFJUiTwAAADLklEQVR42pVUTU8TQRjujyAQRPCAvXDgQmI8kHDDHrgapUVaCw3axF+jnDiQaMLBSKIJCTUcNPFi4oEbESUGSNvtx/Zjt7szuzs7+/q+0+3SyFZxkyczuzvzzPO8H5O4e2fq/txccmdhYeHV/Pz89uzs7PbY+Nj2+MRELCYmJ/sI3ydxPjU9/XJmZmY3mUzeS2zm84WtF0XYKj6XxSKOW88gm8vBk/V1hfVsNhoza2uwmk7D49U0pDMZSKcz6t/TfF5sFArw8FE6l9C0xgZ3PTBt5trcE4w7whNSAEAEOQTX84XjekL4/TnDPfjOcR2cnF5kE5VKpUAvpu3Ki3INGo0mWDYDz/OAcw5BEMCox8U1jHHwfZ8OBk3TchEhdxyp6y2QUqrFZq8Hna4BqAXJBW4Wau77kgjAMHuAjtRa3HOdEBXJdqejFtNj2TaYlg0YAkBLSo0nPPWfDn3/5QzefPwOzFGk1wkd15WGaSqrfYUWNFtt6CGp67ogkcjxJAIPDHw4+nYO7z6fKeWxhLhJ1usN6CERBk6p6tkcbXGcCwVMAsgwpj6q9EI38QodV7bbnSiGFiqjGJJlGwPPHReEL6OE/JGqGIUYw1a7jcROGEMGFhIRiYc1QvClHJXwmCxzRzZ1PVLI0ColZUBGGRZYHfQ/ppTiLDuyixYHi/EA0OpNJGXAMSkMLdv4jVQT+T8JqWx6lkX1qOIzUEhZdMVVHYqwbG5E2DWMqGyImJJB2Va1iAp9/z9iSEmh6qcmVSHgaJHsIvFAnRzdhjExtCzZvDgH3tIBmaDZ0eH08hfoWNxU8FSfjDEwbBdDcAPLEhVyowuOaaB/ASfaT/j04ysWfL/dKFl93FAhcQ6vcDBu7VYHWqhwcOtQHcoh0EGq94cvh1qtthneGJS+QAEbAXs5uCxXg0qlGtQbzcBmLMCrCsGi+WDEvd41QmrPsKMUbO4G7a4Z+NIPhr+PwBXh8fFxQccOQetSqPsO44V2uoYJ1aoGRlhK9O8vUJbL5XIusbS0dHtxcXFleXk5dXBwkCqVSqmjo1Lq9dsPqZ2dXYX9/X31fRQODw8f4Liyt7d36zc+vxXJp9PvjgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[2-4] Developer Settings 클릭&quot;
+        title=&quot;&quot;
+        src=&quot;/static/a8a0cb6ffe05d7d8c9baeed49d3491d0/f058b/developer-settings.png&quot;
+        srcset=&quot;/static/a8a0cb6ffe05d7d8c9baeed49d3491d0/c26ae/developer-settings.png 158w,
+/static/a8a0cb6ffe05d7d8c9baeed49d3491d0/6bdcf/developer-settings.png 315w,
+/static/a8a0cb6ffe05d7d8c9baeed49d3491d0/f058b/developer-settings.png 630w,
+/static/a8a0cb6ffe05d7d8c9baeed49d3491d0/40601/developer-settings.png 945w,
+/static/a8a0cb6ffe05d7d8c9baeed49d3491d0/78612/developer-settings.png 1260w,
+/static/a8a0cb6ffe05d7d8c9baeed49d3491d0/db806/developer-settings.png 3424w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[2-4] Developer Settings 클릭&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;Tokens (classic) 메뉴로 이동 후, 우측 셀렉트 박스에 &lt;strong&gt;Generate new token&lt;/strong&gt;을 클릭해 주세요.
+&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/7b867bed1d9b8066839aa0c27eb61c88/dffad/generate-new-token.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 78.48101265822784%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABYlAAAWJQFJUiTwAAAB3klEQVR42u1UvWobQRC+txBCiUwI0jV2kU6CJBhSuLF+A4qsGAfyGipjqTHqQnoVQqUeRA8gCI6KEKPcv+6ku9u9ub3J7EpODCGFjcvM8e03Mzv77SwMp+nPn5wcHuqfK5XKVbVaHZVKpVEulxvl8vkdbn3iPLFCIf/bLxQKo6cHB1fFYvGLrusn2vuzs+H5xw94fnGR9no97Ha72G63sbVHu/0WW62d32g08fS0plCvN7BWq2Oj2cROpwOdd12ZG2qrlfEpCCN01z5zXA/CKAbOE4gYhyhmCjFjkAAATxIIKd5SzSaMFMv6LS2pQPy6/H6pWZY1RLIojlPTspEOYUbx2g/QtCy0bRst18dNLAiAAeVtx0HXcxGodm8gF8dxhn8EXS81l98wNA1kno2Mc9xGEfohw/WGoxMk6G9iNK+v8edyicFqhYnvYyYECiGUoCUFpaoMBECaAaBIABkJUYgpvUMypNInpn16NXVGzOklWfZ3h7eCtJkqpo9upJszdeAuVF7yHnfs34IPtP+Cjyw4UGOzm6XsgVAT7nne4PE7nM/ngx83N7hYLMB1XZpvEIwxwTm/D7gUNAzjUiuXy89eHB29oV/Pcb/ffz2bzV5Np9N7YTKZvCQ+Ho/HxV/9sU59maLwHwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[2-5] generate new token 클릭&quot;
+        title=&quot;&quot;
+        src=&quot;/static/7b867bed1d9b8066839aa0c27eb61c88/f058b/generate-new-token.png&quot;
+        srcset=&quot;/static/7b867bed1d9b8066839aa0c27eb61c88/c26ae/generate-new-token.png 158w,
+/static/7b867bed1d9b8066839aa0c27eb61c88/6bdcf/generate-new-token.png 315w,
+/static/7b867bed1d9b8066839aa0c27eb61c88/f058b/generate-new-token.png 630w,
+/static/7b867bed1d9b8066839aa0c27eb61c88/40601/generate-new-token.png 945w,
+/static/7b867bed1d9b8066839aa0c27eb61c88/78612/generate-new-token.png 1260w,
+/static/7b867bed1d9b8066839aa0c27eb61c88/dffad/generate-new-token.png 3376w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[2-5] generate new token 클릭&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note, Expiration, Scope&lt;/strong&gt;를 선택하여 토큰을 생성해 주세요.
+&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/a601e993f81eaae2a16aec830e58db7e/dffad/create-tokens.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 78.48101265822784%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABYlAAAWJQFJUiTwAAACqklEQVR42o1Ty06TQRTuWzSkCAtDuuEBWEjCjg1Q5KYQCOqrCN2QsjJddGFCCCHhRVxo3BgMUZQERP77/f9n/svM55lpixiJMu0338zpma9zLlNrPh6dnZxsvpmamtojdCYmJjr1kTphpI96/ZZHiDUafW40Gp3R0dHOo/HxvbGxsW6z2Zytra+vtzdfbWP75Ytqc2sL6xsbWFlZxdOlJY2l5eVbbrUWMTc338f8AlqLi9q+urZWrj17joWFVrt2fWO+TjKGlHGeMV7yvNBQa7LdMuN5SeYyzVgZJxntlU9eJmmmwCoBfPl+uVOzbbsNGhljlWGayPMckj5hEMA0DFgEwzBhmjayjJNfoX0456iqCoNRqsl13fYdwbyybIcOMfCcITANODc/kfguQi+A70UIHB9hkqMoShIrIUQFKSWx0IK2ElSqakPGSv1IX7VB9OMaiWFDxilElADECENACtwzft9wKEhig/tLPSfOGYKbd0jtD0jM9+DuRw0Wn4Iln4k/QRTGwwXD4BKRfwrBz1FmX1Gwb8gJai3YOarsDLK0HiKoN4gsB57pIo8ZYj+mAkVwnBQ8I7eSUlMQeD5MwX8EKYcsCmHatk46p4O2YyOK4z8zl3Pyrf4tqAOmfw29EA5VVw3qQXhBiCCKdYVV4ZSffLAgzR713dXFBYVFbUS3dakXfcsiNsDjCCioX7P03pB37yRWDpEmifRcVzWZZFkmfc+Tge9LjzgMQ8nJJqpq6F8oAd/3d+/PYf/lwDAt/RroKcLzAx2yCp96dlA7+XeVTdPc0fnN84IgFIqiEHQLcXl1JdI0FXGcCNOyyRYJchL07G4xOJMrDaVVOzg4GDs+Pp45OTl5Qjw9RK/3dnp/f3/68PBQo9vrTXe7Pb2+66dwdHSkzs4orV+uU0fpF8gTMgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[2-6] Token 생성&quot;
+        title=&quot;&quot;
+        src=&quot;/static/a601e993f81eaae2a16aec830e58db7e/f058b/create-tokens.png&quot;
+        srcset=&quot;/static/a601e993f81eaae2a16aec830e58db7e/c26ae/create-tokens.png 158w,
+/static/a601e993f81eaae2a16aec830e58db7e/6bdcf/create-tokens.png 315w,
+/static/a601e993f81eaae2a16aec830e58db7e/f058b/create-tokens.png 630w,
+/static/a601e993f81eaae2a16aec830e58db7e/40601/create-tokens.png 945w,
+/static/a601e993f81eaae2a16aec830e58db7e/78612/create-tokens.png 1260w,
+/static/a601e993f81eaae2a16aec830e58db7e/dffad/create-tokens.png 3376w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[2-6] Token 생성&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;생성된 토큰을 복사하여 보관해 주세요.&lt;br&gt;
+토큰 정보는 최초 생성 시에만 제공해 주기 때문에 잘 보관해 주세요.
+&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/094269b0d7111227676a3f78701fbbb4/dffad/github-repo-token.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 78.48101265822784%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABYlAAAWJQFJUiTwAAACBElEQVR42tWTzWoaURTHfYkiYmILRVy0D6DQQnZZRY2TNBpJ3fRNmrgJ7kr3LkTwSfoEpRRtMH7M99wZne+5M//eO2orhbYg3fTAb865H+fHnctM5vmzo9OXL0ofyuXyfaVS6RWLxd6TbLaXzeU27Optzm3Zrefz+d7x8dP7o0LhY6lUOs3ctFrdzrsOOp239KbdRvu6hcsLAUKjwTiHIDRwwepLQUCjXkft7AxVRr1aTeF7mldvoutmE+e1WjfzZSa/nxo2HhTTn0hGNDPsSFoHKbIdpuzGEqvnphstGNJ2fml5HE/xgU+fH28z46XSDQCIlkvnxIbmhlDsADNjhalCMFUJZroFElDYMViOwUTQ2B7iUZgUMCNECXOMJb2bUVW1y2r4nkdVRYbvu0ASw3Z96JYDY+WArF1YDhO4FG4YwwkpPKaIYq7hxBF36Hoq1FOh64dU0wkc10MQBpA1gq9zEd+WMsYLEZOFjMlSwYOkYmFYmDPIyuatYAf/KeQPPkiShGIvbEOBKj5CkUTGEqIoYm1q8FYaHEuFw9ajlbnb/nshywjDEBGNU/xwg8cI2KvSOP6xthd/FlJKEbPGhN1lmrfEv7C5v78ID4z/THi3N5kcSMgFhJC7f39CWZZv+SAI2OccBPGB8L8X3JXp9/uF4XB4MhqNXrH8+hAGgwHvPeGu7+LvTm2rAlwHAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[2-7] Token 생성&quot;
+        title=&quot;&quot;
+        src=&quot;/static/094269b0d7111227676a3f78701fbbb4/f058b/github-repo-token.png&quot;
+        srcset=&quot;/static/094269b0d7111227676a3f78701fbbb4/c26ae/github-repo-token.png 158w,
+/static/094269b0d7111227676a3f78701fbbb4/6bdcf/github-repo-token.png 315w,
+/static/094269b0d7111227676a3f78701fbbb4/f058b/github-repo-token.png 630w,
+/static/094269b0d7111227676a3f78701fbbb4/40601/github-repo-token.png 945w,
+/static/094269b0d7111227676a3f78701fbbb4/78612/github-repo-token.png 1260w,
+/static/094269b0d7111227676a3f78701fbbb4/dffad/github-repo-token.png 3376w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[2-7] Token 생성&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;터미널에서 &lt;code class=&quot;language-text&quot;&gt;git push&lt;/code&gt; 명령어를 다시 실행하고, &lt;strong&gt;username&lt;/strong&gt;을 입력해 주고 &lt;strong&gt;password&lt;/strong&gt;에는 복사한 토큰을 입력해 주세요.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token builtin class-name&quot;&gt;cd&lt;/span&gt; ~/Downloads/my-blog-starter/
+$ &lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; push &lt;span class=&quot;token parameter variable&quot;&gt;-u&lt;/span&gt; origin develop&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/d7f81952eaf8ba37ad4d4c07f5b6a510/d50e7/git-login-push.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 66.45569620253164%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAABYlAAAWJQFJUiTwAAAB2ElEQVR42rWSwW6bQBBAkdqL1VuRcEJK0zTCCwvYJsAu2AZTDLXdxkmrfkpuVv4x11jKXyTiEsp0liS2qzZ1LkV6mmFH+5hlR+q2u28Cz7vQXX55qPtL7fhkeYSxz7JlOJouw0HewMJsk2ONEH8L75KQ4KKNLklVj7V8NC5PkwnMB1m9SApIWArpMAfPG0PPjZEEuv2H+JRTO3qitpwBmBYvhUva2/twOBvlt9/Sz3CWFPc/8nn1PZtVBU8qaviVTryqg5GYQUVEfMwNuubetBgQ078VLml//+P7KJ6W8eQMBumXOs4WkBbnECVzOAlS8LFby4nAoOw5auxOCEvhaoSDYVFOJgtIklmdZV8hw/xTdgrRsIBef/Qv2d+Fjjcue7wAO5zWNkaXD8H14ub/7ZA1QnECPPZGSGhQdiiHjhXWIhLqiy8iwYuETYfo2AixXbEoii8Q7D7yfxAGd49CHAP2E0dhC7aDoHoQBneNUMwOFrDDEIW8FpHavyPWnofX1BF7WdnMoSxrquWEV91edINcm9Rf6R13jWXzFV5SA97kynL4yqSsQdRMyq8Ng99YFrsSLgmfV4py1NZ1/YAQosqyrLZarTXifRtN0/7I37beHSiK0kbX61/cz1cJXcq1MAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[2-8] git push 명령어 실행&quot;
+        title=&quot;&quot;
+        src=&quot;/static/d7f81952eaf8ba37ad4d4c07f5b6a510/f058b/git-login-push.png&quot;
+        srcset=&quot;/static/d7f81952eaf8ba37ad4d4c07f5b6a510/c26ae/git-login-push.png 158w,
+/static/d7f81952eaf8ba37ad4d4c07f5b6a510/6bdcf/git-login-push.png 315w,
+/static/d7f81952eaf8ba37ad4d4c07f5b6a510/f058b/git-login-push.png 630w,
+/static/d7f81952eaf8ba37ad4d4c07f5b6a510/40601/git-login-push.png 945w,
+/static/d7f81952eaf8ba37ad4d4c07f5b6a510/78612/git-login-push.png 1260w,
+/static/d7f81952eaf8ba37ad4d4c07f5b6a510/d50e7/git-login-push.png 2280w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[2-8] git push 명령어 실행&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;깃허브 레포지토리 develop 브랜치에 소스코드가 정상적으로 푸시가 된 걸 볼 수 있어요.&lt;br&gt;
+이제 개츠비 프로젝트에 GitHub Pages에 호스팅이 가능하도록 설정을 진행할게요.
+&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/173cebadda48c2d7e615ac573b054d3b/dffad/github-develop-repo.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 78.48101265822784%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABYlAAAWJQFJUiTwAAAC/UlEQVR42nWT32obRxTG9RbGYJveFN34BWwiyF2urNSSA3FMm0Bu+wq5amwwxr4KuTfGGOyLPEGhr5AWSqAlJCSSpdWOZmdnZuf/nJwZyYpImxUfM9qd+e13vjnbav+w9mBzs/1qe3v7ZGtr6/THdvt0dXU1a2VlZab5/O7+stbW1k7X19dPNjY2Xrfb7Qetg/39o5+fP4Nfnj71BwcH8GT/CTx+vA+9fh96vR70+z0c+zjuwU+7u7DT7cLOzg50ceziuPfoUZJLe7oPHx61Pn4a/FYQCqOi1INR4QhlrmIiizLuGJeuqsVCZMocY9JxqbLSc5TSLsK7fz+8bE2K4gjwUsb6EsFTSqHRBnyIWc4HcGEm3AZjRqFqJBjjwFgHKq8NLjEIIUctMplkoJkSP3n3N7DbIYiqAisEBKVAcw5WCjCCQ00I/P7XH/D2/Z9glUWYRrCBEHwGTiYInMyBuq79YHgLvEaAsVlSSJCyAS40TFkDNcc5F8DJNK8LWEGIMW3/6nABFNJXUqcpRJgtFAiTjQKuHJYZoDERy7Qg6Ay4dP23ZCeFn+KbLeYSERbDDMhwY8k0DKmFSrgMlBiJkhKSufitwzugRyCdUvDez4Ehl1svgA6o8GCdA1YSGE8q8BkWv++wLEtQal52KhkzFOhEGQ9CBdA2yQCfpm7gePLx+yV7KRFIoGmaBZDjSaeTTHPvZ7kqPNWUIUUZhDuMIHXW/5ZMEJj6CubZpAyTwwYdcj13iP0naAmkeA+qKYBhnsYu9yEhhxkohMMmj1KIbMc7G+uKRd00aA3teZclpYy8JHE0KmLF+F2INjEopYdfHSrl6WiEb8eDSWWnUrSCmHoWy0z/kyw6Tvfrus6RNJh5WP5SxuPxy9yHWlvVNPhx6ICLgsPf6DMNH/8pgsf4McugjVloeHsbBoNhqBhLz0xiJFbr/Px84+rq6v719fU9HDt3unlz0zl8cdZ58etx5w3Ory6Wnt3cdI6PjztnZ2edi4uLzuXlZdp7P7G+ABV9RNQmxx4NAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[2-9] GitHub Repository (develop 브랜치)&quot;
+        title=&quot;&quot;
+        src=&quot;/static/173cebadda48c2d7e615ac573b054d3b/f058b/github-develop-repo.png&quot;
+        srcset=&quot;/static/173cebadda48c2d7e615ac573b054d3b/c26ae/github-develop-repo.png 158w,
+/static/173cebadda48c2d7e615ac573b054d3b/6bdcf/github-develop-repo.png 315w,
+/static/173cebadda48c2d7e615ac573b054d3b/f058b/github-develop-repo.png 630w,
+/static/173cebadda48c2d7e615ac573b054d3b/40601/github-develop-repo.png 945w,
+/static/173cebadda48c2d7e615ac573b054d3b/78612/github-develop-repo.png 1260w,
+/static/173cebadda48c2d7e615ac573b054d3b/dffad/github-develop-repo.png 3376w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[2-9] GitHub Repository (develop 브랜치)&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;h2&gt;3. gh-pages 플러그인 적용&lt;/h2&gt;
+&lt;p&gt;프로젝트에 gh-pages 플로그인 적용을 위해 터미널에서 프로젝트 디렉터리 위치로 이동 후, gh-pages 설치 명령어를 실행해 주세요.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token builtin class-name&quot;&gt;cd&lt;/span&gt; ~/Downloads/my-blog-starter/
+$ &lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; gh-pages &lt;span class=&quot;token parameter variable&quot;&gt;--dev&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/ec59a3a76c0993fd86b005d31a3d7ea8/d50e7/install-gh-pages.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 66.45569620253164%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAABYlAAAWJQFJUiTwAAACmElEQVR42mVSS0/bQBCO1B6IOJVIPIISogbHwXESP9drx/ErdkgToQKF0geVWtTeeqjELeI/ciUS/wLkC/ZuZxeHVKqlTzOz6/0033xTSnq9dUvRr4WuedMUjXmzqc0FQZsbKJhjJ54jHK0iZjHmdyL8u4J+I4rm9dZWb720VnpT8yIvnU6PKEZjYrtjaqCI2oNDih2Wh7SvDjkU3aeq4UPuUUm2lyCdrkMPOlZarTZrJfj2Lr4mD39+f6Munj0lk+PMHU6yof8uG7iHmWlFGZBmuhFkmuFnhhlmfdXNxAMja0smw9NBB1GoH7a3G3uMsH5+Eaffr06pbU9IGB9Bd2MKpNSyY56zCB3QtoR4XOYFCKuBMN3ZeVvnhBefk/THz1NqWmMSRDMK3YHchCI8AsIEziMuWe458NB8QavNYJAWz/Ul4Vr9+DROLy9PqKqFxIEZev60IBpxUkUbcmhshgDdDKlmBDwCCIL/4HxF+P5klH65PIbLmLjehDJgO6GYycUxJwaneacwQz6Cbn8Ahli008Vgis1NeZH88VOSXv06pz3FJ5Yz4s7CakB3MTxOuHxGwiK7Y9IZiSRjBsJqMGbV4cmHw/TsbEYRSogfTqkfzKhXYAjyB2AQG4XjwioBsRdM+SgYOUgnBiiAGS8J39TjcfQ4O5qC5CiDBznMLzetMIc1yUFaLvfsIjp5R7Ygd3LoLAdDGLJnc/RHTthoNPYULUhNi7tKmDTdDED+kBazgdUo0CkgsdXBSzzPUEIp38NKpVaVu9atorr3fXVwJ8lo0RSUxb6gLvZb6gI6WsB8OMCEVS2h51xCd602uoezW8bFTHm1ubm5JQjCriiK1UqlUi2Xyy9g9b+o1Wr/5eWNjV3GAVyv/wI5umVu0yDHbwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[3-1] gh-pages install&quot;
+        title=&quot;&quot;
+        src=&quot;/static/ec59a3a76c0993fd86b005d31a3d7ea8/f058b/install-gh-pages.png&quot;
+        srcset=&quot;/static/ec59a3a76c0993fd86b005d31a3d7ea8/c26ae/install-gh-pages.png 158w,
+/static/ec59a3a76c0993fd86b005d31a3d7ea8/6bdcf/install-gh-pages.png 315w,
+/static/ec59a3a76c0993fd86b005d31a3d7ea8/f058b/install-gh-pages.png 630w,
+/static/ec59a3a76c0993fd86b005d31a3d7ea8/40601/install-gh-pages.png 945w,
+/static/ec59a3a76c0993fd86b005d31a3d7ea8/78612/install-gh-pages.png 1260w,
+/static/ec59a3a76c0993fd86b005d31a3d7ea8/d50e7/install-gh-pages.png 2280w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[3-1] gh-pages install&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;개츠비 프로젝트를 열고, &lt;strong&gt;package.json&lt;/strong&gt; 파일의 53번 라인에 아래 코드를 추가해 주세요.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token property&quot;&gt;&quot;deploy&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;gatsby build &amp;amp;&amp;amp; gh-pages -d public -b main&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/d556af9369c9af837c67020873d563cf/59733/add-deploy.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 109.49367088607596%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAWCAYAAADAQbwGAAAACXBIWXMAABYlAAAWJQFJUiTwAAACuklEQVR42q2U2W7TQBSG8xhIwduMZ8breHfSLHWaFohAIDVSEa+Bgl8EctcXrWQrhzPjthRKaRBc/BrHjj//Zx1dTFfN29XV9ZvTT9+a2ft9lZ3uhR8NClFCXct9KCf6vH+GStNi70u59/z4a5QU12lZNqO6nrbr9QaWi3U/qWeADyHyEojiBFgYgCu8QV4AlHngUH4v6gogKJuwXuB7aTHZjYJI7tKihvmyuUnzonMI63wWdTwIOkewjnqiI4J3pkU6w3R+q5eGfYPvAefe5xETfluVOZwt5/10UuNXXfBYCNJPweMhuhJgORQQ+KQQ2hN0zJjYjQgTbVFUsFjM+zjJMQQO6BCqeAJRkIDDGJgmORIY7EaM+W2al9CsVggsNFA5rKIJyCDD3Hl/hD0GYshJVsKyafo0rwagG0IRVjpsBTw+5Hsghny67nMsjqqa5wYQ+BIsStWf/9Ih5lA5O3+16ZVT1Q4q5CTIh4LY9O9yqIqSVzOYzps+jBLA3zrkyMeCcI7hujpkfdr0eaBNRHtyMoWL15vbKgvdLlz4YBEKjsvApi46xxOhzwPR4XI2g83ZORal1tMgMGSOk6GcKZgWQdhRDhG4mC3h3eZDnxUToDhmnPoa6Ag+VFiHTI/PYT2dwWJ11idpqYEhjyBJc/BkhJPDwcW8qtNWUPuItokwd0GU9JHMgftYYVwOuZxCGteQhCVkODW+iDGfw1KwHfaTLNvtXeb/AMa3wDBO9QYxLAe/Sh63i3lkYz8EEg0kzzbzcUB5CzT/ASj88Mt/BSZ52cq0UMAulNkBl8PBMJwD5usXOQfjCeGCVYt52IdhnLQSZziMM8xhhhMS6I2jGvmhVHWVe+XkTsM9fd0zfA+1GxmGQW1KPxLCLi2LbF+Mx9vx2Hoki7AtYx6KbcmdyCC8f+m64so0TfIdyilM395ciB4AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[3-2] package.json 파일에 코드 추가&quot;
+        title=&quot;&quot;
+        src=&quot;/static/d556af9369c9af837c67020873d563cf/f058b/add-deploy.png&quot;
+        srcset=&quot;/static/d556af9369c9af837c67020873d563cf/c26ae/add-deploy.png 158w,
+/static/d556af9369c9af837c67020873d563cf/6bdcf/add-deploy.png 315w,
+/static/d556af9369c9af837c67020873d563cf/f058b/add-deploy.png 630w,
+/static/d556af9369c9af837c67020873d563cf/40601/add-deploy.png 945w,
+/static/d556af9369c9af837c67020873d563cf/78612/add-deploy.png 1260w,
+/static/d556af9369c9af837c67020873d563cf/59733/add-deploy.png 3442w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[3-2] package.json 파일에 코드 추가&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;gatsby-config.js&lt;/strong&gt; 파일에서 siteMetadata에 존재하는 &lt;strong&gt;siteUrl&lt;/strong&gt;을 본인의 GitHub Pages URL로 입력해 주세요.&lt;br&gt;
+블로그를 호스팅하고 난 후, 해당 URL로 본인의 블로그에 접속할 수 있어요. URL 형태는 &lt;strong&gt;https://${username}.github.io&lt;/strong&gt; 이에요.
+&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/2903a895364ada6b482613b510805aef/59733/update-siteurl.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 109.49367088607596%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAWCAYAAADAQbwGAAAACXBIWXMAABYlAAAWJQFJUiTwAAAC6UlEQVR42qVV7W7aMBTlPTryYcexnZh8kPBRCg1jrVpVm6YiddprTIwX2fjXF62Exd29DqC2U9tV+3HkxNgn59x7bDoX43lzM7+7vzr//ruZfNkMyvON1tlGpmajEUKbjTHZxhQjnMN5fD+gKKqNzjJc1/uV5dV9UddNZzgcrxeLa5hNF3Y0nIDSPeCxAqESEDppR0ljClGsIeTxETySEBK4sInJoahGq05islVRDWEyax7ystoyHm8DFrnxAM9nR3S98Alo7kM3eOBCQqySHx0h9XpQ9+Hj7MyOR0P8qgAlUkh0il/m4PsMcOMRSPAEfsBp3pJ6KZNVhwm5rqoBTKdntpf3nQ0RpSCTEkK0HMQJhAItCoH2BBJESMSPoPeux2wkiNCsOkLoddGvoZnPrckriKQGo/pQZlNI8yGkGarGORZLV7cgFE8QsphIbSzTPSFazssaZk1j8/4AGCrkuDEiRQwtdX3wyKrHWrxk+ahwTzg9X9gSm0OELIpBGey2Us7uc5LXCbGGBSr7dHlt87JVGKKVOMLaMbTFo/cRUlPK+hRGk8ZliQsFDOsisSbUhHcTBkyuZ7MZXN18tdXgtA0vKcTuEjmRvlvheDyBs+bS9ooaKKBOIWbRZ5xOgdv0FqGID4RMrIfjKTQXnzGHlcuhF3IMt8FnhaT/Ztnl9xDsESps5gtL3aYffCTkXLmmkEo8ii+rDNxJspQMIZI2NnRCdJrbtFdi/hQu4iBjA2QjjGNg4nXbjpA/I0wNERaOkBQGUbQ/avxVy28SUt2cfN2qI0v/R+hyKFwOKYPvVih1+pMIk0eWaRGTeKa1epPsL8K8X6+zogJt8i0S7rDLO1y0C8Joh911z3gpHIGbj/D2wAt2S4nAY7zqpL3cXQ4mK6zJStBJD2/e1F37SNqCHSCA8fY2opFqTaC/gFgmbQ673S4POP8mhLjF2i2ZUEuBwJt6eXLiPwNbMqaWj9e5ZyZuwyi68zyP/QHxpkxFw9MlHQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[3-3] gatsby-config.js 파일에 siteUrl 수정&quot;
+        title=&quot;&quot;
+        src=&quot;/static/2903a895364ada6b482613b510805aef/f058b/update-siteurl.png&quot;
+        srcset=&quot;/static/2903a895364ada6b482613b510805aef/c26ae/update-siteurl.png 158w,
+/static/2903a895364ada6b482613b510805aef/6bdcf/update-siteurl.png 315w,
+/static/2903a895364ada6b482613b510805aef/f058b/update-siteurl.png 630w,
+/static/2903a895364ada6b482613b510805aef/40601/update-siteurl.png 945w,
+/static/2903a895364ada6b482613b510805aef/78612/update-siteurl.png 1260w,
+/static/2903a895364ada6b482613b510805aef/59733/update-siteurl.png 3442w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[3-3] gatsby-config.js 파일에 siteUrl 수정&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;h2&gt;4. GitHub Pages 블로그 호스팅&lt;/h2&gt;
+&lt;p&gt;블로그 호스팅을 위한 준비가 완료되었어요. 이제 블로그 호스팅을 진행할게요.&lt;br&gt;
+터미널을 열고, 프로젝트 디렉터리 위치로 이동 후 아래 명령어를 실행해 주세요.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token builtin class-name&quot;&gt;cd&lt;/span&gt; ~/Downloads/my-blog-starter/
+$ &lt;span class=&quot;token function&quot;&gt;npm&lt;/span&gt; run deploy&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/83077c44bbf9820866bcb5394610168b/d50e7/npm-run-deploy.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 66.45569620253164%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAABYlAAAWJQFJUiTwAAACIElEQVR42oWS2W7aQBSGkdob1JuoSECcuukGg3fjFeN9IU2BpA+TO5R3zG0s5S0S+SbG03PGJIWKqEifZoYZf/7P+HTUgfrBM80bwXRvRyNrMyIGYG3IHpaTbBwnO/jvEPOWEPtmAK4Ox33nHXtepX5GbSNsZNWniKR4DFH2qKqHDJwfoZGUORUkt0JX5+RkeG64yWMQXFA/+Pns+Yva9YpaN8IaDtVEsOvxxGLgHJmIBzwLkkOJYD0Oh1/OO6en3z6LYVgF2ZKm2VUTxr+o7WZUmwb4Vkiwz4wxEZ19GjwHwgpdTDgN8yrKVxRkTZKtaBC1UsS0E2o5KRtxDcn/L5SjsAqLFS0Wv5soWYL4khpWTBVt/u/D8KANtOObQimOq2ixpnlx3WTFNc3yK5pka+p6+a7Mw5JfQNFRoeKnVQglozBKVtTzL1hp2jSkUzNmaQ0Y8V5V3WfgPnYBJD2SMICEBSSEktNduiC6ZDJZne8kwa7cv7xZshJHT1hymq1r+ChbBNpnC4m20C6vgITxMgfZFlunFdpPTIh9aLppFcRL6szyxrASGAtWJiZEdCN6pb2ChF2HILF7bESFtVLF+rDX4zlBdu5ExX2Q5Nn9mJjlj5FejolREtEq9alfysqMoWheu4YRPlIpAaLo3pOJ+wDNfYeuDvze9ftfB5qmnRFCuF6vx3W7XQbs7dYtON/f53meQ8nH7qezfr8/gPPv/wBHBFx8HicDegAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[4-1] deploy 명령어 실행&quot;
+        title=&quot;&quot;
+        src=&quot;/static/83077c44bbf9820866bcb5394610168b/f058b/npm-run-deploy.png&quot;
+        srcset=&quot;/static/83077c44bbf9820866bcb5394610168b/c26ae/npm-run-deploy.png 158w,
+/static/83077c44bbf9820866bcb5394610168b/6bdcf/npm-run-deploy.png 315w,
+/static/83077c44bbf9820866bcb5394610168b/f058b/npm-run-deploy.png 630w,
+/static/83077c44bbf9820866bcb5394610168b/40601/npm-run-deploy.png 945w,
+/static/83077c44bbf9820866bcb5394610168b/78612/npm-run-deploy.png 1260w,
+/static/83077c44bbf9820866bcb5394610168b/d50e7/npm-run-deploy.png 2280w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[4-1] deploy 명령어 실행&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;터미널에 &lt;strong&gt;Published&lt;/strong&gt;가 나오면 블로그 배포는 완료된 거예요.
+&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/d553be9f74c785e954def4cd9b7c477d/d50e7/completed-deploy.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 66.45569620253164%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAABYlAAAWJQFJUiTwAAAB8ElEQVR42qWSXW/aMBSGkbabaFcsEpR0YVO7NCR2vj/sBAiQlbbTPrT/0jvU/9jbRuq/aOWbgs+OQ4fK1Au0RXqkY8d+dGy/Hb/vv6uy5Jok2Y1lpatTK15ZSM7rVTm5XPHyvEWNd3Ver2w7fUFyY9vZdR9dHcM4NSM2E+XsCnixlKxYAi8vIE7nEERTpGrxw/3apcUfJPFKcAgTytU5Ovr0MYinD9QvgVD+RDy+dilb206GpC/A8SjdgvXI3fHkkBxwzYNydQaDk2EYT8V4egWT6qvMWA1Kjptg5OaHILE7JRTK1QqjZCaK8QUk2VyiHIhXHCp7TTgYxulMzOsfEMaVdClX9/Hvwi4Ko7gSy8tfUJ//lKpTP5z8nxCPKKJEvd5EekHZCqlftHe5ZVsfJux2hxgPgd3BvP4uZ4tvoEjzBVJDzr+AeqgQI3SgcDD0guIxwscIgnIdhuONF4w32NUzZQvGaYObX0FFB2MzSh9bocqOny4ETWs4C+dyFC+AxgyPyDGXKrh8h0P+hoFDmaR4TRhw0eZQN02D+PyWRpN7Gld3NuWN5YSNZYfN57OoIZQ1jpu3uIQ12OlurP65LrtzHHaP4ltdN40Ofm96vV7fsqxjG+W6puGkZmjaFl3X9zDVmr3aNLT3H46VA11vfwPBvFaYDdjkJwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[4-2] 블로그 배포 완료&quot;
+        title=&quot;&quot;
+        src=&quot;/static/d553be9f74c785e954def4cd9b7c477d/f058b/completed-deploy.png&quot;
+        srcset=&quot;/static/d553be9f74c785e954def4cd9b7c477d/c26ae/completed-deploy.png 158w,
+/static/d553be9f74c785e954def4cd9b7c477d/6bdcf/completed-deploy.png 315w,
+/static/d553be9f74c785e954def4cd9b7c477d/f058b/completed-deploy.png 630w,
+/static/d553be9f74c785e954def4cd9b7c477d/40601/completed-deploy.png 945w,
+/static/d553be9f74c785e954def4cd9b7c477d/78612/completed-deploy.png 1260w,
+/static/d553be9f74c785e954def4cd9b7c477d/d50e7/completed-deploy.png 2280w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[4-2] 블로그 배포 완료&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;깃허브 레포지토리에서 &lt;strong&gt;Settings &gt; Pages&lt;/strong&gt;로 이동해주세요. 그리고 Branch를 main으로 선택하고 Save 해주세요.&lt;br&gt;
+블로그 배포가 완료되고 일정 시간이 지나면 &lt;strong&gt;Visit site&lt;/strong&gt; 버튼이 보일 거예요. 해당 버튼을 클릭해서 본인의 블로그에 접속이 되는지 확인해 주세요.
+&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/ba109db1afffcd83ce7284f33fa9f8a2/dffad/visit-site.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 78.48101265822784%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABYlAAAWJQFJUiTwAAAC1ElEQVR42o2TTUsbQRjH8y2CGG0PkVxKEaS3Brx58jXB11YK/SRSFUTiQYoHbyIi+Gl6Kj0IVpNoks1mX2d3dmdn/n1mkmgKsXTht8+wO/Pf5+W/udLbwsL7d6Xvc3MfjmdnZ2ulUqlWLBZrxZmZ2uTkZC2fz9fyExMmTlAcRb8vFAq1qTdTx9PT02d0diG3s7V1+PnrF3za3c22trexrdnZobiDarWKtbU1Q6VSwcrqKhZXVrC4vIylpUWs0LpSqWJ9fUNsbG5iaXn5MFevN791ei5aVpc3HlvCsh3heIFwCT9kRCRcPxRewITbc0Tn/kG4rbYIIi4CFpvnRMwF8Ov2YT9nWdYh6EqFyJIkhZQKUinQHnS6PXDOkWUZEiGQxhFStwdJUdIZNYAuoW+2bR/m9M0Ipmnmeh6EMO8QRAkarR5adoB2jyEII/CEI44ihFYHQdeijw9l5XhBy7bpUNL/JGUVRhxumIKqg1KDXOi59F3EngtJa7yWIQlljLHhBvi+j45lIQxD/Mf1IjjsYRzzrGN1B2UANBS02jYYCXIq00A9ZlwaglhCSDVGcJAhe3rM7Eadeiih9/mUXeP2Do+/G3DqdaTdthkOF8oQpwrZvwQ5izKn51BGzGSp+9d1GRGj7SawfQ4nSBByBZZoJNJsnKDVF0yoh3ooURybHYxF6NoOlSloQIpsJQ1KSTMgpV7p4cuURea6no79HvoM980uHD9CFPXRntToqYdcjor+JXgwfEilKo02V5IKReZWlJUiwytB9E0n1Yinh6RawHGcg+cMqYxstAY9AD8IyDZkZCpft8ILY/JlQhPOTA+FHJNhu93eH/QwJaSGTC5d35NPd03580dTPnY8SfaRfhBKzw8kWcrEKOZycMb8DVord3FxMX19fT1/c3PzkWJ5yPn5efno4Ki8t3dUPjk9K5+envY5OXleX15emr1XV1f67LzW+gPMBEg/oqnMZAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[4-3] 호스팅한 블로그 접속&quot;
+        title=&quot;&quot;
+        src=&quot;/static/ba109db1afffcd83ce7284f33fa9f8a2/f058b/visit-site.png&quot;
+        srcset=&quot;/static/ba109db1afffcd83ce7284f33fa9f8a2/c26ae/visit-site.png 158w,
+/static/ba109db1afffcd83ce7284f33fa9f8a2/6bdcf/visit-site.png 315w,
+/static/ba109db1afffcd83ce7284f33fa9f8a2/f058b/visit-site.png 630w,
+/static/ba109db1afffcd83ce7284f33fa9f8a2/40601/visit-site.png 945w,
+/static/ba109db1afffcd83ce7284f33fa9f8a2/78612/visit-site.png 1260w,
+/static/ba109db1afffcd83ce7284f33fa9f8a2/dffad/visit-site.png 3376w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[4-3] 호스팅한 블로그 접속&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;웹 브라우저 주소창에 본인의 블로그 주소 &lt;strong&gt;${username}.github.io&lt;/strong&gt;를 입력해서 접속이 잘 되면 GitHub Pages 블로그 호스팅이 완료된 거예요!
+&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/67068115d3ee5f21c87ad49d88851f71/dffad/my-gatsby-blog-hosting.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 78.48101265822784%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABYlAAAWJQFJUiTwAAABz0lEQVR42q2Tz27aQBDG/RIIIYKTqqlQ1AsnTqmUW47ABRMiqkg95EGacIl8q3rngJB4KZBQm2BjbMD43679ZcahKbRElVFH+jS79uxvv93RKuX3R5enpyff3h0fP5wU8/rHD2d6tVrVK5WKrqqqnsvl9Fw+n6pQKPylYrGol0qlhyNV/V4uly+VzvVV9+b2C24+d+TtlYaO1oTWauG63UaLsqZpqZrNJur1Omq12o4ajQbXiTbV07ir2Lb9FRQyjgMRx4IypVj8fHwU4/FYTCYTMRqNhGEYgspeFW/qYimFlNJnhmmad4plWV2eJEki8RoJzKcfmJkmDINkzmDbDnzfRxCECMMQfwRvAmYpRE2BtJskKIN5DGtuw1m6cNcePAJ5nk/AIP3H+lW7qf8N3OeQauCsAxgLD0Ek0w/bm3F+0+HeI9MCx1nCtGxYdFTbcTDfZBY7zQRkA7OFi6f5Cq4fgi4eckuZHfIC13WxIDfL5ZJcLV7ckcvVyoUQIiOQxN1cU0OCcLcREcGiKMp4hy9df6sB++LfwIyxA7zf+pgcqPQO6NXd/3+H0+n0jif0nCJSfKDSt8gspdfrqYPB4GI4HJ5T/nSI+v0+r71g1jOKc1RrZSXxgwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;[4-4] 블로그 호스팅 완료&quot;
+        title=&quot;&quot;
+        src=&quot;/static/67068115d3ee5f21c87ad49d88851f71/f058b/my-gatsby-blog-hosting.png&quot;
+        srcset=&quot;/static/67068115d3ee5f21c87ad49d88851f71/c26ae/my-gatsby-blog-hosting.png 158w,
+/static/67068115d3ee5f21c87ad49d88851f71/6bdcf/my-gatsby-blog-hosting.png 315w,
+/static/67068115d3ee5f21c87ad49d88851f71/f058b/my-gatsby-blog-hosting.png 630w,
+/static/67068115d3ee5f21c87ad49d88851f71/40601/my-gatsby-blog-hosting.png 945w,
+/static/67068115d3ee5f21c87ad49d88851f71/78612/my-gatsby-blog-hosting.png 1260w,
+/static/67068115d3ee5f21c87ad49d88851f71/dffad/my-gatsby-blog-hosting.png 3376w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;
+    &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[4-4] 블로그 호스팅 완료&lt;/figcaption&gt;
+  &lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;이상으로 블로그 호스팅에 대한 포스트를 마치도록 할게요. 수고하셨어요!&lt;/p&gt;</content:encoded></item><item><title><![CDATA[개츠비(Gatsby) 블로그 만들기 4 - 댓글(giscus) 적용]]></title><description><![CDATA[개츠비(Gatsby) 블로그 만들기 1 - 기본 세팅 개츠비(Gatsby) 블로그 만들기 2 - Tailwind CSS 적용 개츠비(Gatsby) 블로그 만들기 3 - 페이징(Pagination) 적용 개츠비(Gatsby) 블로그 만들기…]]></description><link>https://whitepaek.com/posts/2024/01/gatsby-blog-start-4/</link><guid isPermaLink="false">https://whitepaek.com/posts/2024/01/gatsby-blog-start-4/</guid><pubDate>Thu, 25 Jan 2024 00:00:00 GMT</pubDate><content:encoded>&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://whitepaek.com/posts/2024/01/gatsby-blog-start-1/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;개츠비(Gatsby) 블로그 만들기 1 - 기본 세팅&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://whitepaek.com/posts/2024/01/gatsby-blog-start-2/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;개츠비(Gatsby) 블로그 만들기 2 - Tailwind CSS 적용&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://whitepaek.com/posts/2024/01/gatsby-blog-start-3/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;개츠비(Gatsby) 블로그 만들기 3 - 페이징(Pagination) 적용&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;개츠비(Gatsby) 블로그 만들기 4 - 댓글(giscus) 적용&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://whitepaek.com/posts/2024/01/gatsby-blog-start-5/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;개츠비(Gatsby) 블로그 만들기 5 - 블로그(GitHub Pages) 배포&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://whitepaek.com/posts/2024/01/gatsby-blog-start-6/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;개츠비(Gatsby) 블로그 만들기 6 - 사용자 지정 도메인 적용&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;이번 포스트에서는 개츠비 블로그에 댓글 기능을 적용해 보도록 할게요.
 댓글 기능으로 대표적인 오픈소스로 utterances와 giscus가 있어요.
 저는 GitHub Discussions로 작동하는 댓글 시스템 giscus 오픈소스 앱을 적용하여 방문자가 포스트에 댓글과 반응을 남길 수 있도록 할게요.
 이유는 utterances 보다 giscus가 좀 더 풍부한 옵션을 제공하고 있으며, 최신 버전까지 관리가 잘 되고 있어 많은 사람에게 선택받고 있어요.&lt;/p&gt;
@@ -586,7 +1645,15 @@
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[3-3] giscus 댓글 기능 적용 완료&lt;/figcaption&gt;
   &lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;이상으로 개츠비 블로그에 giscus 댓글 기능 적용에 대한 포스트를 끝낼게요!&lt;/p&gt;</content:encoded></item><item><title><![CDATA[개츠비(Gatsby) 블로그 만들기 3 - 페이징(Pagination) 적용]]></title><description><![CDATA[이전 포스트에서 세팅을 완료한 개츠비(Gatsby) 블로그에 페이지네이션(pagination…]]></description><link>https://whitepaek.com/posts/2024/01/gatsby-blog-start-3/</link><guid isPermaLink="false">https://whitepaek.com/posts/2024/01/gatsby-blog-start-3/</guid><pubDate>Mon, 22 Jan 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;이전 포스트에서 세팅을 완료한 &lt;a href=&quot;https://whitepaek.com/posts/2024/01/gatsby-blog-start-1/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;개츠비(Gatsby) 블로그&lt;/a&gt;에 페이지네이션(pagination)을 알아보고, 적용해 보도록 할게요.&lt;/p&gt;
+&lt;p&gt;이상으로 개츠비 블로그에 giscus 댓글 기능 적용에 대한 포스트를 끝낼게요!&lt;/p&gt;</content:encoded></item><item><title><![CDATA[개츠비(Gatsby) 블로그 만들기 3 - 페이징(Pagination) 적용]]></title><description><![CDATA[개츠비(Gatsby) 블로그 만들기 1 - 기본 세팅 개츠비(Gatsby) 블로그 만들기 2 - Tailwind CSS 적용 개츠비(Gatsby) 블로그 만들기 3 - 페이징(Pagination) 적용 개츠비(Gatsby) 블로그 만들기…]]></description><link>https://whitepaek.com/posts/2024/01/gatsby-blog-start-3/</link><guid isPermaLink="false">https://whitepaek.com/posts/2024/01/gatsby-blog-start-3/</guid><pubDate>Mon, 22 Jan 2024 00:00:00 GMT</pubDate><content:encoded>&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://whitepaek.com/posts/2024/01/gatsby-blog-start-1/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;개츠비(Gatsby) 블로그 만들기 1 - 기본 세팅&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://whitepaek.com/posts/2024/01/gatsby-blog-start-2/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;개츠비(Gatsby) 블로그 만들기 2 - Tailwind CSS 적용&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;개츠비(Gatsby) 블로그 만들기 3 - 페이징(Pagination) 적용&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://whitepaek.com/posts/2024/01/gatsby-blog-start-4/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;개츠비(Gatsby) 블로그 만들기 4 - 댓글(giscus) 적용&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://whitepaek.com/posts/2024/01/gatsby-blog-start-5/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;개츠비(Gatsby) 블로그 만들기 5 - 블로그(GitHub Pages) 배포&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://whitepaek.com/posts/2024/01/gatsby-blog-start-6/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;개츠비(Gatsby) 블로그 만들기 6 - 사용자 지정 도메인 적용&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;이전 포스트에서 세팅을 완료한 &lt;a href=&quot;https://whitepaek.com/posts/2024/01/gatsby-blog-start-1/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;개츠비(Gatsby) 블로그&lt;/a&gt;에 페이지네이션(pagination)을 알아보고, 적용해 보도록 할게요.&lt;/p&gt;
 &lt;p&gt;블로그를 열심히 운영한다면 적게는 수십 개에서 많게는 수백, 수천 개의 포스트가 생성될 거예요.
 수많은 포스트를 불러오는 데 시간이 오래 걸릴 수 있고, 독자는 포스트를 찾는 경험이 나빠질 수 있어요.
 이런 경우 페이징 처리를 적용하면 포스트를 분할해서 시간을 단축하고, 독자는 페이지 단위로 포스트를 찾을 수가 있어요.&lt;/p&gt;
@@ -1052,7 +2119,15 @@ Array&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span clas
     &lt;/span&gt;
     &lt;figcaption class=&quot;gatsby-resp-image-figcaption&quot;&gt;[4] Pagination 예시&lt;/figcaption&gt;
   &lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;이상으로 공식 문서에서 제공해 주는 페이지네이션을 개츠비 블로그에 적용 완료했어요!&lt;/p&gt;</content:encoded></item><item><title><![CDATA[개츠비(Gatsby) 블로그 만들기 2 - Tailwind CSS 적용]]></title><description><![CDATA[개츠비(Gatsby) 블로그 기본 세팅을 완료했으면 테일윈드 CSS(Tailwind CSS)를 적용해 보도록 할게요. 이전 포스트에서 세팅한 블로그 디렉터리 위치로 이동해주세요.  1. Tailwind CSS…]]></description><link>https://whitepaek.com/posts/2024/01/gatsby-blog-start-2/</link><guid isPermaLink="false">https://whitepaek.com/posts/2024/01/gatsby-blog-start-2/</guid><pubDate>Thu, 18 Jan 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href=&quot;https://whitepaek.com/posts/2024/01/gatsby-blog-start-1/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;개츠비(Gatsby) 블로그 기본 세팅&lt;/a&gt;을 완료했으면 &lt;a href=&quot;https://tailwindcss.com/docs/guides/gatsby&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;테일윈드 CSS(Tailwind CSS)를 적용&lt;/a&gt;해 보도록 할게요.&lt;/p&gt;
+&lt;p&gt;이상으로 공식 문서에서 제공해 주는 페이지네이션을 개츠비 블로그에 적용 완료했어요!&lt;/p&gt;</content:encoded></item><item><title><![CDATA[개츠비(Gatsby) 블로그 만들기 2 - Tailwind CSS 적용]]></title><description><![CDATA[개츠비(Gatsby) 블로그 만들기 1 - 기본 세팅 개츠비(Gatsby) 블로그 만들기 2 - Tailwind CSS 적용 개츠비(Gatsby) 블로그 만들기 3 - 페이징(Pagination) 적용 개츠비(Gatsby) 블로그 만들기…]]></description><link>https://whitepaek.com/posts/2024/01/gatsby-blog-start-2/</link><guid isPermaLink="false">https://whitepaek.com/posts/2024/01/gatsby-blog-start-2/</guid><pubDate>Thu, 18 Jan 2024 00:00:00 GMT</pubDate><content:encoded>&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://whitepaek.com/posts/2024/01/gatsby-blog-start-1/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;개츠비(Gatsby) 블로그 만들기 1 - 기본 세팅&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;개츠비(Gatsby) 블로그 만들기 2 - Tailwind CSS 적용&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://whitepaek.com/posts/2024/01/gatsby-blog-start-3/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;개츠비(Gatsby) 블로그 만들기 3 - 페이징(Pagination) 적용&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://whitepaek.com/posts/2024/01/gatsby-blog-start-4/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;개츠비(Gatsby) 블로그 만들기 4 - 댓글(giscus) 적용&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://whitepaek.com/posts/2024/01/gatsby-blog-start-5/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;개츠비(Gatsby) 블로그 만들기 5 - 블로그(GitHub Pages) 배포&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://whitepaek.com/posts/2024/01/gatsby-blog-start-6/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;개츠비(Gatsby) 블로그 만들기 6 - 사용자 지정 도메인 적용&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&quot;https://whitepaek.com/posts/2024/01/gatsby-blog-start-1/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;개츠비(Gatsby) 블로그 기본 세팅&lt;/a&gt;을 완료했으면 &lt;a href=&quot;https://tailwindcss.com/docs/guides/gatsby&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;테일윈드 CSS(Tailwind CSS)를 적용&lt;/a&gt;해 보도록 할게요.&lt;/p&gt;
 &lt;p&gt;이전 포스트에서 세팅한 블로그 디렉터리 위치로 이동해주세요.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ &lt;span class=&quot;token builtin class-name&quot;&gt;cd&lt;/span&gt; ~/Downloads/my-blog-starter/&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;figure class=&quot;gatsby-resp-image-figure&quot; style=&quot;&quot;&gt;
@@ -1525,7 +2600,15 @@ $ gatsby develop&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 테일윈드 CSS 문법을 커스텀에서 사용하고 싶으면 &lt;a href=&quot;https://tailwindcss.com/docs/adding-custom-styles&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;공식 문서&lt;/a&gt;를 참고해서 &lt;strong&gt;tailwind.config.js 파일에 설정&lt;/strong&gt;하면 돼요.
 그리고 클래스(class)를 직접 정의해서 사용하고 싶다면 global.css 파일에 추가하거나 또는 css 파일을 생성하여 작성 후 gatsby-browser.js 파일에 import 하면 돼요.&lt;/p&gt;
 &lt;p&gt;테일윈드 CSS를 사용하지 않고 본인이 직접 CSS를 작성하여 디자인하고 싶다면, 이번 포스트 설정은 따라 하지 않고 style.css 파일에 직접 코드를 작성해서 사용하면 돼요.&lt;/p&gt;
-&lt;p&gt;이상으로 &lt;strong&gt;&quot;개츠비(Gatsby) 블로그 만들기 2 - Tailwind CSS 적용&quot;&lt;/strong&gt; 포스트는 끝낼게요!&lt;/p&gt;</content:encoded></item><item><title><![CDATA[개츠비(Gatsby) 블로그 만들기 1 - 기본 세팅]]></title><description><![CDATA[개츠비(Gatsby…]]></description><link>https://whitepaek.com/posts/2024/01/gatsby-blog-start-1/</link><guid isPermaLink="false">https://whitepaek.com/posts/2024/01/gatsby-blog-start-1/</guid><pubDate>Mon, 15 Jan 2024 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;a href=&quot;https://www.gatsbyjs.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;개츠비(Gatsby)&lt;/a&gt;로 블로그 만드는 과정을 제가 경험한 내용으로 설명드릴게요.&lt;/p&gt;
+&lt;p&gt;이상으로 &lt;strong&gt;&quot;개츠비(Gatsby) 블로그 만들기 2 - Tailwind CSS 적용&quot;&lt;/strong&gt; 포스트는 끝낼게요!&lt;/p&gt;</content:encoded></item><item><title><![CDATA[개츠비(Gatsby) 블로그 만들기 1 - 기본 세팅]]></title><description><![CDATA[개츠비(Gatsby) 블로그 만들기 1 - 기본 세팅 개츠비(Gatsby) 블로그 만들기 2 - Tailwind CSS 적용 개츠비(Gatsby) 블로그 만들기 3 - 페이징(Pagination) 적용 개츠비(Gatsby) 블로그 만들기…]]></description><link>https://whitepaek.com/posts/2024/01/gatsby-blog-start-1/</link><guid isPermaLink="false">https://whitepaek.com/posts/2024/01/gatsby-blog-start-1/</guid><pubDate>Mon, 15 Jan 2024 00:00:00 GMT</pubDate><content:encoded>&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;개츠비(Gatsby) 블로그 만들기 1 - 기본 세팅&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://whitepaek.com/posts/2024/01/gatsby-blog-start-2/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;개츠비(Gatsby) 블로그 만들기 2 - Tailwind CSS 적용&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://whitepaek.com/posts/2024/01/gatsby-blog-start-3/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;개츠비(Gatsby) 블로그 만들기 3 - 페이징(Pagination) 적용&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://whitepaek.com/posts/2024/01/gatsby-blog-start-4/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;개츠비(Gatsby) 블로그 만들기 4 - 댓글(giscus) 적용&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://whitepaek.com/posts/2024/01/gatsby-blog-start-5/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;개츠비(Gatsby) 블로그 만들기 5 - 블로그(GitHub Pages) 배포&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://whitepaek.com/posts/2024/01/gatsby-blog-start-6/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;개츠비(Gatsby) 블로그 만들기 6 - 사용자 지정 도메인 적용&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.gatsbyjs.com/&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;개츠비(Gatsby)&lt;/a&gt;로 블로그 만드는 과정을 제가 경험한 내용으로 설명드릴게요.&lt;/p&gt;
 &lt;p&gt;개츠비를 기반으로 블로그를 처음부터 하나씩 세팅하기에는 까다로워요. 특히 저처럼 이해도가 전혀 없는 상태라면, 시작조차 못할 수 있어요.
 그래서 저는 개츠비에서 공식적으로 제공해 주는 &lt;a href=&quot;https://www.gatsbyjs.com/starters/gatsbyjs/gatsby-starter-blog&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;gatsby-starter-blog&lt;/a&gt;를 이용해서 세팅을 해주도록 할게요.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/gatsbyjs/gatsby-starter-blog&quot; target=&quot;_blank&quot; rel=&quot;nofollow noreferrer&quot;&gt;깃허브(github)에서 gatsby-starter-blog 설치&lt;/a&gt;하기 전에 Node.js와 gatsby-cli를 설치해야 해요.&lt;br&gt;
