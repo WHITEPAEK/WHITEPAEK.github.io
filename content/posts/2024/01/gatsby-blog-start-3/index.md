@@ -4,6 +4,13 @@ createdAt: 2024-01-22T00:00:00.000Z
 editedAt: 2024-01-22T00:00:00.000Z
 ---
 
+- [개츠비(Gatsby) 블로그 만들기 1 - 기본 세팅](https://whitepaek.com/posts/2024/01/gatsby-blog-start-1/)
+- [개츠비(Gatsby) 블로그 만들기 2 - Tailwind CSS 적용](https://whitepaek.com/posts/2024/01/gatsby-blog-start-2/)
+- **개츠비(Gatsby) 블로그 만들기 3 - 페이징(Pagination) 적용**
+- [개츠비(Gatsby) 블로그 만들기 4 - 댓글(giscus) 적용](https://whitepaek.com/posts/2024/01/gatsby-blog-start-4/)
+- [개츠비(Gatsby) 블로그 만들기 5 - 블로그(GitHub Pages) 배포](https://whitepaek.com/posts/2024/01/gatsby-blog-start-5/)
+- [개츠비(Gatsby) 블로그 만들기 6 - 사용자 지정 도메인 적용](https://whitepaek.com/posts/2024/01/gatsby-blog-start-6/)
+
 이전 포스트에서 세팅을 완료한 [개츠비(Gatsby) 블로그](https://whitepaek.com/posts/2024/01/gatsby-blog-start-1/)에 페이지네이션(pagination)을 알아보고, 적용해 보도록 할게요.
 
 블로그를 열심히 운영한다면 적게는 수십 개에서 많게는 수백, 수천 개의 포스트가 생성될 거예요.

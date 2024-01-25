@@ -4,6 +4,13 @@ createdAt: 2024-01-25T00:00:00.000Z
 editedAt: 2024-01-25T00:00:00.000Z
 ---
 
+- [개츠비(Gatsby) 블로그 만들기 1 - 기본 세팅](https://whitepaek.com/posts/2024/01/gatsby-blog-start-1/)
+- [개츠비(Gatsby) 블로그 만들기 2 - Tailwind CSS 적용](https://whitepaek.com/posts/2024/01/gatsby-blog-start-2/)
+- [개츠비(Gatsby) 블로그 만들기 3 - 페이징(Pagination) 적용](https://whitepaek.com/posts/2024/01/gatsby-blog-start-3/)
+- **개츠비(Gatsby) 블로그 만들기 4 - 댓글(giscus) 적용**
+- [개츠비(Gatsby) 블로그 만들기 5 - 블로그(GitHub Pages) 배포](https://whitepaek.com/posts/2024/01/gatsby-blog-start-5/)
+- [개츠비(Gatsby) 블로그 만들기 6 - 사용자 지정 도메인 적용](https://whitepaek.com/posts/2024/01/gatsby-blog-start-6/)
+
 이번 포스트에서는 개츠비 블로그에 댓글 기능을 적용해 보도록 할게요.
 댓글 기능으로 대표적인 오픈소스로 utterances와 giscus가 있어요.
 저는 GitHub Discussions로 작동하는 댓글 시스템 giscus 오픈소스 앱을 적용하여 방문자가 포스트에 댓글과 반응을 남길 수 있도록 할게요.

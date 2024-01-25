@@ -3,6 +3,12 @@ title: 개츠비(Gatsby) 블로그 만들기 5 - 블로그(GitHub Pages) 배포
 createdAt: 2024-01-25T00:19:00.000Z
 editedAt: 2024-01-25T00:19:00.000Z
 ---
+- [개츠비(Gatsby) 블로그 만들기 1 - 기본 세팅](https://whitepaek.com/posts/2024/01/gatsby-blog-start-1/)
+- [개츠비(Gatsby) 블로그 만들기 2 - Tailwind CSS 적용](https://whitepaek.com/posts/2024/01/gatsby-blog-start-2/)
+- [개츠비(Gatsby) 블로그 만들기 3 - 페이징(Pagination) 적용](https://whitepaek.com/posts/2024/01/gatsby-blog-start-3/)
+- [개츠비(Gatsby) 블로그 만들기 4 - 댓글(giscus) 적용](https://whitepaek.com/posts/2024/01/gatsby-blog-start-4/)
+- **개츠비(Gatsby) 블로그 만들기 5 - 블로그(GitHub Pages) 배포**
+- [개츠비(Gatsby) 블로그 만들기 6 - 사용자 지정 도메인 적용](https://whitepaek.com/posts/2024/01/gatsby-blog-start-6/)
 
 사람들이 본인이 만든 개츠비(gatsby) 블로그를 볼 수 있도록 GitHub에서 무료로 제공해 주는 웹 호스팅 서비스
 [GitHub Pages](https://docs.github.com/en/pages/quickstart)를 이용하여 배포하도록 할게요.

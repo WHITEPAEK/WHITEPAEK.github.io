@@ -4,6 +4,13 @@ createdAt: 2024-01-15T00:00:00.000Z
 editedAt: 2024-01-15T00:00:00.000Z
 ---
 
+- **개츠비(Gatsby) 블로그 만들기 1 - 기본 세팅**
+- [개츠비(Gatsby) 블로그 만들기 2 - Tailwind CSS 적용](https://whitepaek.com/posts/2024/01/gatsby-blog-start-2/)
+- [개츠비(Gatsby) 블로그 만들기 3 - 페이징(Pagination) 적용](https://whitepaek.com/posts/2024/01/gatsby-blog-start-3/)
+- [개츠비(Gatsby) 블로그 만들기 4 - 댓글(giscus) 적용](https://whitepaek.com/posts/2024/01/gatsby-blog-start-4/)
+- [개츠비(Gatsby) 블로그 만들기 5 - 블로그(GitHub Pages) 배포](https://whitepaek.com/posts/2024/01/gatsby-blog-start-5/)
+- [개츠비(Gatsby) 블로그 만들기 6 - 사용자 지정 도메인 적용](https://whitepaek.com/posts/2024/01/gatsby-blog-start-6/)
+
 [개츠비(Gatsby)](https://www.gatsbyjs.com/)로 블로그 만드는 과정을 제가 경험한 내용으로 설명드릴게요.
 
 개츠비를 기반으로 블로그를 처음부터 하나씩 세팅하기에는 까다로워요. 특히 저처럼 이해도가 전혀 없는 상태라면, 시작조차 못할 수 있어요.

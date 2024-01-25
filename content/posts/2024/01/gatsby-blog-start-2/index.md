@@ -4,6 +4,13 @@ createdAt: 2024-01-18T00:00:00.000Z
 editedAt: 2024-01-18T00:00:00.000Z
 ---
 
+- [개츠비(Gatsby) 블로그 만들기 1 - 기본 세팅](https://whitepaek.com/posts/2024/01/gatsby-blog-start-1/)
+- **개츠비(Gatsby) 블로그 만들기 2 - Tailwind CSS 적용**
+- [개츠비(Gatsby) 블로그 만들기 3 - 페이징(Pagination) 적용](https://whitepaek.com/posts/2024/01/gatsby-blog-start-3/)
+- [개츠비(Gatsby) 블로그 만들기 4 - 댓글(giscus) 적용](https://whitepaek.com/posts/2024/01/gatsby-blog-start-4/)
+- [개츠비(Gatsby) 블로그 만들기 5 - 블로그(GitHub Pages) 배포](https://whitepaek.com/posts/2024/01/gatsby-blog-start-5/)
+- [개츠비(Gatsby) 블로그 만들기 6 - 사용자 지정 도메인 적용](https://whitepaek.com/posts/2024/01/gatsby-blog-start-6/)
+
 [개츠비(Gatsby) 블로그 기본 세팅](https://whitepaek.com/posts/2024/01/gatsby-blog-start-1/)을 완료했으면 [테일윈드 CSS(Tailwind CSS)를 적용](https://tailwindcss.com/docs/guides/gatsby)해 보도록 할게요.
 
 이전 포스트에서 세팅한 블로그 디렉터리 위치로 이동해주세요.
