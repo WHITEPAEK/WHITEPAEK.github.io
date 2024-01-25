@@ -63,11 +63,11 @@ const Posts = (props) => {
             </div>
 
             <nav className="flex items-center justify-between border-t border-gray-200 px-4 sm:px-0">
-              <div className="-mt-px flex w-0 flex-1 group">
+              <div className="-mt-px flex w-0 flex-1">
                 {!isFirst && (
                   <Link to={prevPage}
                         rel={"prev"}
-                        className="inline-flex items-center border-t-2 border-transparent pr-1 pt-4 text-sm font-medium text-gray-500 group-hover:border-red-500 group-hover:text-red-600">
+                        className="inline-flex items-center border-t-2 border-transparent pr-1 pt-4 text-sm font-medium text-gray-500 hover:border-red-500 hover:text-red-600 group">
                     <svg className="mr-3 h-5 w-5 text-gray-500 group-hover:text-red-600" viewBox="0 0 20 20" fill="currentColor"
                          aria-hidden="true">
                       <path fillRule="evenodd"
@@ -107,11 +107,11 @@ const Posts = (props) => {
                 }
               </div>
 
-              <div className="-mt-px flex w-0 flex-1 justify-end group">
+              <div className="-mt-px flex w-0 flex-1 justify-end">
                 {!isLast && (
                   <Link to={nextPage}
                         rel={"next"}
-                        className="inline-flex items-center border-t-2 border-transparent pl-1 pt-4 text-sm font-medium text-gray-500 group-hover:border-red-500 group-hover:text-red-600">
+                        className="inline-flex items-center border-t-2 border-transparent pl-1 pt-4 text-sm font-medium text-gray-500 hover:border-red-500 hover:text-red-600 group">
                     다음
                     <svg className="ml-3 h-5 w-5 text-gray-500 group-hover:text-red-600" viewBox="0 0 20 20" fill="currentColor"
                          aria-hidden="true">
