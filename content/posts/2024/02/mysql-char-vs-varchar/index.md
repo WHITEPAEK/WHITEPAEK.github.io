@@ -69,3 +69,6 @@ CHAR(10), VARCHAR(10)으로 선언했다고 가정한다.
 
 지금까지 설명한 CHAR와 VARCHAR 특징을 참고하여 적절한 데이터 타입을 결정하여 정의하도록 하자.   
 이상으로 CHAR와 VARCHAR 특징에 대한 포스트를 끝내도록 하겠다.
+
+- [The CHAR and VARCHAR Types](https://dev.mysql.com/doc/refman/8.0/en/char.html)
+- Real MySQL 8.0 2권 (백은빈, 이성욱), 356 ~ 359 페이지
