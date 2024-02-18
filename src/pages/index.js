@@ -39,7 +39,7 @@ const Index = () => {
                   <div className="flex justify-between gap-x-4">
                     <div className="py-0.5 text-xs leading-5 text-gray-500">
                       <span className="font-medium text-gray-900">
-                        Asasac (대표)
+                        Asasac Corp.
                       </span>
                     </div>
                     <time dateTime="2024-01-01" className="flex-none py-0.5 text-xs leading-5 text-gray-500">
@@ -50,7 +50,8 @@ const Index = () => {
               </li>
 
               <li className="relative flex gap-x-4">
-                <div className="absolute left-0 top-0 flex w-6 justify-center -bottom-6">
+                {/*<div className="absolute left-0 top-0 flex w-6 justify-center -bottom-6">*/}
+                <div className="absolute left-0 top-0 flex w-6 justify-center -h-6">
                   <div className="w-px bg-gray-200"></div>
                 </div>
                 <div className="relative flex h-6 w-6 flex-none items-center justify-center bg-white">
@@ -60,7 +61,7 @@ const Index = () => {
                   <div className="flex justify-between gap-x-4">
                     <div className="py-0.5 text-xs leading-5 text-gray-500">
                       <span className="font-medium text-gray-900">
-                        비디 (파트장)
+                        (주)비디
                       </span>
                     </div>
                     <time dateTime="2020-01-01" className="flex-none py-0.5 text-xs leading-5 text-gray-500">
@@ -114,7 +115,7 @@ const Index = () => {
                   </div>
                 </div>
               </li>
-              <li className="relative flex gap-x-4">
+              {/*<li className="relative flex gap-x-4">
                 <div className="absolute left-0 top-0 flex w-6 justify-center -h-6">
                   <div className="w-px bg-gray-200"></div>
                 </div>
@@ -134,7 +135,7 @@ const Index = () => {
                     </time>
                   </div>
                 </div>
-              </li>
+              </li>*/}
             </ul>
           </div>
         </div>
