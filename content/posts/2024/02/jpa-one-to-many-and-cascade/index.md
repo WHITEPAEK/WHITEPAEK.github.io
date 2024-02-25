@@ -1,5 +1,5 @@
 ---
-title: JPA에서 @OneToMany와 CASCADE 옵션
+title: JPA에서 @OneToMany 매핑과 CASCADE 옵션
 createdAt: 2024-02-26T00:00:00.000Z
 editedAt: 2024-02-26T00:00:00.000Z
 ---
