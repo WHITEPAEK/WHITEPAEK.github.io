@@ -20,7 +20,7 @@ product_information_item(상품 정보 항목) 기준에서 product_information_
 
 다대일 관계의 매핑은 다음과 같은 특징을 갖는다.
 - 다대일 또는 일대다 관계에서는 항상 다(N)쪽이 연관관계의 주인으로 설정된다.
-- `@ManyToOne`로 설정된 엔티티는 영속 상태로 데이터 생성, 수정, 삭제를 진행할 수 있다.
+- `@ManyToOne`으로 설정된 엔티티는 영속 상태로 데이터 생성, 수정, 삭제를 진행할 수 있다.
 - 다(N) 테이블에서는 연관관계 테이블의 ID를 필드로 가지고 있다. (product_information_item 테이블에서 product_information_category의 ID를 관리하고 있다.)
 
 참고로 `@ManyToOne`에서 fetch 기본 타입은 즉시 로딩(eager)인 점을 주의하자.
@@ -143,7 +143,7 @@ public class ProductInformationCategory extends BaseDateTimeEntity {
 - 1-1) 카테고리는 부모 엔티티가 되며, 상품 엔티티를 `@OneToMany(mappedBy = "")`으로 정의한다.
 - 1-2) 부모 엔티티(카테고리)에서 자식 엔티티(상품)는 읽기만 가능하다. (생성, 수정, 삭제가 불가능하다)
 - 2-1) 상품 엔티티는 연관관계 주인이 되며, 카테고리 엔티티를 `@ManyToOne(fetch = FetchType.LAZY)`로 정의한다.
-- 2-2) 자식 엔티티(상품)에서 부모 엔티티(카테고리)를 추가, 수정, 삭제할 수 있다.
+- 2-2) 자식 엔티티(상품)에서 부모 엔티티(카테고리)를 조회, 생성, 수정, 삭제할 수 있다.
 
 만약 카테고리 정보를 넣어서 상품을 생성해야 하지만, 카테고리로 상품 정보 조회 기능이 필요 없다면 부모 엔티티(카테고리)에서 자식 엔티티(상품)를 정의할 필요가 없다.
 즉, 상품 엔티티를(`private List<Product> products;`) 정의할 필요가 없으며 필요한 경우에만 정의하면 된다.
@@ -155,7 +155,7 @@ public class ProductInformationCategory extends BaseDateTimeEntity {
 public class Product {
     
     // (2-1, 2-2)
-    // 자식 엔티티는 연관관계 주인이므로, 부모 엔티티를 ManyToOne으로 정의한다. (부모 엔티티 생성, 수정, 삭제가 가능)
+    // 자식 엔티티는 연관관계 주인이므로, 부모 엔티티를 ManyToOne으로 정의한다. (부모 엔티티 조회, 생성, 수정, 삭제가 가능)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private Category category;
